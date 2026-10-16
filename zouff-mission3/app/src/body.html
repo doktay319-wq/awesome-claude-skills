@@ -2,7 +2,7 @@
 <script>
 const CARDS = /*__DATA__*/[];
 const LS = 'zouff-m3-v2', LS_OLD = 'zouff-m3-v1';
-const DEF = {ui:'nl', mode:'card', kind:'all', pages:[], order:'seq', unknown:false, front:'fr', other:true, dir:'nl-fr', accent:'lenient', speak:true};
+const DEF = {ui:'nl', mode:'card', kind:'all', pages:[], order:'seq', unknown:false, front:'fr', help:true, dir:'nl-fr', accent:'lenient', speak:true};
 let store = {users:[], cur:null, set:{}, legacy:null};
 try {
   const r = localStorage.getItem(LS);
@@ -14,6 +14,7 @@ try {
 } catch (e) {}
 const S = Object.assign({}, DEF, store.set || {});
 S.ui = S.ui === 'tr' ? 'tr' : 'nl';
+if (!/^(nl-fr|fr-nl)$/.test(S.dir)) S.dir = 'nl-fr';
 function save() { store.set = S; try { localStorage.setItem(LS, JSON.stringify(store)); } catch (e) {} }
 const user = () => store.users.find(u => u.id === store.cur) || null;
 const known = id => { const u = user(); return !!(u && u.known[id]); };
@@ -23,16 +24,16 @@ const TX = {
   nl: {
     sub: 'Tu fais quoi? · pagina 25–42', gekend: 'gekend', hi: n => `Hoi, ${n}!`,
     switchKid: 'Ander kind', progress: 'Voortgang', what: 'Wat gaan we doen?',
-    cardT: 'Kaartjes', cardD: 'Bekijk het woord, tik op het kaartje en draai het om voor het Turks.',
+    cardT: 'Kaartjes', cardD: 'Bekijk het woord, tik op het kaartje en draai het om.',
     writeT: 'Schrijven', writeD: 'Bekijk het woord en schrijf de vertaling.',
     face: 'Voorkant van het kaartje', dir: 'Richting', frontFr: 'Voorkant Frans', frontNl: 'Voorkant Nederlands',
-    other: 'Toon ook de andere taal (Frans + Nederlands samen)',
+    help: 'Turkse hulp (achterkant van het kaartje en hints)', backOther: 'Achterkant toont de andere taal',
     accL: 'Accentfout telt als goed (met waarschuwing)', accS: 'Accentfout telt als fout',
     content: 'Inhoud', all: 'Alles', words: 'Woorden', phrases: 'Zinnen',
     pages: "Pagina's", allPages: "Alle pagina's", pg: 'p.', order: 'Volgorde', seq: 'Zoals in het boek', shuf: 'Door elkaar',
     unk: 'Alleen wat ik nog niet ken', start: (n, m) => `Start · ${n} ${m === 'card' ? 'kaartjes' : 'vragen'}`, none: 'Geen kaartjes in deze selectie',
     foot: 'De voortgang wordt op deze iPad bewaard.', reset: 'Mijn voortgang wissen', resetSure: 'Zeker? Tik nog eens',
-    tapHint: 'Tik op het kaartje voor het Turks', backHint: 'Tik om terug te draaien', turks: 'TURKS',
+    tapHint: 'Tik op het kaartje om het om te draaien', backHint: 'Tik om terug te draaien', turks: 'TURKS',
     again: 'Opnieuw ↻', know: 'Ik ken het ✓', againHint: 'Ken je het niet? Kies "Opnieuw", dan komt het kaartje achteraan.',
     listen: 'Beluister', close: 'Stoppen', flipLabel: 'Kaartje omdraaien',
     writeIn: l => `Schrijf in het ${l}`, hint: 'Turkse hint', check: 'Controleren', skip: 'Ik weet het niet, toon het antwoord', next: 'Volgende',
@@ -44,7 +45,7 @@ const TX = {
     track: 'Voortgang van de kinderen', sessions: 'Oefensessies', last: 'Laatst geoefend', never: 'Nog niet geoefend', hardest: 'Moeilijkste woorden',
     perPage: 'Per pagina', noMiss: 'Nog geen fouten.', times: n => `${n}× fout`, choose: 'Kiezen', lang: 'Taal',
     LN: {fr:'Frans', nl:'Nederlands', tr:'Turks'},
-    dirs: {'nl-fr':'Nederlands → Frans', 'fr-nl':'Frans → Nederlands', 'tr-fr':'Turks → Frans', 'tr-nl':'Turks → Nederlands'},
+    dirs: {'nl-fr':'Nederlands → Frans', 'fr-nl':'Frans → Nederlands'},
   },
   tr: {
     sub: 'Tu fais quoi? · sayfa 25–42', gekend: 'biliyor', hi: n => `Merhaba, ${n}!`,
@@ -52,13 +53,13 @@ const TX = {
     cardT: 'Kart', cardD: 'Kelimeye bak, karta dokun, çevir ve Türkçesini gör.',
     writeT: 'Yazma', writeD: 'Kelimeyi gör, karşılığını yaz.',
     face: 'Kartın ön yüzü', dir: 'Yön', frontFr: 'Önde Fransızca', frontNl: 'Önde Felemenkçe',
-    other: 'Diğer dili de göster (Fransızca + Felemenkçe birlikte)',
+    help: 'Türkçe yardım (kartın arkası ve ipuçları)', backOther: 'Kartın arkası diğer dili gösterir',
     accL: 'Aksan hatası kabul (uyarılı)', accS: 'Aksan hatası yanlış sayılır',
     content: 'İçerik', all: 'Hepsi', words: 'Kelimeler', phrases: 'Cümleler',
     pages: 'Sayfalar', allPages: 'Tüm sayfalar', pg: 's.', order: 'Sıra', seq: 'Kitaptaki sıra', shuf: 'Karışık',
     unk: 'Sadece henüz bilmediklerim', start: (n, m) => `Başla · ${n} ${m === 'card' ? 'kart' : 'soru'}`, none: 'Bu seçimde kart yok',
     foot: 'İlerleme bu iPad\'in tarayıcısında saklanır.', reset: 'İlerlememi sıfırla', resetSure: 'Emin misin? Tekrar dokun',
-    tapHint: 'Türkçesi için karta dokun', backHint: 'Geri çevirmek için dokun', turks: 'TÜRKÇE',
+    tapHint: 'Çevirmek için karta dokun', backHint: 'Geri çevirmek için dokun', turks: 'TÜRKÇE',
     again: 'Tekrar ↻', know: 'Biliyorum ✓', againHint: 'Bilmiyorsan "Tekrar" de, kart sona eklenir.',
     listen: 'Dinle', close: 'Çık', flipLabel: 'Kartı çevir',
     writeIn: l => `${l} yaz`, hint: 'Türkçe ipucu', check: 'Kontrol et', skip: 'Bilmiyorum, cevabı göster', next: 'Sonraki',
@@ -70,7 +71,7 @@ const TX = {
     track: 'Çocukların ilerlemesi', sessions: 'Çalışma oturumu', last: 'Son çalışma', never: 'Henüz çalışmadı', hardest: 'En zorlandığı kelimeler',
     perPage: 'Sayfa sayfa', noMiss: 'Henüz hata yok.', times: n => `${n}× yanlış`, choose: 'Seç', lang: 'Dil',
     LN: {fr:'Fransızca', nl:'Felemenkçe', tr:'Türkçe'},
-    dirs: {'nl-fr':'Felemenkçe → Fransızca', 'fr-nl':'Fransızca → Felemenkçe', 'tr-fr':'Türkçe → Fransızca', 'tr-nl':'Türkçe → Felemenkçe'},
+    dirs: {'nl-fr':'Felemenkçe → Fransızca', 'fr-nl':'Fransızca → Felemenkçe'},
   }
 };
 const t = (k, ...a) => { const v = TX[S.ui][k]; return typeof v === 'function' ? v(...a) : v; };
@@ -200,8 +201,8 @@ function homeView() {
     return `<button type="button" class="chip" data-a="page" data-v="${p}" aria-pressed="${S.pages.includes(p)}">${pageLabel(p)}<small>${kk}/${items.length}</small></button>`;
   }).join('');
   const dirs = S.mode === 'write'
-    ? seg('dir', ['nl-fr','fr-nl','tr-fr','tr-nl'].map(d => [d, TX[S.ui].dirs[d]]))
-    : seg('front', [['fr', t('frontFr')], ['nl', t('frontNl')]]) + tog('other', t('other'));
+    ? seg('dir', ['nl-fr','fr-nl'].map(d => [d, TX[S.ui].dirs[d]]))
+    : seg('front', [['fr', t('frontFr')], ['nl', t('frontNl')]]);
   return `
   <header class="top"><div><h1>${t('hi', esc(u.name))}</h1><p>Zouff! Mission 3 · ${t('sub')}</p></div>${langSw()}</header>
   <div class="who"><div class="sum">${k} / ${total} ${t('gekend')}</div>
@@ -212,7 +213,8 @@ function homeView() {
       <button type="button" class="mode" data-a="set" data-k="mode" data-v="write" aria-pressed="${S.mode === 'write'}"><b>${t('writeT')}</b><span>${t('writeD')}</span></button>
     </div></section>
   <section class="sec"><h2>${S.mode === 'write' ? t('dir') : t('face')}</h2>${dirs}
-    ${S.mode === 'write' ? seg('accent', [['lenient', t('accL')], ['strict', t('accS')]]) : ''}</section>
+    ${S.mode === 'write' ? seg('accent', [['lenient', t('accL')], ['strict', t('accS')]]) : ''}
+    ${tog('help', t('help'))}</section>
   <section class="sec"><h2>${t('content')}</h2>${seg('kind', [['all', t('all')], ['word', t('words')], ['phrase', t('phrases')]])}</section>
   <section class="sec"><h2>${t('pages')}</h2><div class="seg">
     <button type="button" class="chip" data-a="page" data-v="all" aria-pressed="${!S.pages.length}">${t('allPages')}</button>${chips}</div></section>
@@ -254,25 +256,24 @@ const spk = (text, lang) => `<button type="button" class="spk" data-a="say" data
 
 function cardView() {
   const c = sess.q[sess.i], f = S.front, o = f === 'fr' ? 'nl' : 'fr';
-  const big = c[f].length > 28 ? 'mid' : 'big';
+  const bk = S.help ? 'tr' : o, big = c[f].length > 28 ? 'mid' : 'big', bigB = c[bk].length > 28 ? 'mid' : 'big';
   return barView() + `
   <button type="button" class="flip ${sess.shown ? 'flipped' : ''}" data-a="flip" aria-label="${t('flipLabel')}">
     <span class="flipin">
       <span class="face" aria-hidden="${sess.shown}">
         <span class="prompt"><span class="lang ${f}">${LN(f).toUpperCase()}</span><span class="src">${esc(pageLabel(c.page))}</span></span>
         <span class="blk"><span class="w ${big} ${f}">${esc(c[f])}</span></span>
-        ${S.other ? `<span class="blk"><span class="lang ${o}">${LN(o).toUpperCase()}</span><span class="w mid ${o}">${esc(c[o])}</span></span>` : ''}
         <span class="hint">${t('tapHint')}</span>
       </span>
       <span class="face back" aria-hidden="${!sess.shown}">
-        <span class="prompt"><span class="lang tr">${t('turks')}</span><span class="src">${esc(pageLabel(c.page))}</span></span>
-        <span class="blk"><span class="w ${c.tr.length > 28 ? 'mid' : 'big'} tr">${esc(c.tr)}</span></span>
-        <span class="blk"><span class="src">${esc(c[f])}${S.other ? ' · ' + esc(c[o]) : ''}</span></span>
+        <span class="prompt"><span class="lang ${bk}">${LN(bk).toUpperCase()}</span><span class="src">${esc(pageLabel(c.page))}</span></span>
+        <span class="blk"><span class="w ${bigB} ${bk}">${esc(c[bk])}</span></span>
+        <span class="blk"><span class="src">${esc(c[f])}</span></span>
         <span class="hint">${t('backHint')}</span>
       </span>
     </span>
   </button>
-  <div class="row">${spk(c[f], f)}${S.other ? spk(c[o], o) : ''}<span class="hint" style="margin-left:auto;text-align:right">${t('againHint')}</span></div>
+  <div class="row">${spk(c[f], f)}<span class="hint" style="margin-left:auto;text-align:right">${t('againHint')}</span></div>
   <div class="acts"><button type="button" class="no" data-a="again">${t('again')}</button><button type="button" class="yes" data-a="know">${t('know')}</button></div>`;
 }
 
@@ -285,14 +286,14 @@ function writeView() {
   if (r) {
     const cls = r === 'ok' ? 'ok' : good ? 'acc' : 'no';
     const head = r === 'ok' ? t('ok') : r === 'accent' ? (good ? t('near') : t('accErr')) : t('right');
-    fb = `<div class="fb ${cls}"><b>${head}</b><div class="w mid ${to}">${esc(c[to])}</div><div class="src">${t('trLine')} ${esc(c.tr)}</div></div>`;
+    fb = `<div class="fb ${cls}"><b>${head}</b><div class="w mid ${to}">${esc(c[to])}</div>${S.help ? `<div class="src">${t('trLine')} ${esc(c.tr)}</div>` : ''}</div>`;
   }
   const cls = r ? (r === 'ok' ? 'ok' : good ? 'acc' : 'no') : '';
   return barView() + `
   <div class="card" style="min-height:0">
-    <div class="prompt"><span class="lang ${from}">${LN(from).toUpperCase()}</span>${S.speak && from !== 'tr' ? spk(c[from], from) : '<span></span>'}</div>
+    <div class="prompt"><span class="lang ${from}">${LN(from).toUpperCase()}</span>${S.speak ? spk(c[from], from) : '<span></span>'}</div>
     <div class="w ${big} ${from}">${esc(c[from])}</div>
-    ${from !== 'tr' ? (sess.hint ? `<div class="src">${t('trLine')} ${esc(c.tr)}</div>` : `<button type="button" class="link" data-a="hint" style="align-self:flex-start">${t('hint')}</button>`) : ''}
+    ${S.help ? (sess.hint ? `<div class="src">${t('trLine')} ${esc(c.tr)}</div>` : `<button type="button" class="link" data-a="hint" style="align-self:flex-start">${t('hint')}</button>`) : ''}
   </div>
   <form id="f" autocomplete="off" class="sec">
     <label class="src" for="ans">${t('writeIn', LN(to))}</label>
@@ -307,7 +308,7 @@ function doneView() {
   const w = sess.wrong;
   return `<header class="top"><div><h1>${t('done')}</h1><p>${t('first', sess.right, sess.total)}</p></div></header>
   <div class="score">${sess.right} / ${sess.total}</div>
-  ${w.length ? `<section class="sec"><h2>${t('redo', w.length)}</h2><ul class="list">${w.map(c => `<li><b>${esc(c.fr)}</b><span>${esc(c.nl)} · ${esc(c.tr)}</span></li>`).join('')}</ul></section>` : `<div class="empty">${t('allOk')}</div>`}
+  ${w.length ? `<section class="sec"><h2>${t('redo', w.length)}</h2><ul class="list">${w.map(c => `<li><b>${esc(c.fr)}</b><span>${esc(c.nl)}${S.help ? ' · ' + esc(c.tr) : ''}</span></li>`).join('')}</ul></section>` : `<div class="empty">${t('allOk')}</div>`}
   ${w.length ? `<button type="button" class="go" data-a="retry">${t('retry')}</button>` : ''}
   <button type="button" class="ghost" data-a="home">${t('homeB')}</button>`;
 }
