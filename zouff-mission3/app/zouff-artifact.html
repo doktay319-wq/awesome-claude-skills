@@ -1,0 +1,339 @@
+<title>Zouff Mission 3</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;800&display=swap">
+<style>
+/* Layout: one centered column (max 720px) tuned for iPad; setup screen, then a full-width card or typing screen. */
+:root{
+  --bg:#EDF4F4; --surface:#FFFFFF; --ink:#14323A; --muted:#58757D; --line:#CCDFE1;
+  --teal:#0E8A8C; --teal-ink:#FFFFFF; --teal-soft:#D6EEEE;
+  --nl:#B8650A; --nl-soft:#FBEBD0; --fr:#5E3F96; --fr-soft:#E8E0F5; --tr:#0E6E70; --tr-soft:#D6EEEE;
+  --good:#1B8A4C; --good-soft:#D9F2E3; --bad:#C23A3A; --bad-soft:#F8DEDE; --warn-soft:#FCF0C8;
+  --font-display:"Fredoka","Trebuchet MS",system-ui,sans-serif;
+  --font-body:"Nunito",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0E1C20; --surface:#16282D; --ink:#E7F1F2; --muted:#8FAAB1; --line:#29444B;
+    --teal:#3DC0C2; --teal-ink:#06292A; --teal-soft:#17393C;
+    --nl:#F1B45E; --nl-soft:#3A2D18; --fr:#BCA3EA; --fr-soft:#2C2342; --tr:#6FD0D2; --tr-soft:#17393C;
+    --good:#58CF8C; --good-soft:#15362A; --bad:#F28383; --bad-soft:#3E1F22; --warn-soft:#3B3318;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0E1C20; --surface:#16282D; --ink:#E7F1F2; --muted:#8FAAB1; --line:#29444B;
+  --teal:#3DC0C2; --teal-ink:#06292A; --teal-soft:#17393C;
+  --nl:#F1B45E; --nl-soft:#3A2D18; --fr:#BCA3EA; --fr-soft:#2C2342; --tr:#6FD0D2; --tr-soft:#17393C;
+  --good:#58CF8C; --good-soft:#15362A; --bad:#F28383; --bad-soft:#3E1F22; --warn-soft:#3B3318;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{min-height:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:17px;line-height:1.45;
+  padding-block:20px 40px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  -webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}
+#app{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:22px}
+h1,h2,h3{font-family:var(--font-display);font-weight:600;margin:0;text-wrap:balance}
+h1{font-size:2rem;line-height:1.1}
+h2{font-size:1.05rem;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;font-family:var(--font-body);font-weight:800}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none;padding:0}
+button:focus-visible,input:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+.top{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.top p{margin:4px 0 0;color:var(--muted)}
+.sum{font-weight:800;color:var(--teal);font-variant-numeric:tabular-nums}
+.sec{display:flex;flex-direction:column;gap:10px}
+.modes{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.mode{background:var(--surface);border:2px solid var(--line);border-radius:18px;padding:18px;text-align:left;min-height:96px;display:flex;flex-direction:column;gap:4px}
+.mode b{font-family:var(--font-display);font-size:1.4rem;font-weight:600}
+.mode span{color:var(--muted);font-size:.95rem}
+.mode[aria-pressed="true"]{border-color:var(--teal);background:var(--teal-soft)}
+.seg{display:flex;flex-wrap:wrap;gap:8px}
+.seg button,.chip{background:var(--surface);border:2px solid var(--line);border-radius:999px;padding:10px 16px;min-height:44px;font-weight:600}
+.seg button[aria-pressed="true"],.chip[aria-pressed="true"]{background:var(--teal);border-color:var(--teal);color:var(--teal-ink)}
+.chip small{opacity:.75;font-variant-numeric:tabular-nums;margin-left:6px}
+.row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.tog{display:flex;align-items:center;gap:10px;min-height:44px;font-weight:600;text-align:left}
+.tog i{width:46px;height:28px;border-radius:999px;background:var(--line);position:relative;flex:none;transition:background .15s}
+.tog i::after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:var(--surface);transition:transform .15s}
+.tog[aria-pressed="true"] i{background:var(--teal)}
+.tog[aria-pressed="true"] i::after{transform:translateX(18px)}
+.go{background:var(--teal);color:var(--teal-ink);border-radius:18px;min-height:60px;padding:14px 22px;font-family:var(--font-display);font-size:1.3rem;font-weight:600;width:100%}
+.go[disabled]{opacity:.45;cursor:not-allowed}
+.ghost{border:2px solid var(--line);border-radius:14px;padding:10px 16px;min-height:44px;font-weight:600;background:var(--surface)}
+.link{color:var(--muted);text-decoration:underline;min-height:44px;padding:0 4px}
+.bar{display:flex;align-items:center;gap:14px}
+.bar .x{width:44px;height:44px;border-radius:50%;border:2px solid var(--line);background:var(--surface);font-size:1.3rem;line-height:1}
+.prog{flex:1;height:10px;border-radius:999px;background:var(--line);overflow:hidden}
+.prog i{display:block;height:100%;background:var(--teal);border-radius:999px;transition:width .25s}
+.cnt{font-variant-numeric:tabular-nums;font-weight:800;color:var(--muted);min-width:64px;text-align:right}
+.card{background:var(--surface);border:2px solid var(--line);border-radius:26px;padding:26px 22px;min-height:300px;display:flex;flex-direction:column;gap:18px;justify-content:center;text-align:left;width:100%;box-shadow:0 2px 0 var(--line)}
+.lang{display:inline-block;font-size:.78rem;font-weight:800;letter-spacing:.08em;padding:3px 10px;border-radius:999px;align-self:flex-start}
+.lang.fr{background:var(--fr-soft);color:var(--fr)}.lang.nl{background:var(--nl-soft);color:var(--nl)}.lang.tr{background:var(--tr-soft);color:var(--tr)}
+.blk{display:flex;flex-direction:column;gap:6px}
+.w{font-family:var(--font-display);font-weight:500;line-height:1.2;overflow-wrap:anywhere;text-wrap:balance}
+.w.big{font-size:clamp(2rem,6.5vw,3rem)}.w.mid{font-size:clamp(1.4rem,4.5vw,1.9rem)}
+.w.fr{color:var(--fr)}.w.nl{color:var(--nl)}.w.tr{color:var(--tr)}
+.src{color:var(--muted);font-size:.9rem}
+.hint{color:var(--muted);font-size:.95rem;text-align:center}
+.acts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.acts button{min-height:64px;border-radius:18px;font-weight:800;font-size:1.1rem;border:2px solid var(--line);background:var(--surface)}
+.acts .yes{background:var(--good-soft);border-color:var(--good);color:var(--good)}
+.acts .no{background:var(--bad-soft);border-color:var(--bad);color:var(--bad)}
+.spk{width:48px;height:48px;border-radius:50%;border:2px solid var(--line);background:var(--surface);flex:none;display:inline-flex;align-items:center;justify-content:center}
+.spk svg{width:22px;height:22px;fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.prompt{display:flex;gap:12px;align-items:flex-start;justify-content:space-between}
+.field{width:100%;font:inherit;font-family:var(--font-display);font-size:1.6rem;padding:16px 18px;border-radius:16px;border:2px solid var(--line);background:var(--bg);color:var(--ink)}
+.field[disabled]{opacity:.9}
+.field.ok{border-color:var(--good);background:var(--good-soft)}.field.no{border-color:var(--bad);background:var(--bad-soft)}.field.acc{border-color:var(--nl);background:var(--warn-soft)}
+.keys{display:flex;flex-wrap:wrap;gap:8px}
+.keys button{min-width:46px;min-height:46px;border-radius:12px;border:2px solid var(--line);background:var(--surface);font-size:1.2rem;font-weight:600}
+.fb{border-radius:18px;padding:16px 18px;display:flex;flex-direction:column;gap:6px}
+.fb.ok{background:var(--good-soft);color:var(--ink)}.fb.no{background:var(--bad-soft)}.fb.acc{background:var(--warn-soft)}
+.fb b{font-family:var(--font-display);font-size:1.15rem;font-weight:600}
+.score{font-family:var(--font-display);font-size:4rem;font-weight:600;color:var(--teal);line-height:1}
+.list{display:flex;flex-direction:column;gap:8px;margin:0;padding:0;list-style:none}
+.list li{background:var(--surface);border:2px solid var(--line);border-radius:14px;padding:12px 14px;display:flex;flex-direction:column;gap:2px}
+.list b{font-family:var(--font-display);font-weight:500;font-size:1.1rem}
+.list span{color:var(--muted);font-size:.92rem}
+.empty{background:var(--surface);border:2px dashed var(--line);border-radius:18px;padding:18px;color:var(--muted)}
+.foot{color:var(--muted);font-size:.88rem;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media (max-width:480px){.modes{grid-template-columns:1fr}.card{min-height:260px;padding:20px 16px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<div id="app"></div>
+<script>
+const CARDS = [{"id":"p125","page":25,"kind":"phrase","fr":"C'est quoi ?","nl":"Wat is dat?","tr":"Bu ne?"},{"id":"p126","page":25,"kind":"phrase","fr":"C'est un stylo.","nl":"Het is een balpen.","tr":"Bu bir tükenmez kalem."},{"id":"p127","page":25,"kind":"phrase","fr":"Ce sont deux cahiers.","nl":"Het zijn twee schriften.","tr":"Bunlar iki defter."},{"id":"p128","page":25,"kind":"phrase","fr":"Ce sont des crayons.","nl":"Het zijn potloden.","tr":"Bunlar kurşun kalemler."},{"id":"p129","page":25,"kind":"phrase","fr":"Prenez un stylo.","nl":"Neem een balpen.","tr":"Bir tükenmez kalem alın."},{"id":"p130","page":25,"kind":"phrase","fr":"Prenez des feuilles.","nl":"Neem bladen.","tr":"Kâğıtlar alın."},{"id":"p131","page":25,"kind":"phrase","fr":"Le prof dit …","nl":"De leerkracht zegt …","tr":"Öğretmen diyor ki …"},{"id":"p132","page":25,"kind":"phrase","fr":"Je suis à l'école et il y a …","nl":"Ik ben op school en er is/zijn …","tr":"Okuldayım ve … var."},{"id":"w033","page":25,"kind":"word","fr":"un stylo","nl":"een balpen","tr":"tükenmez kalem"},{"id":"w034","page":25,"kind":"word","fr":"un cahier","nl":"een schrift","tr":"defter"},{"id":"w035","page":25,"kind":"word","fr":"un livre","nl":"een boek","tr":"kitap"},{"id":"w036","page":25,"kind":"word","fr":"un crayon","nl":"een potlood","tr":"kurşun kalem"},{"id":"w037","page":25,"kind":"word","fr":"une gomme","nl":"een gom","tr":"silgi"},{"id":"w038","page":25,"kind":"word","fr":"une feuille","nl":"een blad(zijde)","tr":"kâğıt, yaprak"},{"id":"w039","page":25,"kind":"word","fr":"un taille-crayon","nl":"een puntenslijper","tr":"kalemtıraş"},{"id":"w040","page":25,"kind":"word","fr":"un marqueur fluorescent","nl":"een markeerstift","tr":"fosforlu kalem"},{"id":"w041","page":25,"kind":"word","fr":"une règle","nl":"een liniaal","tr":"cetvel"},{"id":"p105","page":26,"kind":"phrase","fr":"Qui suis-je ?","nl":"Wie ben ik?","tr":"Ben kimim?"},{"id":"p106","page":26,"kind":"phrase","fr":"J'ai … ans.","nl":"Ik ben … jaar.","tr":"… yaşındayım."},{"id":"p107","page":26,"kind":"phrase","fr":"Je suis de …","nl":"Ik kom uit …","tr":"… şehrindenim."},{"id":"p108","page":26,"kind":"phrase","fr":"J'aime :","nl":"Ik hou van:","tr":"Sevdiklerim:"},{"id":"p109","page":26,"kind":"phrase","fr":"la musique de …","nl":"de muziek van …","tr":"…'in müziği"},{"id":"p110","page":26,"kind":"phrase","fr":"les films de …","nl":"de films van …","tr":"…'in filmleri"},{"id":"p111","page":26,"kind":"phrase","fr":"les livres de …","nl":"de boeken van …","tr":"…'in kitapları"},{"id":"p112","page":26,"kind":"phrase","fr":"Mes préférences :","nl":"Mijn voorkeuren:","tr":"Tercihlerim:"},{"id":"p113","page":26,"kind":"phrase","fr":"musique","nl":"muziek","tr":"müzik"},{"id":"p114","page":26,"kind":"phrase","fr":"chanter des chansons","nl":"liedjes zingen","tr":"şarkı söylemek"},{"id":"p115","page":26,"kind":"phrase","fr":"écouter la radio","nl":"naar de radio luisteren","tr":"radyo dinlemek"},{"id":"p116","page":26,"kind":"phrase","fr":"sport","nl":"sport","tr":"spor"},{"id":"p117","page":26,"kind":"phrase","fr":"jouer au basket","nl":"basketten","tr":"basketbol oynamak"},{"id":"p118","page":26,"kind":"phrase","fr":"jouer au football","nl":"voetballen","tr":"futbol oynamak"},{"id":"p119","page":26,"kind":"phrase","fr":"jouer au tennis","nl":"tennissen","tr":"tenis oynamak"},{"id":"p120","page":26,"kind":"phrase","fr":"appareils électroniques","nl":"elektronische toestellen","tr":"elektronik cihazlar"},{"id":"p121","page":26,"kind":"phrase","fr":"J'aime aussi :","nl":"Ik hou ook van:","tr":"Ayrıca severim:"},{"id":"p122","page":26,"kind":"phrase","fr":"téléphoner à des amis","nl":"met vrienden bellen","tr":"arkadaşlarımı aramak"},{"id":"p123","page":26,"kind":"phrase","fr":"regarder des films au cinéma et à la télé","nl":"films kijken in de bioscoop en op tv","tr":"sinemada ve televizyonda film izlemek"},{"id":"p124","page":26,"kind":"phrase","fr":"Mon jour préféré de la semaine :","nl":"Mijn favoriete dag van de week:","tr":"Haftanın en sevdiğim günü:"},{"id":"w030","page":26,"kind":"word","fr":"une tablette","nl":"een tablet","tr":"tablet"},{"id":"w031","page":26,"kind":"word","fr":"les appareils électroniques","nl":"de elektronische toestellen","tr":"elektronik cihazlar"},{"id":"w032","page":26,"kind":"word","fr":"mon jour préféré de la semaine","nl":"mijn favoriete dag van de week","tr":"haftanın en sevdiğim günü"},{"id":"p102","page":27,"kind":"phrase","fr":"J'aime danser.","nl":"Ik hou van dansen / ik dans graag.","tr":"Dans etmeyi severim."},{"id":"p103","page":27,"kind":"phrase","fr":"Tu fais quoi?","nl":"Wat doe je?","tr":"Ne yapıyorsun?"},{"id":"p104","page":27,"kind":"phrase","fr":"Tu aimes faire quoi?","nl":"Wat doe je graag?","tr":"Ne yapmayı seversin?"},{"id":"w001","page":27,"kind":"word","fr":"un ami","nl":"een vriend","tr":"arkadaş (erkek)"},{"id":"w002","page":27,"kind":"word","fr":"un cinéma","nl":"een bioscoop","tr":"sinema"},{"id":"w003","page":27,"kind":"word","fr":"un film","nl":"een film","tr":"film"},{"id":"w004","page":27,"kind":"word","fr":"un GSM","nl":"een gsm","tr":"cep telefonu"},{"id":"w005","page":27,"kind":"word","fr":"un jour","nl":"een dag","tr":"gün"},{"id":"w006","page":27,"kind":"word","fr":"un ordinateur","nl":"een computer","tr":"bilgisayar"},{"id":"w007","page":27,"kind":"word","fr":"un portable","nl":"een laptop","tr":"dizüstü bilgisayar"},{"id":"w008","page":27,"kind":"word","fr":"un sport","nl":"een sport","tr":"spor"},{"id":"w009","page":27,"kind":"word","fr":"un weekend","nl":"een weekend","tr":"hafta sonu"},{"id":"w010","page":27,"kind":"word","fr":"une amie","nl":"een vriendin","tr":"arkadaş (kız)"},{"id":"w011","page":27,"kind":"word","fr":"une chanson","nl":"een liedje","tr":"şarkı"},{"id":"w012","page":27,"kind":"word","fr":"la musique","nl":"de muziek","tr":"müzik"},{"id":"w013","page":27,"kind":"word","fr":"une radio","nl":"een radio","tr":"radyo"},{"id":"w014","page":27,"kind":"word","fr":"une semaine","nl":"een week","tr":"hafta"},{"id":"w015","page":27,"kind":"word","fr":"une télé(vision)","nl":"een televisie","tr":"televizyon"},{"id":"w016","page":27,"kind":"word","fr":"aimer","nl":"houden van, leuk vinden","tr":"sevmek, hoşlanmak"},{"id":"w017","page":27,"kind":"word","fr":"chanter","nl":"zingen","tr":"şarkı söylemek"},{"id":"w018","page":27,"kind":"word","fr":"danser","nl":"dansen","tr":"dans etmek"},{"id":"w019","page":27,"kind":"word","fr":"écouter","nl":"luisteren (naar)","tr":"dinlemek"},{"id":"w020","page":27,"kind":"word","fr":"jouer","nl":"spelen","tr":"oynamak, çalmak"},{"id":"w021","page":27,"kind":"word","fr":"regarder","nl":"kijken (naar)","tr":"bakmak, izlemek"},{"id":"w022","page":27,"kind":"word","fr":"téléphoner (à)","nl":"telefoneren (naar)","tr":"telefon etmek, aramak"},{"id":"w023","page":27,"kind":"word","fr":"(le) lundi","nl":"maandag","tr":"pazartesi"},{"id":"w024","page":27,"kind":"word","fr":"(le) mardi","nl":"dinsdag","tr":"salı"},{"id":"w025","page":27,"kind":"word","fr":"(le) mercredi","nl":"woensdag","tr":"çarşamba"},{"id":"w026","page":27,"kind":"word","fr":"(le) jeudi","nl":"donderdag","tr":"perşembe"},{"id":"w027","page":27,"kind":"word","fr":"(le) vendredi","nl":"vrijdag","tr":"cuma"},{"id":"w028","page":27,"kind":"word","fr":"(le) samedi","nl":"zaterdag","tr":"cumartesi"},{"id":"w029","page":27,"kind":"word","fr":"(le) dimanche","nl":"zondag","tr":"pazar"},{"id":"p133","page":28,"kind":"phrase","fr":"un ami et une amie","nl":"een vriend en een vriendin","tr":"bir erkek ve bir kız arkadaş"},{"id":"p134","page":28,"kind":"phrase","fr":"un ordinateur portable","nl":"een laptop","tr":"dizüstü bilgisayar"},{"id":"p135","page":28,"kind":"phrase","fr":"Il est interdit de regarder.","nl":"Het is verboden te kijken.","tr":"Bakmak yasak."},{"id":"p136","page":28,"kind":"phrase","fr":"Il est interdit d'écouter.","nl":"Het is verboden te luisteren.","tr":"Dinlemek yasak."},{"id":"p137","page":28,"kind":"phrase","fr":"Il est interdit de jouer.","nl":"Het is verboden te spelen.","tr":"Oynamak yasak."},{"id":"p138","page":28,"kind":"phrase","fr":"Il est interdit de téléphoner.","nl":"Het is verboden te telefoneren.","tr":"Telefonla konuşmak yasak."},{"id":"p139","page":28,"kind":"phrase","fr":"Il est interdit d'aimer.","nl":"Het is verboden te houden van.","tr":"Sevmek yasak."},{"id":"p140","page":28,"kind":"phrase","fr":"Il est interdit de danser.","nl":"Het is verboden te dansen.","tr":"Dans etmek yasak."},{"id":"p141","page":28,"kind":"phrase","fr":"Il est interdit de chanter.","nl":"Het is verboden te zingen.","tr":"Şarkı söylemek yasak."},{"id":"p142","page":29,"kind":"phrase","fr":"J'aime écouter la radio.","nl":"Ik luister graag naar de radio.","tr":"Radyo dinlemeyi severim."},{"id":"p143","page":29,"kind":"phrase","fr":"J'aime écouter des amies.","nl":"Ik luister graag naar vriendinnen.","tr":"Arkadaşlarımı dinlemeyi severim."},{"id":"p144","page":29,"kind":"phrase","fr":"J'aime téléphoner avec un GSM.","nl":"Ik bel graag met een gsm.","tr":"Cep telefonuyla konuşmayı severim."},{"id":"p145","page":29,"kind":"phrase","fr":"J'aime téléphoner à une amie.","nl":"Ik bel graag naar een vriendin.","tr":"Bir arkadaşımı aramayı severim."},{"id":"p146","page":29,"kind":"phrase","fr":"J'aime danser avec un ami.","nl":"Ik dans graag met een vriend.","tr":"Bir arkadaşımla dans etmeyi severim."},{"id":"p147","page":29,"kind":"phrase","fr":"J'aime chanter des chansons.","nl":"Ik zing graag liedjes.","tr":"Şarkı söylemeyi severim."},{"id":"p148","page":29,"kind":"phrase","fr":"J'aime regarder la télé.","nl":"Ik kijk graag tv.","tr":"Televizyon izlemeyi severim."},{"id":"p149","page":29,"kind":"phrase","fr":"J'aime regarder un film.","nl":"Ik kijk graag naar een film.","tr":"Film izlemeyi severim."},{"id":"p150","page":29,"kind":"phrase","fr":"J'aime jouer au basket.","nl":"Ik basket graag.","tr":"Basketbol oynamayı severim."},{"id":"p151","page":29,"kind":"phrase","fr":"J'aime jouer de la musique.","nl":"Ik maak graag muziek.","tr":"Müzik çalmayı severim."},{"id":"p152","page":31,"kind":"phrase","fr":"un cinéma → le cinéma","nl":"een bioscoop → de bioscoop","tr":"bir sinema → sinema"},{"id":"p153","page":31,"kind":"phrase","fr":"un ordinateur → l'ordinateur","nl":"een computer → de computer","tr":"bir bilgisayar → bilgisayar"},{"id":"p154","page":31,"kind":"phrase","fr":"une chanson → la chanson","nl":"een liedje → het liedje","tr":"bir şarkı → şarkı"},{"id":"p155","page":31,"kind":"phrase","fr":"une amie → l'amie","nl":"een vriendin → de vriendin","tr":"bir kız arkadaş → kız arkadaş"},{"id":"p156","page":31,"kind":"phrase","fr":"des cinémas → les cinémas","nl":"bioscopen → de bioscopen","tr":"sinemalar → sinemalar (belirli)"},{"id":"p157","page":31,"kind":"phrase","fr":"des ordinateurs → les ordinateurs","nl":"computers → de computers","tr":"bilgisayarlar → bilgisayarlar (belirli)"},{"id":"p158","page":31,"kind":"phrase","fr":"des chansons → les chansons","nl":"liedjes → de liedjes","tr":"şarkılar → şarkılar (belirli)"},{"id":"p159","page":31,"kind":"phrase","fr":"des amies → les amies","nl":"vriendinnen → de vriendinnen","tr":"kız arkadaşlar → kız arkadaşlar (belirli)"},{"id":"p160","page":32,"kind":"phrase","fr":"Les enfants sont au cinéma.","nl":"De kinderen zijn in de bioscoop.","tr":"Çocuklar sinemada."},{"id":"p161","page":32,"kind":"phrase","fr":"J'écoute des chansons à la radio.","nl":"Ik luister naar liedjes op de radio.","tr":"Radyoda şarkı dinliyorum."},{"id":"p162","page":32,"kind":"phrase","fr":"Louise téléphone à l'ami de Noa.","nl":"Louise belt naar de vriend van Noa.","tr":"Louise, Noa'nın arkadaşını arıyor."},{"id":"p163","page":32,"kind":"phrase","fr":"La prof montre l'exercice aux élèves.","nl":"De leerkracht toont de oefening aan de leerlingen.","tr":"Öğretmen alıştırmayı öğrencilere gösteriyor."},{"id":"p164","page":32,"kind":"phrase","fr":"j'aime","nl":"ik hou van","tr":"severim"},{"id":"p165","page":32,"kind":"phrase","fr":"tu aimes","nl":"jij houdt van","tr":"seversin"},{"id":"p166","page":32,"kind":"phrase","fr":"il aime","nl":"hij houdt van","tr":"(o) sever"},{"id":"p167","page":32,"kind":"phrase","fr":"elle aime","nl":"zij houdt van","tr":"(o) sever"},{"id":"p168","page":32,"kind":"phrase","fr":"nous aimons","nl":"wij houden van","tr":"severiz"},{"id":"p169","page":32,"kind":"phrase","fr":"vous aimez","nl":"jullie houden van","tr":"seversiniz"},{"id":"p170","page":32,"kind":"phrase","fr":"ils aiment","nl":"zij houden van","tr":"severler"},{"id":"p171","page":32,"kind":"phrase","fr":"elles aiment","nl":"zij houden van","tr":"severler"},{"id":"p172","page":32,"kind":"phrase","fr":"J'aime téléphoner.","nl":"Ik bel graag.","tr":"Telefon etmeyi severim."},{"id":"p173","page":32,"kind":"phrase","fr":"Tu aimes chanter ?","nl":"Zing jij graag?","tr":"Şarkı söylemeyi sever misin?"},{"id":"p174","page":32,"kind":"phrase","fr":"Gabriel aime jouer.","nl":"Gabriel speelt graag.","tr":"Gabriel oynamayı sever."},{"id":"p175","page":32,"kind":"phrase","fr":"Ella aime écouter la radio.","nl":"Ella luistert graag naar de radio.","tr":"Ella radyo dinlemeyi sever."},{"id":"p176","page":32,"kind":"phrase","fr":"Nous aimons regarder la télé.","nl":"Wij kijken graag tv.","tr":"Televizyon izlemeyi severiz."},{"id":"p177","page":32,"kind":"phrase","fr":"Vous aimez le weekend !","nl":"Jullie houden van het weekend!","tr":"Hafta sonunu seviyorsunuz!"},{"id":"p178","page":32,"kind":"phrase","fr":"Rayan et Vic aiment danser.","nl":"Rayan en Vic dansen graag.","tr":"Rayan ve Vic dans etmeyi sever."},{"id":"p179","page":32,"kind":"phrase","fr":"Lia et Sara aiment la prof !","nl":"Lia en Sara houden van de leerkracht!","tr":"Lia ve Sara öğretmenlerini seviyor!"},{"id":"p180","page":33,"kind":"phrase","fr":"Parlons ! Lisez les dialogues à deux.","nl":"Tijd om te spreken! Lees de dialogen per twee.","tr":"Konuşma zamanı! Diyalogları ikişer kişi okuyun."},{"id":"w084","page":33,"kind":"word","fr":"je / j'","nl":"ik","tr":"ben"},{"id":"w085","page":33,"kind":"word","fr":"tu","nl":"jij","tr":"sen"},{"id":"w086","page":33,"kind":"word","fr":"il","nl":"hij","tr":"o (erkek)"},{"id":"w087","page":33,"kind":"word","fr":"elle","nl":"zij","tr":"o (kadın)"},{"id":"w088","page":33,"kind":"word","fr":"nous","nl":"wij","tr":"biz"},{"id":"w089","page":33,"kind":"word","fr":"vous","nl":"jullie / u","tr":"siz"},{"id":"w090","page":33,"kind":"word","fr":"ils","nl":"zij (m/gemengd)","tr":"onlar (erkek/karışık)"},{"id":"w091","page":33,"kind":"word","fr":"elles","nl":"zij (v)","tr":"onlar (kadın)"},{"id":"p181","page":36,"kind":"phrase","fr":"téléphoner à un(e) ami(e)","nl":"telefoneren naar een vriend(in)","tr":"bir arkadaşı aramak"},{"id":"p182","page":36,"kind":"phrase","fr":"regarder la télé","nl":"tv kijken","tr":"televizyon izlemek"},{"id":"p183","page":36,"kind":"phrase","fr":"écouter de la musique","nl":"naar muziek luisteren","tr":"müzik dinlemek"},{"id":"p184","page":36,"kind":"phrase","fr":"jouer à l'ordinateur","nl":"op de computer spelen","tr":"bilgisayar oynamak"},{"id":"p185","page":36,"kind":"phrase","fr":"jouer au basket / au foot","nl":"basketten / voetballen","tr":"basketbol / futbol oynamak"},{"id":"p186","page":36,"kind":"phrase","fr":"regarder un film","nl":"naar een film kijken","tr":"film izlemek"},{"id":"p187","page":36,"kind":"phrase","fr":"jouer de la musique","nl":"muziek spelen","tr":"müzik çalmak"},{"id":"p188","page":36,"kind":"phrase","fr":"jouer au tennis / au padel","nl":"tennissen / padellen","tr":"tenis / padel oynamak"},{"id":"p189","page":36,"kind":"phrase","fr":"Complétez le calendrier avec des pictogrammes.","nl":"Vul de kalender aan met pictogrammen.","tr":"Takvimi piktogramlarla tamamlayın."},{"id":"p190","page":37,"kind":"phrase","fr":"lun / mar / mer / jeu / ven / sam / dim","nl":"ma / di / wo / do / vr / za / zo","tr":"pzt / sal / çar / per / cum / cmt / paz"},{"id":"p191","page":37,"kind":"phrase","fr":"Complétez l'agenda d'un(e) voisin(e). Faites comme dans l'exemple.","nl":"Vul de agenda van een buur in. Volg het voorbeeld.","tr":"Bir komşunun ajandasını tamamlayın. Örnekteki gibi yapın."},{"id":"p192","page":37,"kind":"phrase","fr":"Lundi, tu aimes faire quoi ?","nl":"Wat doe je graag op maandag?","tr":"Pazartesi ne yapmayı seversin?"},{"id":"p193","page":37,"kind":"phrase","fr":"Lundi, j'aime regarder la télé.","nl":"Op maandag kijk ik graag tv.","tr":"Pazartesi televizyon izlemeyi severim."},{"id":"p194","page":37,"kind":"phrase","fr":"Présentez les agendas aux autres.","nl":"Presenteer de agenda's aan de anderen.","tr":"Ajandaları diğerlerine sunun."},{"id":"p195","page":37,"kind":"phrase","fr":"Lundi, moi, j'aime regarder la télé et mon voisin(e) aime chanter des chansons.","nl":"Op maandag kijk ik graag tv en mijn buur(vrouw) zingt graag liedjes.","tr":"Pazartesi ben televizyon izlemeyi severim, komşum şarkı söylemeyi sever."},{"id":"p196","page":37,"kind":"phrase","fr":"Mardi, nous regardons un film.","nl":"Op dinsdag kijken wij naar een film.","tr":"Salı günü bir film izliyoruz."},{"id":"w042","page":37,"kind":"word","fr":"moi","nl":"ik / mij","tr":"ben / bana"},{"id":"w043","page":37,"kind":"word","fr":"mon/ma voisin(e)","nl":"mijn buur / buurvrouw","tr":"komşum"},{"id":"p197","page":38,"kind":"phrase","fr":"la gaufre de Bruxelles","nl":"de Brusselse wafel","tr":"Brüksel waffle'ı"},{"id":"p198","page":38,"kind":"phrase","fr":"la gaufre de Liège","nl":"de Luikse wafel","tr":"Liège waffle'ı"},{"id":"p199","page":38,"kind":"phrase","fr":"En français, s'il vous plaît !","nl":"In het Frans, alstublieft!","tr":"Fransızca lütfen!"},{"id":"p200","page":38,"kind":"phrase","fr":"Le verlan : un taaltje apart !","nl":"Le verlan: een taaltje apart!","tr":"Verlan: ayrı bir dil!"},{"id":"w044","page":38,"kind":"word","fr":"Anvers","nl":"Antwerpen","tr":"Anvers (Anvers eyaleti)"},{"id":"w045","page":38,"kind":"word","fr":"Limbourg","nl":"Limburg","tr":"Limbourg"},{"id":"w046","page":38,"kind":"word","fr":"Flandre occidentale","nl":"West-Vlaanderen","tr":"Batı Flandre"},{"id":"w047","page":38,"kind":"word","fr":"Flandre orientale","nl":"Oost-Vlaanderen","tr":"Doğu Flandre"},{"id":"w048","page":38,"kind":"word","fr":"Brabant flamand","nl":"Vlaams-Brabant","tr":"Flaman Brabant"},{"id":"w049","page":38,"kind":"word","fr":"Hainaut","nl":"Henegouwen","tr":"Hainaut"},{"id":"w050","page":38,"kind":"word","fr":"Namur","nl":"Namen","tr":"Namur"},{"id":"w051","page":38,"kind":"word","fr":"Liège","nl":"Luik","tr":"Liège"},{"id":"w052","page":38,"kind":"word","fr":"Luxembourg","nl":"Luxemburg","tr":"Lüksemburg (eyaleti)"},{"id":"w053","page":38,"kind":"word","fr":"Brabant wallon","nl":"Waals-Brabant","tr":"Valon Brabant"},{"id":"w054","page":38,"kind":"word","fr":"Courtrai","nl":"Kortrijk","tr":"Kortrijk"},{"id":"w055","page":38,"kind":"word","fr":"Ypres","nl":"Ieper","tr":"Ieper"},{"id":"w056","page":38,"kind":"word","fr":"Alost","nl":"Aalst","tr":"Aalst"},{"id":"w057","page":38,"kind":"word","fr":"Saint-Nicolas","nl":"Sint-Niklaas","tr":"Sint-Niklaas"},{"id":"w058","page":38,"kind":"word","fr":"Coxyde","nl":"Koksijde","tr":"Koksijde"},{"id":"w059","page":38,"kind":"word","fr":"La Panne","nl":"De Panne","tr":"De Panne"},{"id":"w060","page":38,"kind":"word","fr":"Nieuport","nl":"Nieuwpoort","tr":"Nieuwpoort"},{"id":"w061","page":38,"kind":"word","fr":"Tongres","nl":"Tongeren","tr":"Tongeren"},{"id":"w062","page":38,"kind":"word","fr":"Saint-Trond","nl":"Sint-Truiden","tr":"Sint-Truiden"},{"id":"w063","page":38,"kind":"word","fr":"cimer","nl":"merci","tr":"teşekkürler (verlan)"},{"id":"w064","page":38,"kind":"word","fr":"tromé","nl":"métro","tr":"metro (verlan)"},{"id":"w065","page":38,"kind":"word","fr":"zarbi","nl":"bizarre","tr":"garip (verlan)"},{"id":"w066","page":38,"kind":"word","fr":"jourbon","nl":"bonjour","tr":"günaydın/merhaba (verlan)"},{"id":"w067","page":38,"kind":"word","fr":"mifa","nl":"famille","tr":"aile (verlan)"},{"id":"w068","page":38,"kind":"word","fr":"céfran","nl":"français","tr":"Fransızca (verlan)"},{"id":"p201","page":39,"kind":"phrase","fr":"Bonjour ! Salut !","nl":"Dag! Hoi!","tr":"Merhaba! Selam!"},{"id":"p202","page":39,"kind":"phrase","fr":"Tu es qui ? Tu fais quoi ?","nl":"Wie ben jij? Wat doe jij?","tr":"Sen kimsin? Ne yapıyorsun?"},{"id":"p203","page":39,"kind":"phrase","fr":"Moi, je suis Nathan","nl":"Ik ben Nathan","tr":"Ben Nathan'ım"},{"id":"p204","page":39,"kind":"phrase","fr":"et je suis de Poupehan.","nl":"en ik kom uit Poupehan.","tr":"ve Poupehan'danım."},{"id":"p205","page":39,"kind":"phrase","fr":"Mon amie s'appelle Dora","nl":"Mijn vriendin heet Dora","tr":"Arkadaşımın adı Dora"},{"id":"p206","page":39,"kind":"phrase","fr":"Et elle aime le cinéma.","nl":"En zij houdt van de bioscoop.","tr":"O da sinemayı sever."},{"id":"p207","page":39,"kind":"phrase","fr":"Je m'appelle Léon","nl":"Ik heet Léon","tr":"Adım Léon"},{"id":"p208","page":39,"kind":"phrase","fr":"et j'aime les chansons.","nl":"en ik hou van liedjes.","tr":"ve şarkıları severim."},{"id":"p209","page":39,"kind":"phrase","fr":"Ma voisine est Dominique","nl":"Mijn buurvrouw is Dominique","tr":"Komşum Dominique"},{"id":"p210","page":39,"kind":"phrase","fr":"et elle aime la musique.","nl":"en zij houdt van muziek.","tr":"o da müziği sever."},{"id":"p211","page":39,"kind":"phrase","fr":"Je m'appelle Renée","nl":"Ik heet Renée","tr":"Adım Renée"},{"id":"p212","page":39,"kind":"phrase","fr":"Et j'aime danser","nl":"En ik dans graag","tr":"Ve dans etmeyi severim"},{"id":"p213","page":39,"kind":"phrase","fr":"Mon prof s'appelle Théodore","nl":"Mijn leerkracht heet Théodore","tr":"Öğretmenimin adı Théodore"},{"id":"p214","page":39,"kind":"phrase","fr":"et il aime le sport.","nl":"en hij houdt van sport.","tr":"o da sporu sever."},{"id":"p215","page":39,"kind":"phrase","fr":"Je m'appelle Clarisse","nl":"Ik heet Clarisse","tr":"Adım Clarisse"},{"id":"p216","page":39,"kind":"phrase","fr":"Et j'aime les exercices.","nl":"En ik hou van oefeningen.","tr":"Ve alıştırmaları severim."},{"id":"p217","page":39,"kind":"phrase","fr":"Je regarde le tableau","nl":"Ik kijk naar het bord","tr":"Tahtaya bakıyorum"},{"id":"p218","page":39,"kind":"phrase","fr":"Et je prends mon stylo.","nl":"En ik neem mijn balpen.","tr":"Ve kalemimi alıyorum."},{"id":"p219","page":39,"kind":"phrase","fr":"Au revoir ! À la prochaine !","nl":"Tot ziens! Tot de volgende keer!","tr":"Hoşça kal! Bir dahaki sefere!"},{"id":"p220","page":39,"kind":"phrase","fr":"Et toi, qu'est-ce que tu aimes ?","nl":"En jij, waar hou jij van?","tr":"Peki sen, neyi seversin?"},{"id":"w092","page":39,"kind":"word","fr":"Bonjour","nl":"Dag","tr":"Merhaba / Günaydın"},{"id":"w093","page":39,"kind":"word","fr":"Salut","nl":"Hoi","tr":"Selam"},{"id":"w094","page":39,"kind":"word","fr":"Au revoir","nl":"Tot ziens","tr":"Hoşça kal"},{"id":"w095","page":39,"kind":"word","fr":"À la prochaine","nl":"Tot de volgende keer","tr":"Bir dahaki sefere"},{"id":"w096","page":39,"kind":"word","fr":"Je m'appelle …","nl":"Ik heet …","tr":"Adım …"},{"id":"w097","page":39,"kind":"word","fr":"Tu es qui ?","nl":"Wie ben jij?","tr":"Sen kimsin?"},{"id":"w098","page":39,"kind":"word","fr":"Voici …","nl":"Hier is/zijn …","tr":"İşte …"},{"id":"w099","page":39,"kind":"word","fr":"Il y a …","nl":"Er is/zijn …","tr":"… var"},{"id":"w100","page":39,"kind":"word","fr":"C'est …","nl":"Het is …","tr":"Bu …"},{"id":"w101","page":39,"kind":"word","fr":"Ce sont …","nl":"Het zijn …","tr":"Bunlar …"},{"id":"p221","page":40,"kind":"phrase","fr":"Bonjour ! Moi, je suis Oscar.","nl":"Dag! Ik ben Oscar.","tr":"Merhaba! Ben Oscar."},{"id":"p222","page":40,"kind":"phrase","fr":"Et toi ? Tu es qui ?","nl":"En jij? Wie ben jij?","tr":"Peki sen? Sen kimsin?"},{"id":"p223","page":40,"kind":"phrase","fr":"Salut, Oscar ! Je m'appelle Selma.","nl":"Hoi, Oscar! Ik heet Selma.","tr":"Selam Oscar! Benim adım Selma."},{"id":"p224","page":40,"kind":"phrase","fr":"Je suis d'Arlon et j'ai douze ans.","nl":"Ik ben van Arlon en ik ben twaalf.","tr":"Arlon'danım ve on iki yaşındayım."},{"id":"p225","page":40,"kind":"phrase","fr":"Tu aimes faire quoi, Selma ?","nl":"Wat doe je graag, Selma?","tr":"Ne yapmayı seversin Selma?"},{"id":"p226","page":40,"kind":"phrase","fr":"J'aime chanter et écouter de la musique.","nl":"Ik hou van zingen en luisteren naar muziek.","tr":"Şarkı söylemeyi ve müzik dinlemeyi severim."},{"id":"p227","page":40,"kind":"phrase","fr":"Moi, j'aime regarder des films.","nl":"Ik hou van kijken naar films.","tr":"Ben film izlemeyi severim."},{"id":"p228","page":40,"kind":"phrase","fr":"Au revoir !","nl":"Tot ziens!","tr":"Hoşça kal!"},{"id":"p229","page":40,"kind":"phrase","fr":"C'est un bureau.","nl":"Het is een bureau/schooltafel.","tr":"Bu masa."},{"id":"p230","page":40,"kind":"phrase","fr":"C'est un ordinateur.","nl":"Het is een computer.","tr":"Bu bilgisayar."},{"id":"p231","page":40,"kind":"phrase","fr":"C'est une feuille.","nl":"Het is een blad.","tr":"Bu kâğıt."},{"id":"p232","page":40,"kind":"phrase","fr":"C'est un jour.","nl":"Het is een dag.","tr":"Bu gün."},{"id":"p233","page":40,"kind":"phrase","fr":"C'est une gomme.","nl":"Het is een gom.","tr":"Bu silgi."},{"id":"p234","page":40,"kind":"phrase","fr":"C'est le GSM d'André.","nl":"Het is de gsm van André.","tr":"Bu André'nin cep telefonu."},{"id":"p235","page":40,"kind":"phrase","fr":"C'est le tableau de la classe.","nl":"Het is het bord van de klas.","tr":"Bu sınıfın tahtası."},{"id":"p236","page":40,"kind":"phrase","fr":"C'est le texte de la page 8.","nl":"Het is de tekst van pagina 8.","tr":"Bu 8. sayfadaki metin."},{"id":"p237","page":40,"kind":"phrase","fr":"C'est l'école de Mimoun.","nl":"Het is de school van Mimoun.","tr":"Bu Mimoun'un okulu."},{"id":"p238","page":40,"kind":"phrase","fr":"C'est la classe de Matheo.","nl":"Het is de klas van Matheo.","tr":"Bu Matheo'nun sınıfı."},{"id":"p239","page":41,"kind":"phrase","fr":"Il y a deux ordinateurs.","nl":"Er zijn twee computers.","tr":"İki bilgisayar var."},{"id":"w069","page":41,"kind":"word","fr":"deux","nl":"twee","tr":"iki"},{"id":"w070","page":41,"kind":"word","fr":"trois","nl":"drie","tr":"üç"},{"id":"w071","page":41,"kind":"word","fr":"sept","nl":"zeven","tr":"yedi"},{"id":"w072","page":41,"kind":"word","fr":"neuf","nl":"negen","tr":"dokuz"},{"id":"w073","page":41,"kind":"word","fr":"onze","nl":"elf","tr":"on bir"},{"id":"w074","page":41,"kind":"word","fr":"une école","nl":"een school","tr":"okul"},{"id":"w075","page":41,"kind":"word","fr":"un élève / une élève","nl":"een leerling","tr":"öğrenci"},{"id":"w076","page":41,"kind":"word","fr":"un prof / une prof","nl":"een leerkracht","tr":"öğretmen"},{"id":"w077","page":41,"kind":"word","fr":"un tableau","nl":"een bord","tr":"tahta"},{"id":"w078","page":41,"kind":"word","fr":"un voisin / une voisine","nl":"een buur / buurvrouw","tr":"komşu"},{"id":"w079","page":41,"kind":"word","fr":"une page","nl":"een pagina","tr":"sayfa"},{"id":"w080","page":41,"kind":"word","fr":"un exercice","nl":"een oefening","tr":"alıştırma"},{"id":"w081","page":41,"kind":"word","fr":"un texte","nl":"een tekst","tr":"metin"},{"id":"w082","page":41,"kind":"word","fr":"une classe","nl":"een klas","tr":"sınıf"},{"id":"w083","page":41,"kind":"word","fr":"un bureau","nl":"een bureau/schooltafel","tr":"masa"}];
+const LS = 'zouff-m3-v1';
+const DEF = {mode:'card', kind:'all', pages:[], order:'seq', unknown:false, front:'fr', other:true, dir:'nl-fr', accent:'lenient', speak:true};
+let store = {known:{}, miss:{}, set:{}};
+try { const r = localStorage.getItem(LS); if (r) store = Object.assign(store, JSON.parse(r)); } catch (e) {}
+const S = Object.assign({}, DEF, store.set || {});
+function save() { store.set = S; try { localStorage.setItem(LS, JSON.stringify(store)); } catch (e) {} }
+
+const $app = document.getElementById('app');
+const LN = {fr:'Fransızca', nl:'Felemenkçe', tr:'Türkçe'};
+const ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7"/><path d="M19 6a8.5 8.5 0 0 1 0 12"/></svg>';
+let view = 'home', sess = null, resetArm = false;
+
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const pageLabel = p => p === 0 ? 'ZOUFFF!' : 's.' + p;
+
+function pool() {
+  return CARDS.filter(c =>
+    (S.kind === 'all' || c.kind === S.kind) &&
+    (!S.pages.length || S.pages.includes(c.page)) &&
+    (!S.unknown || !store.known[c.id]));
+}
+function shuffle(a) { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+
+/* ---------- speech ---------- */
+function speak(text, lang) {
+  try {
+    const u = new SpeechSynthesisUtterance(String(text).replace(/\(|\)/g, ''));
+    u.lang = lang === 'fr' ? 'fr-FR' : lang === 'nl' ? 'nl-BE' : 'tr-TR';
+    u.rate = 0.9;
+    speechSynthesis.cancel(); speechSynthesis.speak(u);
+  } catch (e) {}
+}
+
+/* ---------- answer checking ---------- */
+function expand(t) {
+  const m = t.match(/\(([^)]*)\)/);
+  if (!m) return [t];
+  return [...expand(t.replace(m[0], '')), ...expand(t.replace(m[0], m[1]))];
+}
+function alts(card, lang) {
+  const raw = card[lang];
+  let parts = [raw];
+  if (raw.includes(' / ')) parts = parts.concat(raw.split(' / '));
+  if (card.kind === 'word' && raw.includes(', ')) parts = parts.concat(raw.split(', '));
+  const out = [];
+  parts.forEach(p => expand(p).forEach(x => out.push(x)));
+  return out;
+}
+function norm(s) {
+  return s.toLowerCase().replace(/[’‘`´]/g, "'").replace(/œ/g, 'oe')
+    .replace(/[.,!?;:…"«»()→▸•]/g, ' ').replace(/\s+/g, ' ').trim();
+}
+const strip = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '');
+function check(card, lang, input) {
+  const a = norm(input);
+  if (!a) return 'no';
+  let accent = false;
+  for (const alt of alts(card, lang)) {
+    const b = norm(alt);
+    if (a === b) return 'ok';
+    if (strip(a) === strip(b)) accent = true;
+  }
+  return accent ? 'accent' : 'no';
+}
+
+/* ---------- session ---------- */
+function start() {
+  const p = pool();
+  if (!p.length) return;
+  const q = S.order === 'shuffle' ? shuffle(p) : p.slice();
+  sess = {q, i:0, right:0, total:q.length, wrong:[], retried:{}, shown:false, hint:false, res:null, val:''};
+  view = 'play'; render();
+}
+function next() {
+  sess.i++; sess.shown = false; sess.hint = false; sess.res = null; sess.val = '';
+  if (sess.i >= sess.q.length) view = 'done';
+  render();
+  focusField();
+}
+function mark(card, good) {
+  if (good) { if (!sess.retried[card.id]) sess.right++; store.known[card.id] = 1; if (store.miss[card.id]) store.miss[card.id] = Math.max(0, store.miss[card.id] - 1); }
+  else {
+    store.miss[card.id] = (store.miss[card.id] || 0) + 1;
+    delete store.known[card.id];
+    if (!sess.wrong.includes(card)) sess.wrong.push(card);
+    if (!sess.retried[card.id]) { sess.retried[card.id] = 1; sess.q.push(card); }
+  }
+  save();
+}
+function focusField() { const f = document.getElementById('ans'); if (f && !f.disabled) f.focus(); }
+
+/* ---------- views ---------- */
+function seg(key, opts) {
+  return '<div class="seg">' + opts.map(([v, l]) =>
+    `<button type="button" data-a="set" data-k="${key}" data-v="${v}" aria-pressed="${S[key] === v}">${l}</button>`).join('') + '</div>';
+}
+function tog(key, label) {
+  return `<button type="button" class="tog" data-a="tog" data-k="${key}" aria-pressed="${!!S[key]}"><i></i><span>${label}</span></button>`;
+}
+function homeView() {
+  const pgs = [...new Set(CARDS.map(c => c.page))].sort((a, b) => a - b);
+  const total = CARDS.length, known = CARDS.filter(c => store.known[c.id]).length;
+  const n = pool().length;
+  const chips = pgs.map(p => {
+    const items = CARDS.filter(c => c.page === p), k = items.filter(c => store.known[c.id]).length;
+    return `<button type="button" class="chip" data-a="page" data-v="${p}" aria-pressed="${S.pages.includes(p)}">${pageLabel(p)}<small>${k}/${items.length}</small></button>`;
+  }).join('');
+  const dirs = S.mode === 'write'
+    ? seg('dir', [['nl-fr','Felemenkçe → Fransızca'],['fr-nl','Fransızca → Felemenkçe'],['tr-fr','Türkçe → Fransızca'],['tr-nl','Türkçe → Felemenkçe']])
+    : seg('front', [['fr','Önde Fransızca'],['nl','Önde Felemenkçe']]) + tog('other', 'Diğer dili de göster (Fransızca + Felemenkçe yan yana)');
+  return `
+  <header class="top"><div><h1>Zouff! Mission 3</h1><p>Tu fais quoi? · sayfa 25–42</p></div><div class="sum">${known} / ${total} biliyorum</div></header>
+  <section class="sec"><h2>Ne yapalım?</h2>
+    <div class="modes">
+      <button type="button" class="mode" data-a="set" data-k="mode" data-v="card" aria-pressed="${S.mode === 'card'}"><b>Kart</b><span>Kelimeye bak, karta dokun, Türkçesini gör.</span></button>
+      <button type="button" class="mode" data-a="set" data-k="mode" data-v="write" aria-pressed="${S.mode === 'write'}"><b>Yazma</b><span>Kelimeyi gör, karşılığını yaz.</span></button>
+    </div></section>
+  <section class="sec"><h2>${S.mode === 'write' ? 'Yön' : 'Kart yüzü'}</h2>${dirs}
+    ${S.mode === 'write' ? seg('accent', [['lenient','Aksan hatası kabul (uyarılı)'],['strict','Aksan hatası yanlış']]) : ''}</section>
+  <section class="sec"><h2>İçerik</h2>${seg('kind', [['all','Hepsi'],['word','Kelimeler'],['phrase','Cümleler']])}</section>
+  <section class="sec"><h2>Sayfalar</h2><div class="seg">
+    <button type="button" class="chip" data-a="page" data-v="all" aria-pressed="${!S.pages.length}">Tüm sayfalar</button>${chips}</div></section>
+  <section class="sec"><h2>Sıra</h2>${seg('order', [['seq','Sayfa sırası'],['shuffle','Karışık']])}
+    ${tog('unknown', 'Sadece bilmediklerim')}</section>
+  <button type="button" class="go" data-a="start" ${n ? '' : 'disabled'}>${n ? `Başla · ${n} ${S.mode === 'card' ? 'kart' : 'soru'}` : 'Bu seçimde kart yok'}</button>
+  <div class="foot"><span>İlerleme bu iPad'in tarayıcısında saklanır.</span>
+    <button type="button" class="link" data-a="reset">${resetArm ? 'Emin misin? Tekrar dokun' : 'İlerlemeyi sıfırla'}</button></div>`;
+}
+function barView() {
+  const pct = Math.round(sess.i / sess.q.length * 100);
+  return `<div class="bar"><button type="button" class="x" data-a="home" aria-label="Çık">×</button>
+    <div class="prog"><i style="width:${pct}%"></i></div><div class="cnt">${Math.min(sess.i + 1, sess.q.length)} / ${sess.q.length}</div></div>`;
+}
+function spk(text, lang) { return `<button type="button" class="spk" data-a="say" data-t="${esc(text)}" data-l="${lang}" aria-label="Dinle">${ICON}</button>`; }
+function cardView() {
+  const c = sess.q[sess.i], f = S.front, o = f === 'fr' ? 'nl' : 'fr';
+  const big = c[f].length > 28 ? 'mid' : 'big';
+  return barView() + `
+  <button type="button" class="card" data-a="flip" aria-label="Karta dokun: Türkçe çeviri">
+    <div class="prompt"><span class="lang ${f}">${LN[f].toUpperCase()}</span><span class="src">${esc(pageLabel(c.page))}</span></div>
+    <div class="blk"><div class="w ${big} ${f}">${esc(c[f])}</div></div>
+    ${S.other ? `<div class="blk"><span class="lang ${o}">${LN[o].toUpperCase()}</span><div class="w mid ${o}">${esc(c[o])}</div></div>` : ''}
+    ${sess.shown ? `<div class="blk"><span class="lang tr">TÜRKÇE</span><div class="w mid tr">${esc(c.tr)}</div></div>` : `<div class="hint">Dokun: Türkçesini göster</div>`}
+  </button>
+  <div class="row">${spk(c[f], f)}${S.other ? spk(c[o], o) : ''}<span class="hint" style="margin-left:auto">Bilmiyorsan "Tekrar" de, kart sona eklenir.</span></div>
+  <div class="acts"><button type="button" class="no" data-a="again">Tekrar ↻</button><button type="button" class="yes" data-a="know">Biliyorum ✓</button></div>`;
+}
+function writeView() {
+  const c = sess.q[sess.i], [from, to] = S.dir.split('-');
+  const big = c[from].length > 28 ? 'mid' : 'big';
+  const r = sess.res;
+  const keys = to === 'fr' && !r ? `<div class="keys">${['é','è','ê','à','â','ç','ù','û','ô','î','ï','œ'].map(k => `<button type="button" data-a="key" data-v="${k}">${k}</button>`).join('')}</div>` : '';
+  let fb = '';
+  if (r) {
+    const cls = r === 'ok' || (r === 'accent' && S.accent === 'lenient') ? (r === 'ok' ? 'ok' : 'acc') : 'no';
+    const head = r === 'ok' ? 'Doğru!' : r === 'accent' ? (S.accent === 'lenient' ? 'Neredeyse: aksanlara dikkat' : 'Aksan hatası') : 'Doğrusu:';
+    fb = `<div class="fb ${cls}"><b>${head}</b><div class="w mid ${to}">${esc(c[to])}</div><div class="src">Türkçe: ${esc(c.tr)}</div></div>`;
+  }
+  const cls = r ? (r === 'ok' ? 'ok' : r === 'accent' && S.accent === 'lenient' ? 'acc' : 'no') : '';
+  return barView() + `
+  <div class="card" style="min-height:0">
+    <div class="prompt"><span class="lang ${from}">${LN[from].toUpperCase()}</span>${S.speak && from !== 'tr' ? spk(c[from], from) : '<span></span>'}</div>
+    <div class="w ${big} ${from}">${esc(c[from])}</div>
+    ${from !== 'tr' ? (sess.hint ? `<div class="src">Türkçe: ${esc(c.tr)}</div>` : `<button type="button" class="link" data-a="hint" style="align-self:flex-start">Türkçe ipucu</button>`) : ''}
+  </div>
+  <form id="f" autocomplete="off" class="sec">
+    <label class="src" for="ans">${LN[to]} yaz</label>
+    <input id="ans" class="field ${cls}" type="text" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" enterkeyhint="done" value="${esc(sess.val)}" ${r ? 'disabled' : ''}>
+    ${keys}${fb}
+    ${r ? `<button type="button" class="go" data-a="next" id="nx">Sonraki</button>` : `<button type="submit" class="go">Kontrol et</button>`}
+    ${r ? '' : `<button type="button" class="link" data-a="skip" style="align-self:center">Bilmiyorum, cevabı göster</button>`}
+  </form>`;
+}
+function doneView() {
+  const w = sess.wrong;
+  return `<header class="top"><div><h1>Bitti!</h1><p>İlk denemede doğru: ${sess.right} / ${sess.total}</p></div></header>
+  <div class="score">${sess.right} / ${sess.total}</div>
+  ${w.length ? `<section class="sec"><h2>Tekrar edilecekler (${w.length})</h2><ul class="list">${w.map(c => `<li><b>${esc(c.fr)}</b><span>${esc(c.nl)} · ${esc(c.tr)}</span></li>`).join('')}</ul></section>` : '<div class="empty">Hepsini bildin. Harika!</div>'}
+  ${w.length ? `<button type="button" class="go" data-a="retry">Hataları tekrar çalış</button>` : ''}
+  <button type="button" class="ghost" data-a="home">Ana ekran</button>`;
+}
+function render() {
+  $app.innerHTML = view === 'home' ? homeView() : view === 'done' ? doneView() : (S.mode === 'card' ? cardView() : writeView());
+  if (view === 'play' && S.mode === 'write') { focusField(); const nx = document.getElementById('nx'); if (nx) nx.focus(); }
+}
+
+/* ---------- events ---------- */
+document.addEventListener('pointerdown', e => {
+  const k = e.target.closest('[data-a="key"]');
+  if (k) { e.preventDefault(); const f = document.getElementById('ans'); if (!f) return;
+    const s = f.selectionStart ?? f.value.length, t = f.selectionEnd ?? s;
+    f.value = f.value.slice(0, s) + k.dataset.v + f.value.slice(t); f.setSelectionRange(s + 1, s + 1); f.focus(); }
+});
+document.addEventListener('submit', e => {
+  e.preventDefault();
+  if (view !== 'play' || sess.res) return;
+  const c = sess.q[sess.i], to = S.dir.split('-')[1];
+  const input = document.getElementById('ans').value;
+  sess.val = input;
+  const r = check(c, to, input);
+  sess.res = r;
+  mark(c, r === 'ok' || (r === 'accent' && S.accent === 'lenient'));
+  render();
+});
+document.addEventListener('click', e => {
+  const el = e.target.closest('[data-a]');
+  if (!el || el.dataset.a === 'key') return;
+  const a = el.dataset.a;
+  if (a === 'set') { S[el.dataset.k] = el.dataset.v; save(); render(); }
+  else if (a === 'tog') { S[el.dataset.k] = !S[el.dataset.k]; save(); render(); }
+  else if (a === 'page') {
+    const v = el.dataset.v;
+    if (v === 'all') S.pages = []; else { const p = +v; S.pages = S.pages.includes(p) ? S.pages.filter(x => x !== p) : S.pages.concat(p); }
+    save(); render();
+  }
+  else if (a === 'start') start();
+  else if (a === 'home') { view = 'home'; sess = null; resetArm = false; render(); }
+  else if (a === 'flip') { sess.shown = !sess.shown; render(); }
+  else if (a === 'know') { mark(sess.q[sess.i], true); next(); }
+  else if (a === 'again') { mark(sess.q[sess.i], false); next(); }
+  else if (a === 'say') speak(el.dataset.t, el.dataset.l);
+  else if (a === 'hint') { sess.hint = true; sess.val = (document.getElementById('ans') || {}).value || ''; render(); }
+  else if (a === 'skip') { sess.val = (document.getElementById('ans') || {}).value || ''; sess.res = 'no'; mark(sess.q[sess.i], false); render(); }
+  else if (a === 'next') next();
+  else if (a === 'retry') { const q = sess.wrong.slice(); sess = {q, i:0, right:0, total:q.length, wrong:[], retried:{}, shown:false, hint:false, res:null, val:''}; view = 'play'; render(); }
+  else if (a === 'reset') {
+    if (!resetArm) { resetArm = true; render(); setTimeout(() => { resetArm = false; if (view === 'home') render(); }, 4000); }
+    else { store.known = {}; store.miss = {}; resetArm = false; save(); render(); }
+  }
+});
+render();
+</script>

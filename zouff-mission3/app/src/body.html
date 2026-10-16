@@ -1,0 +1,235 @@
+<div id="app"></div>
+<script>
+const CARDS = /*__DATA__*/[];
+const LS = 'zouff-m3-v1';
+const DEF = {mode:'card', kind:'all', pages:[], order:'seq', unknown:false, front:'fr', other:true, dir:'nl-fr', accent:'lenient', speak:true};
+let store = {known:{}, miss:{}, set:{}};
+try { const r = localStorage.getItem(LS); if (r) store = Object.assign(store, JSON.parse(r)); } catch (e) {}
+const S = Object.assign({}, DEF, store.set || {});
+function save() { store.set = S; try { localStorage.setItem(LS, JSON.stringify(store)); } catch (e) {} }
+
+const $app = document.getElementById('app');
+const LN = {fr:'Fransızca', nl:'Felemenkçe', tr:'Türkçe'};
+const ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7"/><path d="M19 6a8.5 8.5 0 0 1 0 12"/></svg>';
+let view = 'home', sess = null, resetArm = false;
+
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const pageLabel = p => p === 0 ? 'ZOUFFF!' : 's.' + p;
+
+function pool() {
+  return CARDS.filter(c =>
+    (S.kind === 'all' || c.kind === S.kind) &&
+    (!S.pages.length || S.pages.includes(c.page)) &&
+    (!S.unknown || !store.known[c.id]));
+}
+function shuffle(a) { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+
+/* ---------- speech ---------- */
+function speak(text, lang) {
+  try {
+    const u = new SpeechSynthesisUtterance(String(text).replace(/\(|\)/g, ''));
+    u.lang = lang === 'fr' ? 'fr-FR' : lang === 'nl' ? 'nl-BE' : 'tr-TR';
+    u.rate = 0.9;
+    speechSynthesis.cancel(); speechSynthesis.speak(u);
+  } catch (e) {}
+}
+
+/* ---------- answer checking ---------- */
+function expand(t) {
+  const m = t.match(/\(([^)]*)\)/);
+  if (!m) return [t];
+  return [...expand(t.replace(m[0], '')), ...expand(t.replace(m[0], m[1]))];
+}
+function alts(card, lang) {
+  const raw = card[lang];
+  let parts = [raw];
+  if (raw.includes(' / ')) parts = parts.concat(raw.split(' / '));
+  if (card.kind === 'word' && raw.includes(', ')) parts = parts.concat(raw.split(', '));
+  const out = [];
+  parts.forEach(p => expand(p).forEach(x => out.push(x)));
+  return out;
+}
+function norm(s) {
+  return s.toLowerCase().replace(/[’‘`´]/g, "'").replace(/œ/g, 'oe')
+    .replace(/[.,!?;:…"«»()→▸•]/g, ' ').replace(/\s+/g, ' ').trim();
+}
+const strip = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '');
+function check(card, lang, input) {
+  const a = norm(input);
+  if (!a) return 'no';
+  let accent = false;
+  for (const alt of alts(card, lang)) {
+    const b = norm(alt);
+    if (a === b) return 'ok';
+    if (strip(a) === strip(b)) accent = true;
+  }
+  return accent ? 'accent' : 'no';
+}
+
+/* ---------- session ---------- */
+function start() {
+  const p = pool();
+  if (!p.length) return;
+  const q = S.order === 'shuffle' ? shuffle(p) : p.slice();
+  sess = {q, i:0, right:0, total:q.length, wrong:[], retried:{}, shown:false, hint:false, res:null, val:''};
+  view = 'play'; render();
+}
+function next() {
+  sess.i++; sess.shown = false; sess.hint = false; sess.res = null; sess.val = '';
+  if (sess.i >= sess.q.length) view = 'done';
+  render();
+  focusField();
+}
+function mark(card, good) {
+  if (good) { if (!sess.retried[card.id]) sess.right++; store.known[card.id] = 1; if (store.miss[card.id]) store.miss[card.id] = Math.max(0, store.miss[card.id] - 1); }
+  else {
+    store.miss[card.id] = (store.miss[card.id] || 0) + 1;
+    delete store.known[card.id];
+    if (!sess.wrong.includes(card)) sess.wrong.push(card);
+    if (!sess.retried[card.id]) { sess.retried[card.id] = 1; sess.q.push(card); }
+  }
+  save();
+}
+function focusField() { const f = document.getElementById('ans'); if (f && !f.disabled) f.focus(); }
+
+/* ---------- views ---------- */
+function seg(key, opts) {
+  return '<div class="seg">' + opts.map(([v, l]) =>
+    `<button type="button" data-a="set" data-k="${key}" data-v="${v}" aria-pressed="${S[key] === v}">${l}</button>`).join('') + '</div>';
+}
+function tog(key, label) {
+  return `<button type="button" class="tog" data-a="tog" data-k="${key}" aria-pressed="${!!S[key]}"><i></i><span>${label}</span></button>`;
+}
+function homeView() {
+  const pgs = [...new Set(CARDS.map(c => c.page))].sort((a, b) => a - b);
+  const total = CARDS.length, known = CARDS.filter(c => store.known[c.id]).length;
+  const n = pool().length;
+  const chips = pgs.map(p => {
+    const items = CARDS.filter(c => c.page === p), k = items.filter(c => store.known[c.id]).length;
+    return `<button type="button" class="chip" data-a="page" data-v="${p}" aria-pressed="${S.pages.includes(p)}">${pageLabel(p)}<small>${k}/${items.length}</small></button>`;
+  }).join('');
+  const dirs = S.mode === 'write'
+    ? seg('dir', [['nl-fr','Felemenkçe → Fransızca'],['fr-nl','Fransızca → Felemenkçe'],['tr-fr','Türkçe → Fransızca'],['tr-nl','Türkçe → Felemenkçe']])
+    : seg('front', [['fr','Önde Fransızca'],['nl','Önde Felemenkçe']]) + tog('other', 'Diğer dili de göster (Fransızca + Felemenkçe yan yana)');
+  return `
+  <header class="top"><div><h1>Zouff! Mission 3</h1><p>Tu fais quoi? · sayfa 25–42</p></div><div class="sum">${known} / ${total} biliyorum</div></header>
+  <section class="sec"><h2>Ne yapalım?</h2>
+    <div class="modes">
+      <button type="button" class="mode" data-a="set" data-k="mode" data-v="card" aria-pressed="${S.mode === 'card'}"><b>Kart</b><span>Kelimeye bak, karta dokun, Türkçesini gör.</span></button>
+      <button type="button" class="mode" data-a="set" data-k="mode" data-v="write" aria-pressed="${S.mode === 'write'}"><b>Yazma</b><span>Kelimeyi gör, karşılığını yaz.</span></button>
+    </div></section>
+  <section class="sec"><h2>${S.mode === 'write' ? 'Yön' : 'Kart yüzü'}</h2>${dirs}
+    ${S.mode === 'write' ? seg('accent', [['lenient','Aksan hatası kabul (uyarılı)'],['strict','Aksan hatası yanlış']]) : ''}</section>
+  <section class="sec"><h2>İçerik</h2>${seg('kind', [['all','Hepsi'],['word','Kelimeler'],['phrase','Cümleler']])}</section>
+  <section class="sec"><h2>Sayfalar</h2><div class="seg">
+    <button type="button" class="chip" data-a="page" data-v="all" aria-pressed="${!S.pages.length}">Tüm sayfalar</button>${chips}</div></section>
+  <section class="sec"><h2>Sıra</h2>${seg('order', [['seq','Sayfa sırası'],['shuffle','Karışık']])}
+    ${tog('unknown', 'Sadece bilmediklerim')}</section>
+  <button type="button" class="go" data-a="start" ${n ? '' : 'disabled'}>${n ? `Başla · ${n} ${S.mode === 'card' ? 'kart' : 'soru'}` : 'Bu seçimde kart yok'}</button>
+  <div class="foot"><span>İlerleme bu iPad'in tarayıcısında saklanır.</span>
+    <button type="button" class="link" data-a="reset">${resetArm ? 'Emin misin? Tekrar dokun' : 'İlerlemeyi sıfırla'}</button></div>`;
+}
+function barView() {
+  const pct = Math.round(sess.i / sess.q.length * 100);
+  return `<div class="bar"><button type="button" class="x" data-a="home" aria-label="Çık">×</button>
+    <div class="prog"><i style="width:${pct}%"></i></div><div class="cnt">${Math.min(sess.i + 1, sess.q.length)} / ${sess.q.length}</div></div>`;
+}
+function spk(text, lang) { return `<button type="button" class="spk" data-a="say" data-t="${esc(text)}" data-l="${lang}" aria-label="Dinle">${ICON}</button>`; }
+function cardView() {
+  const c = sess.q[sess.i], f = S.front, o = f === 'fr' ? 'nl' : 'fr';
+  const big = c[f].length > 28 ? 'mid' : 'big';
+  return barView() + `
+  <button type="button" class="card" data-a="flip" aria-label="Karta dokun: Türkçe çeviri">
+    <div class="prompt"><span class="lang ${f}">${LN[f].toUpperCase()}</span><span class="src">${esc(pageLabel(c.page))}</span></div>
+    <div class="blk"><div class="w ${big} ${f}">${esc(c[f])}</div></div>
+    ${S.other ? `<div class="blk"><span class="lang ${o}">${LN[o].toUpperCase()}</span><div class="w mid ${o}">${esc(c[o])}</div></div>` : ''}
+    ${sess.shown ? `<div class="blk"><span class="lang tr">TÜRKÇE</span><div class="w mid tr">${esc(c.tr)}</div></div>` : `<div class="hint">Dokun: Türkçesini göster</div>`}
+  </button>
+  <div class="row">${spk(c[f], f)}${S.other ? spk(c[o], o) : ''}<span class="hint" style="margin-left:auto">Bilmiyorsan "Tekrar" de, kart sona eklenir.</span></div>
+  <div class="acts"><button type="button" class="no" data-a="again">Tekrar ↻</button><button type="button" class="yes" data-a="know">Biliyorum ✓</button></div>`;
+}
+function writeView() {
+  const c = sess.q[sess.i], [from, to] = S.dir.split('-');
+  const big = c[from].length > 28 ? 'mid' : 'big';
+  const r = sess.res;
+  const keys = to === 'fr' && !r ? `<div class="keys">${['é','è','ê','à','â','ç','ù','û','ô','î','ï','œ'].map(k => `<button type="button" data-a="key" data-v="${k}">${k}</button>`).join('')}</div>` : '';
+  let fb = '';
+  if (r) {
+    const cls = r === 'ok' || (r === 'accent' && S.accent === 'lenient') ? (r === 'ok' ? 'ok' : 'acc') : 'no';
+    const head = r === 'ok' ? 'Doğru!' : r === 'accent' ? (S.accent === 'lenient' ? 'Neredeyse: aksanlara dikkat' : 'Aksan hatası') : 'Doğrusu:';
+    fb = `<div class="fb ${cls}"><b>${head}</b><div class="w mid ${to}">${esc(c[to])}</div><div class="src">Türkçe: ${esc(c.tr)}</div></div>`;
+  }
+  const cls = r ? (r === 'ok' ? 'ok' : r === 'accent' && S.accent === 'lenient' ? 'acc' : 'no') : '';
+  return barView() + `
+  <div class="card" style="min-height:0">
+    <div class="prompt"><span class="lang ${from}">${LN[from].toUpperCase()}</span>${S.speak && from !== 'tr' ? spk(c[from], from) : '<span></span>'}</div>
+    <div class="w ${big} ${from}">${esc(c[from])}</div>
+    ${from !== 'tr' ? (sess.hint ? `<div class="src">Türkçe: ${esc(c.tr)}</div>` : `<button type="button" class="link" data-a="hint" style="align-self:flex-start">Türkçe ipucu</button>`) : ''}
+  </div>
+  <form id="f" autocomplete="off" class="sec">
+    <label class="src" for="ans">${LN[to]} yaz</label>
+    <input id="ans" class="field ${cls}" type="text" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" enterkeyhint="done" value="${esc(sess.val)}" ${r ? 'disabled' : ''}>
+    ${keys}${fb}
+    ${r ? `<button type="button" class="go" data-a="next" id="nx">Sonraki</button>` : `<button type="submit" class="go">Kontrol et</button>`}
+    ${r ? '' : `<button type="button" class="link" data-a="skip" style="align-self:center">Bilmiyorum, cevabı göster</button>`}
+  </form>`;
+}
+function doneView() {
+  const w = sess.wrong;
+  return `<header class="top"><div><h1>Bitti!</h1><p>İlk denemede doğru: ${sess.right} / ${sess.total}</p></div></header>
+  <div class="score">${sess.right} / ${sess.total}</div>
+  ${w.length ? `<section class="sec"><h2>Tekrar edilecekler (${w.length})</h2><ul class="list">${w.map(c => `<li><b>${esc(c.fr)}</b><span>${esc(c.nl)} · ${esc(c.tr)}</span></li>`).join('')}</ul></section>` : '<div class="empty">Hepsini bildin. Harika!</div>'}
+  ${w.length ? `<button type="button" class="go" data-a="retry">Hataları tekrar çalış</button>` : ''}
+  <button type="button" class="ghost" data-a="home">Ana ekran</button>`;
+}
+function render() {
+  $app.innerHTML = view === 'home' ? homeView() : view === 'done' ? doneView() : (S.mode === 'card' ? cardView() : writeView());
+  if (view === 'play' && S.mode === 'write') { focusField(); const nx = document.getElementById('nx'); if (nx) nx.focus(); }
+}
+
+/* ---------- events ---------- */
+document.addEventListener('pointerdown', e => {
+  const k = e.target.closest('[data-a="key"]');
+  if (k) { e.preventDefault(); const f = document.getElementById('ans'); if (!f) return;
+    const s = f.selectionStart ?? f.value.length, t = f.selectionEnd ?? s;
+    f.value = f.value.slice(0, s) + k.dataset.v + f.value.slice(t); f.setSelectionRange(s + 1, s + 1); f.focus(); }
+});
+document.addEventListener('submit', e => {
+  e.preventDefault();
+  if (view !== 'play' || sess.res) return;
+  const c = sess.q[sess.i], to = S.dir.split('-')[1];
+  const input = document.getElementById('ans').value;
+  sess.val = input;
+  const r = check(c, to, input);
+  sess.res = r;
+  mark(c, r === 'ok' || (r === 'accent' && S.accent === 'lenient'));
+  render();
+});
+document.addEventListener('click', e => {
+  const el = e.target.closest('[data-a]');
+  if (!el || el.dataset.a === 'key') return;
+  const a = el.dataset.a;
+  if (a === 'set') { S[el.dataset.k] = el.dataset.v; save(); render(); }
+  else if (a === 'tog') { S[el.dataset.k] = !S[el.dataset.k]; save(); render(); }
+  else if (a === 'page') {
+    const v = el.dataset.v;
+    if (v === 'all') S.pages = []; else { const p = +v; S.pages = S.pages.includes(p) ? S.pages.filter(x => x !== p) : S.pages.concat(p); }
+    save(); render();
+  }
+  else if (a === 'start') start();
+  else if (a === 'home') { view = 'home'; sess = null; resetArm = false; render(); }
+  else if (a === 'flip') { sess.shown = !sess.shown; render(); }
+  else if (a === 'know') { mark(sess.q[sess.i], true); next(); }
+  else if (a === 'again') { mark(sess.q[sess.i], false); next(); }
+  else if (a === 'say') speak(el.dataset.t, el.dataset.l);
+  else if (a === 'hint') { sess.hint = true; sess.val = (document.getElementById('ans') || {}).value || ''; render(); }
+  else if (a === 'skip') { sess.val = (document.getElementById('ans') || {}).value || ''; sess.res = 'no'; mark(sess.q[sess.i], false); render(); }
+  else if (a === 'next') next();
+  else if (a === 'retry') { const q = sess.wrong.slice(); sess = {q, i:0, right:0, total:q.length, wrong:[], retried:{}, shown:false, hint:false, res:null, val:''}; view = 'play'; render(); }
+  else if (a === 'reset') {
+    if (!resetArm) { resetArm = true; render(); setTimeout(() => { resetArm = false; if (view === 'home') render(); }, 4000); }
+    else { store.known = {}; store.miss = {}; resetArm = false; save(); render(); }
+  }
+});
+render();
+</script>
