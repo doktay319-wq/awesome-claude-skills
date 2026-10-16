@@ -17,7 +17,9 @@ cards.sort(key=lambda c:(c["page"] if c["page"] else 99, c["id"]))
 # stable ids already assigned; sort changes order only
 data=json.dumps(cards,ensure_ascii=False,separators=(",",":"))
 head=open(R+"/app/src/head.html",encoding="utf-8").read()
-body=open(R+"/app/src/body.html",encoding="utf-8").read().replace("/*__DATA__*/[]",data)
+import subprocess,sys;subprocess.run([sys.executable,"-I",R+"/app/src/fills.py"],check=True)
+fills=json.dumps(json.load(open(R+"/exercises_fill.json",encoding="utf-8")),ensure_ascii=False,separators=(",",":"))
+body=open(R+"/app/src/body.html",encoding="utf-8").read().replace("/*__DATA__*/[]",data).replace("/*__FILLS__*/[]",fills)
 open(R+"/app/zouff-artifact.html","w",encoding="utf-8").write(head+body)
 full=('<!doctype html>\n<html lang="tr"><head><meta charset="utf-8">'
  '<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">'

@@ -44,7 +44,7 @@ button:focus-visible,input:focus-visible{outline:3px solid var(--teal);outline-o
 .top p{margin:4px 0 0;color:var(--muted)}
 .sum{font-weight:800;color:var(--teal);font-variant-numeric:tabular-nums}
 .sec{display:flex;flex-direction:column;gap:10px}
-.modes{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.modes{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 .mode{background:var(--surface);border:2px solid var(--line);border-radius:18px;padding:18px;text-align:left;min-height:96px;display:flex;flex-direction:column;gap:4px}
 .mode b{font-family:var(--font-display);font-size:1.4rem;font-weight:600}
 .mode span{color:var(--muted);font-size:.95rem}
@@ -110,6 +110,23 @@ button:focus-visible,input:focus-visible{outline:3px solid var(--teal);outline-o
 .face .blk{display:flex;flex-direction:column;gap:6px}
 .trbox{display:flex;flex-direction:column;gap:6px;padding:16px 18px;border-radius:18px;background:var(--tr-soft);border:2px solid var(--tr)}
 .trb[aria-pressed="true"]{background:var(--tr-soft);border-color:var(--tr);color:var(--tr)}
+
+/* pin pad + fill-in */
+.dots{display:flex;justify-content:center;gap:18px;margin-top:6px}
+.dots i{width:22px;height:22px;border-radius:50%;border:3px solid var(--teal);background:transparent;transition:background .1s,transform .1s}
+.dots i.on{background:var(--teal);transform:scale(1.1)}
+.dots.shake{animation:shake .35s}
+@keyframes shake{20%{transform:translateX(-10px)}40%{transform:translateX(10px)}60%{transform:translateX(-8px)}80%{transform:translateX(8px)}}
+.perr{text-align:center;color:var(--bad);font-weight:800;min-height:1.5em}
+.kp{display:grid;grid-template-columns:repeat(3,84px);gap:14px;justify-content:center}
+.kp button{height:84px;border-radius:50%;background:var(--surface);border:2px solid var(--line);font-family:var(--font-display);font-size:2rem;font-weight:600}
+.kp button:active{background:var(--teal);color:var(--teal-ink);border-color:var(--teal)}
+.instr{font-weight:800;font-size:1.05rem;line-height:1.35}
+.instr small{display:block;color:var(--muted);font-weight:600;font-size:.88rem}
+.sent{margin:0;font-family:var(--font-display);font-size:clamp(1.3rem,4.4vw,1.8rem);line-height:2.1;overflow-wrap:anywhere}
+.blank{font:inherit;font-family:var(--font-display);font-size:inherit;color:var(--fr);background:var(--bg);border:0;border-bottom:3px solid var(--teal);border-radius:8px 8px 0 0;padding:2px 8px;margin:0 4px;text-align:center;min-width:3.2ch;max-width:100%}
+.blank.ok{border-color:var(--good);background:var(--good-soft)}.blank.no{border-color:var(--bad);background:var(--bad-soft)}.blank.acc{border-color:var(--nl);background:var(--warn-soft)}
+@media (prefers-reduced-motion:reduce){.dots.shake{animation:none}}
 /* profiles + tracking */
 .lsw{display:inline-flex;border:2px solid var(--line);border-radius:999px;overflow:hidden;background:var(--surface)}
 .lsw button{padding:8px 14px;min-height:40px;font-weight:800;font-size:.85rem;letter-spacing:.06em}
@@ -133,6 +150,7 @@ button:focus-visible,input:focus-visible{outline:3px solid var(--teal);outline-o
 .pps{display:flex;flex-direction:column;gap:8px}
 .pp{display:grid;grid-template-columns:72px 1fr 54px;gap:10px;align-items:center;font-size:.92rem}
 .pp em{font-style:normal;color:var(--muted);text-align:right;font-variant-numeric:tabular-nums}
-@media (max-width:480px){.modes{grid-template-columns:1fr}.card{min-height:260px;padding:20px 16px}}
+@media (max-width:640px){.modes{grid-template-columns:1fr}}
+@media (max-width:480px){.card{min-height:260px;padding:20px 16px}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
