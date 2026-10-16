@@ -1,0 +1,3808 @@
+{
+ "meta": {
+  "title": "Zouff! Mission 3 — Tu fais quoi?",
+  "source": "Fotoğraflanan kitap sayfaları 25–42 (+ ZOUFFF! kartı)",
+  "lang": [
+   "fr",
+   "nl",
+   "tr"
+  ],
+  "note": "tr (Türkçe) alanları yapay zekâ çevirisidir; nl ve fr kitaptan alınmıştır. check:true olan alıştırma cevapları fotoğraftan tahmin edilmiştir, kontrol edin."
+ },
+ "vocab": [
+  {
+   "page": 27,
+   "cat": "zelfstandig naamwoord (m)",
+   "fr": "un ami",
+   "nl": "een vriend",
+   "tr": "arkadaş (erkek)",
+   "note": "",
+   "id": "v001"
+  },
+  {
+   "page": 27,
+   "cat": "zelfstandig naamwoord (m)",
+   "fr": "un cinéma",
+   "nl": "een bioscoop",
+   "tr": "sinema",
+   "note": "",
+   "id": "v002"
+  },
+  {
+   "page": 27,
+   "cat": "zelfstandig naamwoord (m)",
+   "fr": "un film",
+   "nl": "een film",
+   "tr": "film",
+   "note": "",
+   "id": "v003"
+  },
+  {
+   "page": 27,
+   "cat": "zelfstandig naamwoord (m)",
+   "fr": "un GSM",
+   "nl": "een gsm",
+   "tr": "cep telefonu",
+   "note": "",
+   "id": "v004"
+  },
+  {
+   "page": 27,
+   "cat": "zelfstandig naamwoord (m)",
+   "fr": "un jour",
+   "nl": "een dag",
+   "tr": "gün",
+   "note": "",
+   "id": "v005"
+  },
+  {
+   "page": 27,
+   "cat": "zelfstandig naamwoord (m)",
+   "fr": "un ordinateur",
+   "nl": "een computer",
+   "tr": "bilgisayar",
+   "note": "",
+   "id": "v006"
+  },
+  {
+   "page": 27,
+   "cat": "zelfstandig naamwoord (m)",
+   "fr": "un portable",
+   "nl": "een laptop",
+   "tr": "dizüstü bilgisayar",
+   "note": "",
+   "id": "v007"
+  },
+  {
+   "page": 27,
+   "cat": "zelfstandig naamwoord (m)",
+   "fr": "un sport",
+   "nl": "een sport",
+   "tr": "spor",
+   "note": "",
+   "id": "v008"
+  },
+  {
+   "page": 27,
+   "cat": "zelfstandig naamwoord (m)",
+   "fr": "un weekend",
+   "nl": "een weekend",
+   "tr": "hafta sonu",
+   "note": "",
+   "id": "v009"
+  },
+  {
+   "page": 27,
+   "cat": "zelfstandig naamwoord (f)",
+   "fr": "une amie",
+   "nl": "een vriendin",
+   "tr": "arkadaş (kız)",
+   "note": "",
+   "id": "v010"
+  },
+  {
+   "page": 27,
+   "cat": "zelfstandig naamwoord (f)",
+   "fr": "une chanson",
+   "nl": "een liedje",
+   "tr": "şarkı",
+   "note": "",
+   "id": "v011"
+  },
+  {
+   "page": 27,
+   "cat": "zelfstandig naamwoord (f)",
+   "fr": "la musique",
+   "nl": "de muziek",
+   "tr": "müzik",
+   "note": "",
+   "id": "v012"
+  },
+  {
+   "page": 27,
+   "cat": "zelfstandig naamwoord (f)",
+   "fr": "une radio",
+   "nl": "een radio",
+   "tr": "radyo",
+   "note": "",
+   "id": "v013"
+  },
+  {
+   "page": 27,
+   "cat": "zelfstandig naamwoord (f)",
+   "fr": "une semaine",
+   "nl": "een week",
+   "tr": "hafta",
+   "note": "",
+   "id": "v014"
+  },
+  {
+   "page": 27,
+   "cat": "zelfstandig naamwoord (f)",
+   "fr": "une télé(vision)",
+   "nl": "een televisie",
+   "tr": "televizyon",
+   "note": "",
+   "id": "v015"
+  },
+  {
+   "page": 27,
+   "cat": "werkwoord",
+   "fr": "aimer",
+   "nl": "houden van, leuk vinden",
+   "tr": "sevmek, hoşlanmak",
+   "note": "",
+   "id": "v016"
+  },
+  {
+   "page": 27,
+   "cat": "werkwoord",
+   "fr": "chanter",
+   "nl": "zingen",
+   "tr": "şarkı söylemek",
+   "note": "",
+   "id": "v017"
+  },
+  {
+   "page": 27,
+   "cat": "werkwoord",
+   "fr": "danser",
+   "nl": "dansen",
+   "tr": "dans etmek",
+   "note": "",
+   "id": "v018"
+  },
+  {
+   "page": 27,
+   "cat": "werkwoord",
+   "fr": "écouter",
+   "nl": "luisteren (naar)",
+   "tr": "dinlemek",
+   "note": "",
+   "id": "v019"
+  },
+  {
+   "page": 27,
+   "cat": "werkwoord",
+   "fr": "jouer",
+   "nl": "spelen",
+   "tr": "oynamak, çalmak",
+   "note": "",
+   "id": "v020"
+  },
+  {
+   "page": 27,
+   "cat": "werkwoord",
+   "fr": "regarder",
+   "nl": "kijken (naar)",
+   "tr": "bakmak, izlemek",
+   "note": "",
+   "id": "v021"
+  },
+  {
+   "page": 27,
+   "cat": "werkwoord",
+   "fr": "téléphoner (à)",
+   "nl": "telefoneren (naar)",
+   "tr": "telefon etmek, aramak",
+   "note": "",
+   "id": "v022"
+  },
+  {
+   "page": 27,
+   "cat": "dag",
+   "fr": "(le) lundi",
+   "nl": "maandag",
+   "tr": "pazartesi",
+   "note": "",
+   "id": "v023"
+  },
+  {
+   "page": 27,
+   "cat": "dag",
+   "fr": "(le) mardi",
+   "nl": "dinsdag",
+   "tr": "salı",
+   "note": "",
+   "id": "v024"
+  },
+  {
+   "page": 27,
+   "cat": "dag",
+   "fr": "(le) mercredi",
+   "nl": "woensdag",
+   "tr": "çarşamba",
+   "note": "",
+   "id": "v025"
+  },
+  {
+   "page": 27,
+   "cat": "dag",
+   "fr": "(le) jeudi",
+   "nl": "donderdag",
+   "tr": "perşembe",
+   "note": "",
+   "id": "v026"
+  },
+  {
+   "page": 27,
+   "cat": "dag",
+   "fr": "(le) vendredi",
+   "nl": "vrijdag",
+   "tr": "cuma",
+   "note": "",
+   "id": "v027"
+  },
+  {
+   "page": 27,
+   "cat": "dag",
+   "fr": "(le) samedi",
+   "nl": "zaterdag",
+   "tr": "cumartesi",
+   "note": "",
+   "id": "v028"
+  },
+  {
+   "page": 27,
+   "cat": "dag",
+   "fr": "(le) dimanche",
+   "nl": "zondag",
+   "tr": "pazar",
+   "note": "",
+   "id": "v029"
+  },
+  {
+   "page": 26,
+   "cat": "zelfstandig naamwoord (f)",
+   "fr": "une tablette",
+   "nl": "een tablet",
+   "tr": "tablet",
+   "note": "",
+   "id": "v030"
+  },
+  {
+   "page": 26,
+   "cat": "overig",
+   "fr": "les appareils électroniques",
+   "nl": "de elektronische toestellen",
+   "tr": "elektronik cihazlar",
+   "note": "",
+   "id": "v031"
+  },
+  {
+   "page": 26,
+   "cat": "overig",
+   "fr": "mon jour préféré de la semaine",
+   "nl": "mijn favoriete dag van de week",
+   "tr": "haftanın en sevdiğim günü",
+   "note": "",
+   "id": "v032"
+  },
+  {
+   "page": 25,
+   "cat": "klasmateriaal",
+   "fr": "un stylo",
+   "nl": "een balpen",
+   "tr": "tükenmez kalem",
+   "note": "",
+   "id": "v033"
+  },
+  {
+   "page": 25,
+   "cat": "klasmateriaal",
+   "fr": "un cahier",
+   "nl": "een schrift",
+   "tr": "defter",
+   "note": "",
+   "id": "v034"
+  },
+  {
+   "page": 25,
+   "cat": "klasmateriaal",
+   "fr": "un livre",
+   "nl": "een boek",
+   "tr": "kitap",
+   "note": "",
+   "id": "v035"
+  },
+  {
+   "page": 25,
+   "cat": "klasmateriaal",
+   "fr": "un crayon",
+   "nl": "een potlood",
+   "tr": "kurşun kalem",
+   "note": "",
+   "id": "v036"
+  },
+  {
+   "page": 25,
+   "cat": "klasmateriaal",
+   "fr": "une gomme",
+   "nl": "een gom",
+   "tr": "silgi",
+   "note": "",
+   "id": "v037"
+  },
+  {
+   "page": 25,
+   "cat": "klasmateriaal",
+   "fr": "une feuille",
+   "nl": "een blad(zijde)",
+   "tr": "kâğıt, yaprak",
+   "note": "",
+   "id": "v038"
+  },
+  {
+   "page": 25,
+   "cat": "klasmateriaal",
+   "fr": "un taille-crayon",
+   "nl": "een puntenslijper",
+   "tr": "kalemtıraş",
+   "note": "",
+   "id": "v039"
+  },
+  {
+   "page": 25,
+   "cat": "klasmateriaal",
+   "fr": "un marqueur fluorescent",
+   "nl": "een markeerstift",
+   "tr": "fosforlu kalem",
+   "note": "",
+   "id": "v040"
+  },
+  {
+   "page": 25,
+   "cat": "klasmateriaal",
+   "fr": "une règle",
+   "nl": "een liniaal",
+   "tr": "cetvel",
+   "note": "",
+   "id": "v041"
+  },
+  {
+   "page": 37,
+   "cat": "overig",
+   "fr": "moi",
+   "nl": "ik / mij",
+   "tr": "ben / bana",
+   "note": "",
+   "id": "v042"
+  },
+  {
+   "page": 37,
+   "cat": "overig",
+   "fr": "mon/ma voisin(e)",
+   "nl": "mijn buur / buurvrouw",
+   "tr": "komşum",
+   "note": "",
+   "id": "v043"
+  },
+  {
+   "page": 38,
+   "cat": "Belgische provincie",
+   "fr": "Anvers",
+   "nl": "Antwerpen",
+   "tr": "Anvers (Anvers eyaleti)",
+   "note": "",
+   "id": "v044"
+  },
+  {
+   "page": 38,
+   "cat": "Belgische provincie",
+   "fr": "Limbourg",
+   "nl": "Limburg",
+   "tr": "Limbourg",
+   "note": "",
+   "id": "v045"
+  },
+  {
+   "page": 38,
+   "cat": "Belgische provincie",
+   "fr": "Flandre occidentale",
+   "nl": "West-Vlaanderen",
+   "tr": "Batı Flandre",
+   "note": "",
+   "id": "v046"
+  },
+  {
+   "page": 38,
+   "cat": "Belgische provincie",
+   "fr": "Flandre orientale",
+   "nl": "Oost-Vlaanderen",
+   "tr": "Doğu Flandre",
+   "note": "",
+   "id": "v047"
+  },
+  {
+   "page": 38,
+   "cat": "Belgische provincie",
+   "fr": "Brabant flamand",
+   "nl": "Vlaams-Brabant",
+   "tr": "Flaman Brabant",
+   "note": "",
+   "id": "v048"
+  },
+  {
+   "page": 38,
+   "cat": "Belgische provincie",
+   "fr": "Hainaut",
+   "nl": "Henegouwen",
+   "tr": "Hainaut",
+   "note": "",
+   "id": "v049"
+  },
+  {
+   "page": 38,
+   "cat": "Belgische provincie",
+   "fr": "Namur",
+   "nl": "Namen",
+   "tr": "Namur",
+   "note": "",
+   "id": "v050"
+  },
+  {
+   "page": 38,
+   "cat": "Belgische provincie",
+   "fr": "Liège",
+   "nl": "Luik",
+   "tr": "Liège",
+   "note": "",
+   "id": "v051"
+  },
+  {
+   "page": 38,
+   "cat": "Belgische provincie",
+   "fr": "Luxembourg",
+   "nl": "Luxemburg",
+   "tr": "Lüksemburg (eyaleti)",
+   "note": "",
+   "id": "v052"
+  },
+  {
+   "page": 38,
+   "cat": "Belgische provincie",
+   "fr": "Brabant wallon",
+   "nl": "Waals-Brabant",
+   "tr": "Valon Brabant",
+   "note": "",
+   "id": "v053"
+  },
+  {
+   "page": 38,
+   "cat": "Vlaamse stad (Franse naam)",
+   "fr": "Courtrai",
+   "nl": "Kortrijk",
+   "tr": "Kortrijk",
+   "note": "",
+   "id": "v054"
+  },
+  {
+   "page": 38,
+   "cat": "Vlaamse stad (Franse naam)",
+   "fr": "Ypres",
+   "nl": "Ieper",
+   "tr": "Ieper",
+   "note": "",
+   "id": "v055"
+  },
+  {
+   "page": 38,
+   "cat": "Vlaamse stad (Franse naam)",
+   "fr": "Alost",
+   "nl": "Aalst",
+   "tr": "Aalst",
+   "note": "",
+   "id": "v056"
+  },
+  {
+   "page": 38,
+   "cat": "Vlaamse stad (Franse naam)",
+   "fr": "Saint-Nicolas",
+   "nl": "Sint-Niklaas",
+   "tr": "Sint-Niklaas",
+   "note": "",
+   "id": "v057"
+  },
+  {
+   "page": 38,
+   "cat": "Vlaamse stad (Franse naam)",
+   "fr": "Coxyde",
+   "nl": "Koksijde",
+   "tr": "Koksijde",
+   "note": "",
+   "id": "v058"
+  },
+  {
+   "page": 38,
+   "cat": "Vlaamse stad (Franse naam)",
+   "fr": "La Panne",
+   "nl": "De Panne",
+   "tr": "De Panne",
+   "note": "",
+   "id": "v059"
+  },
+  {
+   "page": 38,
+   "cat": "Vlaamse stad (Franse naam)",
+   "fr": "Nieuport",
+   "nl": "Nieuwpoort",
+   "tr": "Nieuwpoort",
+   "note": "",
+   "id": "v060"
+  },
+  {
+   "page": 38,
+   "cat": "Vlaamse stad (Franse naam)",
+   "fr": "Tongres",
+   "nl": "Tongeren",
+   "tr": "Tongeren",
+   "note": "",
+   "id": "v061"
+  },
+  {
+   "page": 38,
+   "cat": "Vlaamse stad (Franse naam)",
+   "fr": "Saint-Trond",
+   "nl": "Sint-Truiden",
+   "tr": "Sint-Truiden",
+   "note": "",
+   "id": "v062"
+  },
+  {
+   "page": 38,
+   "cat": "verlan",
+   "fr": "cimer",
+   "nl": "merci (FR)",
+   "tr": "teşekkürler (verlan)",
+   "note": "Le verlan: letterdelen omgedraaid. Stromae = maestro",
+   "id": "v063"
+  },
+  {
+   "page": 38,
+   "cat": "verlan",
+   "fr": "tromé",
+   "nl": "métro (FR)",
+   "tr": "metro (verlan)",
+   "note": "Le verlan: letterdelen omgedraaid. Stromae = maestro",
+   "id": "v064"
+  },
+  {
+   "page": 38,
+   "cat": "verlan",
+   "fr": "zarbi",
+   "nl": "bizarre (FR)",
+   "tr": "garip (verlan)",
+   "note": "Le verlan: letterdelen omgedraaid. Stromae = maestro",
+   "id": "v065"
+  },
+  {
+   "page": 38,
+   "cat": "verlan",
+   "fr": "jourbon",
+   "nl": "bonjour (FR)",
+   "tr": "günaydın/merhaba (verlan)",
+   "note": "Le verlan: letterdelen omgedraaid. Stromae = maestro",
+   "id": "v066"
+  },
+  {
+   "page": 38,
+   "cat": "verlan",
+   "fr": "mifa",
+   "nl": "famille (FR)",
+   "tr": "aile (verlan)",
+   "note": "Le verlan: letterdelen omgedraaid. Stromae = maestro",
+   "id": "v067"
+  },
+  {
+   "page": 38,
+   "cat": "verlan",
+   "fr": "céfran",
+   "nl": "français (FR)",
+   "tr": "Fransızca (verlan)",
+   "note": "Le verlan: letterdelen omgedraaid. Stromae = maestro",
+   "id": "v068"
+  },
+  {
+   "page": 41,
+   "cat": "getal",
+   "fr": "deux",
+   "nl": "twee",
+   "tr": "iki",
+   "note": "",
+   "id": "v069"
+  },
+  {
+   "page": 41,
+   "cat": "getal",
+   "fr": "trois",
+   "nl": "drie",
+   "tr": "üç",
+   "note": "",
+   "id": "v070"
+  },
+  {
+   "page": 41,
+   "cat": "getal",
+   "fr": "sept",
+   "nl": "zeven",
+   "tr": "yedi",
+   "note": "",
+   "id": "v071"
+  },
+  {
+   "page": 41,
+   "cat": "getal",
+   "fr": "neuf",
+   "nl": "negen",
+   "tr": "dokuz",
+   "note": "",
+   "id": "v072"
+  },
+  {
+   "page": 41,
+   "cat": "getal",
+   "fr": "onze",
+   "nl": "elf",
+   "tr": "on bir",
+   "note": "",
+   "id": "v073"
+  },
+  {
+   "page": 41,
+   "cat": "school",
+   "fr": "une école",
+   "nl": "een school",
+   "tr": "okul",
+   "note": "uit de oefeningen",
+   "id": "v074"
+  },
+  {
+   "page": 41,
+   "cat": "school",
+   "fr": "un élève / une élève",
+   "nl": "een leerling",
+   "tr": "öğrenci",
+   "note": "uit de oefeningen",
+   "id": "v075"
+  },
+  {
+   "page": 41,
+   "cat": "school",
+   "fr": "un prof / une prof",
+   "nl": "een leerkracht",
+   "tr": "öğretmen",
+   "note": "uit de oefeningen",
+   "id": "v076"
+  },
+  {
+   "page": 41,
+   "cat": "school",
+   "fr": "un tableau",
+   "nl": "een bord",
+   "tr": "tahta",
+   "note": "uit de oefeningen",
+   "id": "v077"
+  },
+  {
+   "page": 41,
+   "cat": "school",
+   "fr": "un voisin / une voisine",
+   "nl": "een buur / buurvrouw",
+   "tr": "komşu",
+   "note": "uit de oefeningen",
+   "id": "v078"
+  },
+  {
+   "page": 41,
+   "cat": "school",
+   "fr": "une page",
+   "nl": "een pagina",
+   "tr": "sayfa",
+   "note": "uit de oefeningen",
+   "id": "v079"
+  },
+  {
+   "page": 41,
+   "cat": "school",
+   "fr": "un exercice",
+   "nl": "een oefening",
+   "tr": "alıştırma",
+   "note": "uit de oefeningen",
+   "id": "v080"
+  },
+  {
+   "page": 41,
+   "cat": "school",
+   "fr": "un texte",
+   "nl": "een tekst",
+   "tr": "metin",
+   "note": "uit de oefeningen",
+   "id": "v081"
+  },
+  {
+   "page": 41,
+   "cat": "school",
+   "fr": "une classe",
+   "nl": "een klas",
+   "tr": "sınıf",
+   "note": "uit de oefeningen",
+   "id": "v082"
+  },
+  {
+   "page": 41,
+   "cat": "school",
+   "fr": "un bureau",
+   "nl": "een bureau/schooltafel",
+   "tr": "masa",
+   "note": "uit de oefeningen",
+   "id": "v083"
+  },
+  {
+   "page": 33,
+   "cat": "persoonlijk voornaamwoord",
+   "fr": "je / j'",
+   "nl": "ik",
+   "tr": "ben",
+   "note": "",
+   "id": "v084"
+  },
+  {
+   "page": 33,
+   "cat": "persoonlijk voornaamwoord",
+   "fr": "tu",
+   "nl": "jij",
+   "tr": "sen",
+   "note": "",
+   "id": "v085"
+  },
+  {
+   "page": 33,
+   "cat": "persoonlijk voornaamwoord",
+   "fr": "il",
+   "nl": "hij",
+   "tr": "o (erkek)",
+   "note": "",
+   "id": "v086"
+  },
+  {
+   "page": 33,
+   "cat": "persoonlijk voornaamwoord",
+   "fr": "elle",
+   "nl": "zij",
+   "tr": "o (kadın)",
+   "note": "",
+   "id": "v087"
+  },
+  {
+   "page": 33,
+   "cat": "persoonlijk voornaamwoord",
+   "fr": "nous",
+   "nl": "wij",
+   "tr": "biz",
+   "note": "",
+   "id": "v088"
+  },
+  {
+   "page": 33,
+   "cat": "persoonlijk voornaamwoord",
+   "fr": "vous",
+   "nl": "jullie / u",
+   "tr": "siz",
+   "note": "",
+   "id": "v089"
+  },
+  {
+   "page": 33,
+   "cat": "persoonlijk voornaamwoord",
+   "fr": "ils",
+   "nl": "zij (m/gemengd)",
+   "tr": "onlar (erkek/karışık)",
+   "note": "",
+   "id": "v090"
+  },
+  {
+   "page": 33,
+   "cat": "persoonlijk voornaamwoord",
+   "fr": "elles",
+   "nl": "zij (v)",
+   "tr": "onlar (kadın)",
+   "note": "",
+   "id": "v091"
+  },
+  {
+   "page": 39,
+   "cat": "uitdrukking",
+   "fr": "Bonjour",
+   "nl": "Dag",
+   "tr": "Merhaba / Günaydın",
+   "note": "",
+   "id": "v092"
+  },
+  {
+   "page": 39,
+   "cat": "uitdrukking",
+   "fr": "Salut",
+   "nl": "Hoi",
+   "tr": "Selam",
+   "note": "",
+   "id": "v093"
+  },
+  {
+   "page": 39,
+   "cat": "uitdrukking",
+   "fr": "Au revoir",
+   "nl": "Tot ziens",
+   "tr": "Hoşça kal",
+   "note": "",
+   "id": "v094"
+  },
+  {
+   "page": 39,
+   "cat": "uitdrukking",
+   "fr": "À la prochaine",
+   "nl": "Tot de volgende keer",
+   "tr": "Bir dahaki sefere",
+   "note": "",
+   "id": "v095"
+  },
+  {
+   "page": 39,
+   "cat": "uitdrukking",
+   "fr": "Je m'appelle …",
+   "nl": "Ik heet …",
+   "tr": "Adım …",
+   "note": "",
+   "id": "v096"
+  },
+  {
+   "page": 39,
+   "cat": "uitdrukking",
+   "fr": "Tu es qui ?",
+   "nl": "Wie ben jij?",
+   "tr": "Sen kimsin?",
+   "note": "",
+   "id": "v097"
+  },
+  {
+   "page": 39,
+   "cat": "uitdrukking",
+   "fr": "Voici …",
+   "nl": "Hier is/zijn …",
+   "tr": "İşte …",
+   "note": "",
+   "id": "v098"
+  },
+  {
+   "page": 39,
+   "cat": "uitdrukking",
+   "fr": "Il y a …",
+   "nl": "Er is/zijn …",
+   "tr": "… var",
+   "note": "",
+   "id": "v099"
+  },
+  {
+   "page": 39,
+   "cat": "uitdrukking",
+   "fr": "C'est …",
+   "nl": "Het is …",
+   "tr": "Bu …",
+   "note": "",
+   "id": "v100"
+  },
+  {
+   "page": 39,
+   "cat": "uitdrukking",
+   "fr": "Ce sont …",
+   "nl": "Het zijn …",
+   "tr": "Bunlar …",
+   "note": "",
+   "id": "v101"
+  }
+ ],
+ "phrases": [
+  {
+   "page": 27,
+   "src": "Klaar om te spreken",
+   "fr": "J'aime danser.",
+   "nl": "Ik hou van dansen / ik dans graag.",
+   "tr": "Dans etmeyi severim.",
+   "id": "p001"
+  },
+  {
+   "page": 27,
+   "src": "Klaar om te spreken",
+   "fr": "Tu fais quoi?",
+   "nl": "Wat doe je?",
+   "tr": "Ne yapıyorsun?",
+   "id": "p002"
+  },
+  {
+   "page": 27,
+   "src": "Klaar om te spreken",
+   "fr": "Tu aimes faire quoi?",
+   "nl": "Wat doe je graag?",
+   "tr": "Ne yapmayı seversin?",
+   "id": "p003"
+  },
+  {
+   "page": 26,
+   "src": "Un carnet d'amitié",
+   "fr": "Qui suis-je ?",
+   "nl": "Wie ben ik?",
+   "tr": "Ben kimim?",
+   "id": "p004"
+  },
+  {
+   "page": 26,
+   "src": "Un carnet d'amitié",
+   "fr": "Je m'appelle …",
+   "nl": "Ik heet …",
+   "tr": "Benim adım …",
+   "id": "p005"
+  },
+  {
+   "page": 26,
+   "src": "Un carnet d'amitié",
+   "fr": "J'ai … ans.",
+   "nl": "Ik ben … jaar.",
+   "tr": "… yaşındayım.",
+   "id": "p006"
+  },
+  {
+   "page": 26,
+   "src": "Un carnet d'amitié",
+   "fr": "Je suis de …",
+   "nl": "Ik kom uit …",
+   "tr": "… şehrindenim.",
+   "id": "p007"
+  },
+  {
+   "page": 26,
+   "src": "Un carnet d'amitié",
+   "fr": "J'aime :",
+   "nl": "Ik hou van:",
+   "tr": "Sevdiklerim:",
+   "id": "p008"
+  },
+  {
+   "page": 26,
+   "src": "Un carnet d'amitié",
+   "fr": "la musique de …",
+   "nl": "de muziek van …",
+   "tr": "…'in müziği",
+   "id": "p009"
+  },
+  {
+   "page": 26,
+   "src": "Un carnet d'amitié",
+   "fr": "les films de …",
+   "nl": "de films van …",
+   "tr": "…'in filmleri",
+   "id": "p010"
+  },
+  {
+   "page": 26,
+   "src": "Un carnet d'amitié",
+   "fr": "les livres de …",
+   "nl": "de boeken van …",
+   "tr": "…'in kitapları",
+   "id": "p011"
+  },
+  {
+   "page": 26,
+   "src": "Un carnet d'amitié",
+   "fr": "Mes préférences :",
+   "nl": "Mijn voorkeuren:",
+   "tr": "Tercihlerim:",
+   "id": "p012"
+  },
+  {
+   "page": 26,
+   "src": "Un carnet d'amitié",
+   "fr": "musique",
+   "nl": "muziek",
+   "tr": "müzik",
+   "id": "p013"
+  },
+  {
+   "page": 26,
+   "src": "Un carnet d'amitié",
+   "fr": "chanter des chansons",
+   "nl": "liedjes zingen",
+   "tr": "şarkı söylemek",
+   "id": "p014"
+  },
+  {
+   "page": 26,
+   "src": "Un carnet d'amitié",
+   "fr": "danser",
+   "nl": "dansen",
+   "tr": "dans etmek",
+   "id": "p015"
+  },
+  {
+   "page": 26,
+   "src": "Un carnet d'amitié",
+   "fr": "écouter la radio",
+   "nl": "naar de radio luisteren",
+   "tr": "radyo dinlemek",
+   "id": "p016"
+  },
+  {
+   "page": 26,
+   "src": "Un carnet d'amitié",
+   "fr": "sport",
+   "nl": "sport",
+   "tr": "spor",
+   "id": "p017"
+  },
+  {
+   "page": 26,
+   "src": "Un carnet d'amitié",
+   "fr": "jouer au basket",
+   "nl": "basketten",
+   "tr": "basketbol oynamak",
+   "id": "p018"
+  },
+  {
+   "page": 26,
+   "src": "Un carnet d'amitié",
+   "fr": "jouer au football",
+   "nl": "voetballen",
+   "tr": "futbol oynamak",
+   "id": "p019"
+  },
+  {
+   "page": 26,
+   "src": "Un carnet d'amitié",
+   "fr": "jouer au tennis",
+   "nl": "tennissen",
+   "tr": "tenis oynamak",
+   "id": "p020"
+  },
+  {
+   "page": 26,
+   "src": "Un carnet d'amitié",
+   "fr": "appareils électroniques",
+   "nl": "elektronische toestellen",
+   "tr": "elektronik cihazlar",
+   "id": "p021"
+  },
+  {
+   "page": 26,
+   "src": "Un carnet d'amitié",
+   "fr": "un GSM",
+   "nl": "een gsm",
+   "tr": "cep telefonu",
+   "id": "p022"
+  },
+  {
+   "page": 26,
+   "src": "Un carnet d'amitié",
+   "fr": "un ordinateur",
+   "nl": "een computer",
+   "tr": "bilgisayar",
+   "id": "p023"
+  },
+  {
+   "page": 26,
+   "src": "Un carnet d'amitié",
+   "fr": "un portable",
+   "nl": "een laptop",
+   "tr": "dizüstü bilgisayar",
+   "id": "p024"
+  },
+  {
+   "page": 26,
+   "src": "Un carnet d'amitié",
+   "fr": "une tablette",
+   "nl": "een tablet",
+   "tr": "tablet",
+   "id": "p025"
+  },
+  {
+   "page": 26,
+   "src": "Un carnet d'amitié",
+   "fr": "J'aime aussi :",
+   "nl": "Ik hou ook van:",
+   "tr": "Ayrıca severim:",
+   "id": "p026"
+  },
+  {
+   "page": 26,
+   "src": "Un carnet d'amitié",
+   "fr": "téléphoner à des amis",
+   "nl": "met vrienden bellen",
+   "tr": "arkadaşlarımı aramak",
+   "id": "p027"
+  },
+  {
+   "page": 26,
+   "src": "Un carnet d'amitié",
+   "fr": "regarder des films au cinéma et à la télé",
+   "nl": "films kijken in de bioscoop en op tv",
+   "tr": "sinemada ve televizyonda film izlemek",
+   "id": "p028"
+  },
+  {
+   "page": 26,
+   "src": "Un carnet d'amitié",
+   "fr": "Mon jour préféré de la semaine :",
+   "nl": "Mijn favoriete dag van de week:",
+   "tr": "Haftanın en sevdiğim günü:",
+   "id": "p029"
+  },
+  {
+   "page": 25,
+   "src": "Parlons! / Le prof dit … / Jouez",
+   "fr": "C'est quoi ?",
+   "nl": "Wat is dat?",
+   "tr": "Bu ne?",
+   "id": "p030"
+  },
+  {
+   "page": 25,
+   "src": "Parlons! / Le prof dit … / Jouez",
+   "fr": "C'est un stylo.",
+   "nl": "Het is een balpen.",
+   "tr": "Bu bir tükenmez kalem.",
+   "id": "p031"
+  },
+  {
+   "page": 25,
+   "src": "Parlons! / Le prof dit … / Jouez",
+   "fr": "Ce sont deux cahiers.",
+   "nl": "Het zijn twee schriften.",
+   "tr": "Bunlar iki defter.",
+   "id": "p032"
+  },
+  {
+   "page": 25,
+   "src": "Parlons! / Le prof dit … / Jouez",
+   "fr": "Ce sont des crayons.",
+   "nl": "Het zijn potloden.",
+   "tr": "Bunlar kurşun kalemler.",
+   "id": "p033"
+  },
+  {
+   "page": 25,
+   "src": "Parlons! / Le prof dit … / Jouez",
+   "fr": "Prenez un stylo.",
+   "nl": "Neem een balpen.",
+   "tr": "Bir tükenmez kalem alın.",
+   "id": "p034"
+  },
+  {
+   "page": 25,
+   "src": "Parlons! / Le prof dit … / Jouez",
+   "fr": "Prenez des feuilles.",
+   "nl": "Neem bladen.",
+   "tr": "Kâğıtlar alın.",
+   "id": "p035"
+  },
+  {
+   "page": 25,
+   "src": "Parlons! / Le prof dit … / Jouez",
+   "fr": "Le prof dit …",
+   "nl": "De leerkracht zegt …",
+   "tr": "Öğretmen diyor ki …",
+   "id": "p036"
+  },
+  {
+   "page": 25,
+   "src": "Parlons! / Le prof dit … / Jouez",
+   "fr": "Je suis à l'école et il y a …",
+   "nl": "Ik ben op school en er is/zijn …",
+   "tr": "Okuldayım ve … var.",
+   "id": "p037"
+  },
+  {
+   "page": 28,
+   "src": "Ex 4",
+   "fr": "un ordinateur",
+   "nl": "een computer",
+   "tr": "bilgisayar",
+   "id": "p038"
+  },
+  {
+   "page": 28,
+   "src": "Ex 4",
+   "fr": "une chanson",
+   "nl": "een liedje",
+   "tr": "şarkı",
+   "id": "p039"
+  },
+  {
+   "page": 28,
+   "src": "Ex 4",
+   "fr": "un ami et une amie",
+   "nl": "een vriend en een vriendin",
+   "tr": "bir erkek ve bir kız arkadaş",
+   "id": "p040"
+  },
+  {
+   "page": 28,
+   "src": "Ex 4",
+   "fr": "une semaine",
+   "nl": "een week",
+   "tr": "hafta",
+   "id": "p041"
+  },
+  {
+   "page": 28,
+   "src": "Ex 4",
+   "fr": "un ordinateur portable",
+   "nl": "een laptop",
+   "tr": "dizüstü bilgisayar",
+   "id": "p042"
+  },
+  {
+   "page": 28,
+   "src": "Ex 4",
+   "fr": "un jour",
+   "nl": "een dag",
+   "tr": "gün",
+   "id": "p043"
+  },
+  {
+   "page": 28,
+   "src": "Ex 5 — pictogrammen",
+   "fr": "Il est interdit de regarder.",
+   "nl": "Het is verboden te kijken.",
+   "tr": "Bakmak yasak.",
+   "id": "p044"
+  },
+  {
+   "page": 28,
+   "src": "Ex 5 — pictogrammen",
+   "fr": "Il est interdit d'écouter.",
+   "nl": "Het is verboden te luisteren.",
+   "tr": "Dinlemek yasak.",
+   "id": "p045"
+  },
+  {
+   "page": 28,
+   "src": "Ex 5 — pictogrammen",
+   "fr": "Il est interdit de jouer.",
+   "nl": "Het is verboden te spelen.",
+   "tr": "Oynamak yasak.",
+   "id": "p046"
+  },
+  {
+   "page": 28,
+   "src": "Ex 5 — pictogrammen",
+   "fr": "Il est interdit de téléphoner.",
+   "nl": "Het is verboden te telefoneren.",
+   "tr": "Telefonla konuşmak yasak.",
+   "id": "p047"
+  },
+  {
+   "page": 28,
+   "src": "Ex 5 — pictogrammen",
+   "fr": "Il est interdit d'aimer.",
+   "nl": "Het is verboden te houden van.",
+   "tr": "Sevmek yasak.",
+   "id": "p048"
+  },
+  {
+   "page": 28,
+   "src": "Ex 5 — pictogrammen",
+   "fr": "Il est interdit de danser.",
+   "nl": "Het is verboden te dansen.",
+   "tr": "Dans etmek yasak.",
+   "id": "p049"
+  },
+  {
+   "page": 28,
+   "src": "Ex 5 — pictogrammen",
+   "fr": "Il est interdit de chanter.",
+   "nl": "Het is verboden te zingen.",
+   "tr": "Şarkı söylemek yasak.",
+   "id": "p050"
+  },
+  {
+   "page": 29,
+   "src": "Ex 6a (juiste combinaties)",
+   "fr": "J'aime écouter la radio.",
+   "nl": "Ik luister graag naar de radio.",
+   "tr": "Radyo dinlemeyi severim.",
+   "id": "p051"
+  },
+  {
+   "page": 29,
+   "src": "Ex 6a (juiste combinaties)",
+   "fr": "J'aime écouter des amies.",
+   "nl": "Ik luister graag naar vriendinnen.",
+   "tr": "Arkadaşlarımı dinlemeyi severim.",
+   "id": "p052"
+  },
+  {
+   "page": 29,
+   "src": "Ex 6a (juiste combinaties)",
+   "fr": "J'aime téléphoner avec un GSM.",
+   "nl": "Ik bel graag met een gsm.",
+   "tr": "Cep telefonuyla konuşmayı severim.",
+   "id": "p053"
+  },
+  {
+   "page": 29,
+   "src": "Ex 6a (juiste combinaties)",
+   "fr": "J'aime téléphoner à une amie.",
+   "nl": "Ik bel graag naar een vriendin.",
+   "tr": "Bir arkadaşımı aramayı severim.",
+   "id": "p054"
+  },
+  {
+   "page": 29,
+   "src": "Ex 6a (juiste combinaties)",
+   "fr": "J'aime danser avec un ami.",
+   "nl": "Ik dans graag met een vriend.",
+   "tr": "Bir arkadaşımla dans etmeyi severim.",
+   "id": "p055"
+  },
+  {
+   "page": 29,
+   "src": "Ex 6a (juiste combinaties)",
+   "fr": "J'aime chanter des chansons.",
+   "nl": "Ik zing graag liedjes.",
+   "tr": "Şarkı söylemeyi severim.",
+   "id": "p056"
+  },
+  {
+   "page": 29,
+   "src": "Ex 6a (juiste combinaties)",
+   "fr": "J'aime regarder la télé.",
+   "nl": "Ik kijk graag tv.",
+   "tr": "Televizyon izlemeyi severim.",
+   "id": "p057"
+  },
+  {
+   "page": 29,
+   "src": "Ex 6a (juiste combinaties)",
+   "fr": "J'aime regarder un film.",
+   "nl": "Ik kijk graag naar een film.",
+   "tr": "Film izlemeyi severim.",
+   "id": "p058"
+  },
+  {
+   "page": 29,
+   "src": "Ex 6a (juiste combinaties)",
+   "fr": "J'aime jouer au basket.",
+   "nl": "Ik basket graag.",
+   "tr": "Basketbol oynamayı severim.",
+   "id": "p059"
+  },
+  {
+   "page": 29,
+   "src": "Ex 6a (juiste combinaties)",
+   "fr": "J'aime jouer de la musique.",
+   "nl": "Ik maak graag muziek.",
+   "tr": "Müzik çalmayı severim.",
+   "id": "p060"
+  },
+  {
+   "page": 31,
+   "src": "Ex 10 — Les articles définis",
+   "fr": "un cinéma → le cinéma",
+   "nl": "een bioscoop → de bioscoop",
+   "tr": "bir sinema → sinema",
+   "id": "p061"
+  },
+  {
+   "page": 31,
+   "src": "Ex 10 — Les articles définis",
+   "fr": "un ordinateur → l'ordinateur",
+   "nl": "een computer → de computer",
+   "tr": "bir bilgisayar → bilgisayar",
+   "id": "p062"
+  },
+  {
+   "page": 31,
+   "src": "Ex 10 — Les articles définis",
+   "fr": "une chanson → la chanson",
+   "nl": "een liedje → het liedje",
+   "tr": "bir şarkı → şarkı",
+   "id": "p063"
+  },
+  {
+   "page": 31,
+   "src": "Ex 10 — Les articles définis",
+   "fr": "une amie → l'amie",
+   "nl": "een vriendin → de vriendin",
+   "tr": "bir kız arkadaş → kız arkadaş",
+   "id": "p064"
+  },
+  {
+   "page": 31,
+   "src": "Ex 10 — Les articles définis",
+   "fr": "des cinémas → les cinémas",
+   "nl": "bioscopen → de bioscopen",
+   "tr": "sinemalar → sinemalar (belirli)",
+   "id": "p065"
+  },
+  {
+   "page": 31,
+   "src": "Ex 10 — Les articles définis",
+   "fr": "des ordinateurs → les ordinateurs",
+   "nl": "computers → de computers",
+   "tr": "bilgisayarlar → bilgisayarlar (belirli)",
+   "id": "p066"
+  },
+  {
+   "page": 31,
+   "src": "Ex 10 — Les articles définis",
+   "fr": "des chansons → les chansons",
+   "nl": "liedjes → de liedjes",
+   "tr": "şarkılar → şarkılar (belirli)",
+   "id": "p067"
+  },
+  {
+   "page": 31,
+   "src": "Ex 10 — Les articles définis",
+   "fr": "des amies → les amies",
+   "nl": "vriendinnen → de vriendinnen",
+   "tr": "kız arkadaşlar → kız arkadaşlar (belirli)",
+   "id": "p068"
+  },
+  {
+   "page": 32,
+   "src": "Ex 12 — À retenir!",
+   "fr": "Les enfants sont au cinéma.",
+   "nl": "De kinderen zijn in de bioscoop.",
+   "tr": "Çocuklar sinemada.",
+   "id": "p069"
+  },
+  {
+   "page": 32,
+   "src": "Ex 12 — À retenir!",
+   "fr": "J'écoute des chansons à la radio.",
+   "nl": "Ik luister naar liedjes op de radio.",
+   "tr": "Radyoda şarkı dinliyorum.",
+   "id": "p070"
+  },
+  {
+   "page": 32,
+   "src": "Ex 12 — À retenir!",
+   "fr": "Louise téléphone à l'ami de Noa.",
+   "nl": "Louise belt naar de vriend van Noa.",
+   "tr": "Louise, Noa'nın arkadaşını arıyor.",
+   "id": "p071"
+  },
+  {
+   "page": 32,
+   "src": "Ex 12 — À retenir!",
+   "fr": "La prof montre l'exercice aux élèves.",
+   "nl": "De leerkracht toont de oefening aan de leerlingen.",
+   "tr": "Öğretmen alıştırmayı öğrencilere gösteriyor.",
+   "id": "p072"
+  },
+  {
+   "page": 32,
+   "src": "Ex 14 — Le verbe aimer",
+   "fr": "j'aime",
+   "nl": "ik hou van",
+   "tr": "severim",
+   "id": "p073"
+  },
+  {
+   "page": 32,
+   "src": "Ex 14 — Le verbe aimer",
+   "fr": "tu aimes",
+   "nl": "jij houdt van",
+   "tr": "seversin",
+   "id": "p074"
+  },
+  {
+   "page": 32,
+   "src": "Ex 14 — Le verbe aimer",
+   "fr": "il aime",
+   "nl": "hij houdt van",
+   "tr": "(o) sever",
+   "id": "p075"
+  },
+  {
+   "page": 32,
+   "src": "Ex 14 — Le verbe aimer",
+   "fr": "elle aime",
+   "nl": "zij houdt van",
+   "tr": "(o) sever",
+   "id": "p076"
+  },
+  {
+   "page": 32,
+   "src": "Ex 14 — Le verbe aimer",
+   "fr": "nous aimons",
+   "nl": "wij houden van",
+   "tr": "severiz",
+   "id": "p077"
+  },
+  {
+   "page": 32,
+   "src": "Ex 14 — Le verbe aimer",
+   "fr": "vous aimez",
+   "nl": "jullie houden van",
+   "tr": "seversiniz",
+   "id": "p078"
+  },
+  {
+   "page": 32,
+   "src": "Ex 14 — Le verbe aimer",
+   "fr": "ils aiment",
+   "nl": "zij houden van",
+   "tr": "severler",
+   "id": "p079"
+  },
+  {
+   "page": 32,
+   "src": "Ex 14 — Le verbe aimer",
+   "fr": "elles aiment",
+   "nl": "zij houden van",
+   "tr": "severler",
+   "id": "p080"
+  },
+  {
+   "page": 32,
+   "src": "Ex 14 — voorbeeldzinnen",
+   "fr": "J'aime téléphoner.",
+   "nl": "Ik bel graag.",
+   "tr": "Telefon etmeyi severim.",
+   "id": "p081"
+  },
+  {
+   "page": 32,
+   "src": "Ex 14 — voorbeeldzinnen",
+   "fr": "Tu aimes chanter ?",
+   "nl": "Zing jij graag?",
+   "tr": "Şarkı söylemeyi sever misin?",
+   "id": "p082"
+  },
+  {
+   "page": 32,
+   "src": "Ex 14 — voorbeeldzinnen",
+   "fr": "Gabriel aime jouer.",
+   "nl": "Gabriel speelt graag.",
+   "tr": "Gabriel oynamayı sever.",
+   "id": "p083"
+  },
+  {
+   "page": 32,
+   "src": "Ex 14 — voorbeeldzinnen",
+   "fr": "Ella aime écouter la radio.",
+   "nl": "Ella luistert graag naar de radio.",
+   "tr": "Ella radyo dinlemeyi sever.",
+   "id": "p084"
+  },
+  {
+   "page": 32,
+   "src": "Ex 14 — voorbeeldzinnen",
+   "fr": "Nous aimons regarder la télé.",
+   "nl": "Wij kijken graag tv.",
+   "tr": "Televizyon izlemeyi severiz.",
+   "id": "p085"
+  },
+  {
+   "page": 32,
+   "src": "Ex 14 — voorbeeldzinnen",
+   "fr": "Vous aimez le weekend !",
+   "nl": "Jullie houden van het weekend!",
+   "tr": "Hafta sonunu seviyorsunuz!",
+   "id": "p086"
+  },
+  {
+   "page": 32,
+   "src": "Ex 14 — voorbeeldzinnen",
+   "fr": "Rayan et Vic aiment danser.",
+   "nl": "Rayan en Vic dansen graag.",
+   "tr": "Rayan ve Vic dans etmeyi sever.",
+   "id": "p087"
+  },
+  {
+   "page": 32,
+   "src": "Ex 14 — voorbeeldzinnen",
+   "fr": "Lia et Sara aiment la prof !",
+   "nl": "Lia en Sara houden van de leerkracht!",
+   "tr": "Lia ve Sara öğretmenlerini seviyor!",
+   "id": "p088"
+  },
+  {
+   "page": 33,
+   "src": "Ex 16d",
+   "fr": "Parlons ! Lisez les dialogues à deux.",
+   "nl": "Tijd om te spreken! Lees de dialogen per twee.",
+   "tr": "Konuşma zamanı! Diyalogları ikişer kişi okuyun.",
+   "id": "p089"
+  },
+  {
+   "page": 35,
+   "src": "Dit heb ik geleerd!",
+   "fr": "Dit heb ik geleerd! — Ik ken de woorden uit deze Mission en kan ze juist gebruiken. (oef. 3-9)",
+   "nl": "",
+   "tr": "Bu Mission'daki kelimeleri biliyorum ve doğru kullanabiliyorum.",
+   "id": "p090"
+  },
+  {
+   "page": 35,
+   "src": "Dit heb ik geleerd!",
+   "fr": "Ik kan het bepaald lidwoord (le, la, l', les) en het samengetrokken lidwoord (au, à la, à l', aux) juist gebruiken. (oef. 10-13)",
+   "nl": "",
+   "tr": "Belirli tanımlıkları (le, la, l', les) ve birleşik tanımlıkları (au, à la, à l', aux) doğru kullanabiliyorum.",
+   "id": "p091"
+  },
+  {
+   "page": 35,
+   "src": "Dit heb ik geleerd!",
+   "fr": "Ik kan de werkwoorden op -ER juist vervoegen. (oef. 15-17)",
+   "nl": "",
+   "tr": "-ER ile biten fiilleri doğru çekimleyebiliyorum.",
+   "id": "p092"
+  },
+  {
+   "page": 36,
+   "src": "Ex 18b — pictogrammen",
+   "fr": "téléphoner à un(e) ami(e)",
+   "nl": "telefoneren naar een vriend(in)",
+   "tr": "bir arkadaşı aramak",
+   "id": "p093"
+  },
+  {
+   "page": 36,
+   "src": "Ex 18b — pictogrammen",
+   "fr": "regarder la télé",
+   "nl": "tv kijken",
+   "tr": "televizyon izlemek",
+   "id": "p094"
+  },
+  {
+   "page": 36,
+   "src": "Ex 18b — pictogrammen",
+   "fr": "écouter la radio",
+   "nl": "naar de radio luisteren",
+   "tr": "radyo dinlemek",
+   "id": "p095"
+  },
+  {
+   "page": 36,
+   "src": "Ex 18b — pictogrammen",
+   "fr": "écouter de la musique",
+   "nl": "naar muziek luisteren",
+   "tr": "müzik dinlemek",
+   "id": "p096"
+  },
+  {
+   "page": 36,
+   "src": "Ex 18b — pictogrammen",
+   "fr": "danser",
+   "nl": "dansen",
+   "tr": "dans etmek",
+   "id": "p097"
+  },
+  {
+   "page": 36,
+   "src": "Ex 18b — pictogrammen",
+   "fr": "jouer à l'ordinateur",
+   "nl": "op de computer spelen",
+   "tr": "bilgisayar oynamak",
+   "id": "p098"
+  },
+  {
+   "page": 36,
+   "src": "Ex 18b — pictogrammen",
+   "fr": "jouer au basket / au foot",
+   "nl": "basketten / voetballen",
+   "tr": "basketbol / futbol oynamak",
+   "id": "p099"
+  },
+  {
+   "page": 36,
+   "src": "Ex 18b — pictogrammen",
+   "fr": "regarder un film",
+   "nl": "naar een film kijken",
+   "tr": "film izlemek",
+   "id": "p100"
+  },
+  {
+   "page": 36,
+   "src": "Ex 18b — pictogrammen",
+   "fr": "jouer de la musique",
+   "nl": "muziek spelen",
+   "tr": "müzik çalmak",
+   "id": "p101"
+  },
+  {
+   "page": 36,
+   "src": "Ex 18b — pictogrammen",
+   "fr": "jouer au tennis / au padel",
+   "nl": "tennissen / padellen",
+   "tr": "tenis / padel oynamak",
+   "id": "p102"
+  },
+  {
+   "page": 36,
+   "src": "Ex 18b — pictogrammen",
+   "fr": "chanter des chansons",
+   "nl": "liedjes zingen",
+   "tr": "şarkı söylemek",
+   "id": "p103"
+  },
+  {
+   "page": 36,
+   "src": "Ex 18b — pictogrammen",
+   "fr": "jouer",
+   "nl": "spelen",
+   "tr": "oynamak",
+   "id": "p104"
+  },
+  {
+   "page": 36,
+   "src": "Ex 18a",
+   "fr": "Écoutez bien. On parle de quelles activités ?",
+   "nl": "Luister goed. Over welke activiteiten gaat het?",
+   "tr": "İyi dinleyin. Hangi etkinliklerden söz ediliyor?",
+   "id": "p105"
+  },
+  {
+   "page": 36,
+   "src": "Ex 18b",
+   "fr": "Complétez le calendrier avec des pictogrammes.",
+   "nl": "Vul de kalender aan met pictogrammen.",
+   "tr": "Takvimi piktogramlarla tamamlayın.",
+   "id": "p106"
+  },
+  {
+   "page": 36,
+   "src": "Ex 18c",
+   "fr": "Vrai ou faux ? Regardez le calendrier et mettez une croix.",
+   "nl": "Juist of fout? Kijk op de kalender en zet een kruisje.",
+   "tr": "Doğru mu yanlış mı? Takvime bakın ve çarpı koyun.",
+   "id": "p107"
+  },
+  {
+   "page": 36,
+   "src": "Ex 18d",
+   "fr": "Regardez les couleurs du calendrier. Ils font quoi ? Quand ? Écrivez !",
+   "nl": "Bekijk de kleuren op de kalender. Wat doen ze? Wanneer? Schrijf op.",
+   "tr": "Takvimdeki renklere bakın. Ne yapıyorlar? Ne zaman? Yazın.",
+   "id": "p108"
+  },
+  {
+   "page": 37,
+   "src": "Ex 19a",
+   "fr": "Tu aimes faire quoi ? Copiez les activités dans l'agenda.",
+   "nl": "Waar houd jij van? Schrijf de activiteiten over in de agenda.",
+   "tr": "Ne yapmayı seversin? Etkinlikleri ajandaya kopyala.",
+   "id": "p109"
+  },
+  {
+   "page": 37,
+   "src": "Ex 19",
+   "fr": "lun / mar / mer / jeu / ven / sam / dim",
+   "nl": "ma / di / wo / do / vr / za / zo",
+   "tr": "pzt / sal / çar / per / cum / cmt / paz",
+   "id": "p110"
+  },
+  {
+   "page": 37,
+   "src": "Ex 19",
+   "fr": "Complétez l'agenda d'un(e) voisin(e). Faites comme dans l'exemple.",
+   "nl": "Vul de agenda van een buur in. Volg het voorbeeld.",
+   "tr": "Bir komşunun ajandasını tamamlayın. Örnekteki gibi yapın.",
+   "id": "p111"
+  },
+  {
+   "page": 37,
+   "src": "Ex 19",
+   "fr": "Lundi, tu aimes faire quoi ?",
+   "nl": "Wat doe je graag op maandag?",
+   "tr": "Pazartesi ne yapmayı seversin?",
+   "id": "p112"
+  },
+  {
+   "page": 37,
+   "src": "Ex 19",
+   "fr": "Lundi, j'aime regarder la télé.",
+   "nl": "Op maandag kijk ik graag tv.",
+   "tr": "Pazartesi televizyon izlemeyi severim.",
+   "id": "p113"
+  },
+  {
+   "page": 37,
+   "src": "Ex 19",
+   "fr": "Présentez les agendas aux autres.",
+   "nl": "Presenteer de agenda's aan de anderen.",
+   "tr": "Ajandaları diğerlerine sunun.",
+   "id": "p114"
+  },
+  {
+   "page": 37,
+   "src": "Ex 19",
+   "fr": "Lundi, moi, j'aime regarder la télé et mon voisin(e) aime chanter des chansons.",
+   "nl": "Op maandag kijk ik graag tv en mijn buur(vrouw) zingt graag liedjes.",
+   "tr": "Pazartesi ben televizyon izlemeyi severim, komşum şarkı söylemeyi sever.",
+   "id": "p115"
+  },
+  {
+   "page": 37,
+   "src": "Ex 19",
+   "fr": "Mardi, nous regardons un film.",
+   "nl": "Op dinsdag kijken wij naar een film.",
+   "tr": "Salı günü bir film izliyoruz.",
+   "id": "p116"
+  },
+  {
+   "page": 38,
+   "src": "Faits divers",
+   "fr": "la gaufre de Bruxelles",
+   "nl": "de Brusselse wafel",
+   "tr": "Brüksel waffle'ı",
+   "id": "p117"
+  },
+  {
+   "page": 38,
+   "src": "Faits divers",
+   "fr": "la gaufre de Liège",
+   "nl": "de Luikse wafel",
+   "tr": "Liège waffle'ı",
+   "id": "p118"
+  },
+  {
+   "page": 38,
+   "src": "Faits divers",
+   "fr": "En français, s'il vous plaît !",
+   "nl": "In het Frans, alstublieft!",
+   "tr": "Fransızca lütfen!",
+   "id": "p119"
+  },
+  {
+   "page": 38,
+   "src": "Faits divers",
+   "fr": "Le verlan : un taaltje apart !",
+   "nl": "Le verlan: een taaltje apart!",
+   "tr": "Verlan: ayrı bir dil!",
+   "id": "p120"
+  },
+  {
+   "page": 39,
+   "src": "Chantons!",
+   "fr": "Bonjour ! Salut !",
+   "nl": "Dag! Hoi!",
+   "tr": "Merhaba! Selam!",
+   "id": "p121"
+  },
+  {
+   "page": 39,
+   "src": "Chantons!",
+   "fr": "Tu es qui ? Tu fais quoi ?",
+   "nl": "Wie ben jij? Wat doe jij?",
+   "tr": "Sen kimsin? Ne yapıyorsun?",
+   "id": "p122"
+  },
+  {
+   "page": 39,
+   "src": "Chantons!",
+   "fr": "Moi, je suis Nathan",
+   "nl": "Ik ben Nathan",
+   "tr": "Ben Nathan'ım",
+   "id": "p123"
+  },
+  {
+   "page": 39,
+   "src": "Chantons!",
+   "fr": "et je suis de Poupehan.",
+   "nl": "en ik kom uit Poupehan.",
+   "tr": "ve Poupehan'danım.",
+   "id": "p124"
+  },
+  {
+   "page": 39,
+   "src": "Chantons!",
+   "fr": "Mon amie s'appelle Dora",
+   "nl": "Mijn vriendin heet Dora",
+   "tr": "Arkadaşımın adı Dora",
+   "id": "p125"
+  },
+  {
+   "page": 39,
+   "src": "Chantons!",
+   "fr": "Et elle aime le cinéma.",
+   "nl": "En zij houdt van de bioscoop.",
+   "tr": "O da sinemayı sever.",
+   "id": "p126"
+  },
+  {
+   "page": 39,
+   "src": "Chantons!",
+   "fr": "Je m'appelle Léon",
+   "nl": "Ik heet Léon",
+   "tr": "Adım Léon",
+   "id": "p127"
+  },
+  {
+   "page": 39,
+   "src": "Chantons!",
+   "fr": "et j'aime les chansons.",
+   "nl": "en ik hou van liedjes.",
+   "tr": "ve şarkıları severim.",
+   "id": "p128"
+  },
+  {
+   "page": 39,
+   "src": "Chantons!",
+   "fr": "Ma voisine est Dominique",
+   "nl": "Mijn buurvrouw is Dominique",
+   "tr": "Komşum Dominique",
+   "id": "p129"
+  },
+  {
+   "page": 39,
+   "src": "Chantons!",
+   "fr": "et elle aime la musique.",
+   "nl": "en zij houdt van muziek.",
+   "tr": "o da müziği sever.",
+   "id": "p130"
+  },
+  {
+   "page": 39,
+   "src": "Chantons!",
+   "fr": "Je m'appelle Renée",
+   "nl": "Ik heet Renée",
+   "tr": "Adım Renée",
+   "id": "p131"
+  },
+  {
+   "page": 39,
+   "src": "Chantons!",
+   "fr": "Et j'aime danser",
+   "nl": "En ik dans graag",
+   "tr": "Ve dans etmeyi severim",
+   "id": "p132"
+  },
+  {
+   "page": 39,
+   "src": "Chantons!",
+   "fr": "Mon prof s'appelle Théodore",
+   "nl": "Mijn leerkracht heet Théodore",
+   "tr": "Öğretmenimin adı Théodore",
+   "id": "p133"
+  },
+  {
+   "page": 39,
+   "src": "Chantons!",
+   "fr": "et il aime le sport.",
+   "nl": "en hij houdt van sport.",
+   "tr": "o da sporu sever.",
+   "id": "p134"
+  },
+  {
+   "page": 39,
+   "src": "Chantons!",
+   "fr": "Je m'appelle Clarisse",
+   "nl": "Ik heet Clarisse",
+   "tr": "Adım Clarisse",
+   "id": "p135"
+  },
+  {
+   "page": 39,
+   "src": "Chantons!",
+   "fr": "Et j'aime les exercices.",
+   "nl": "En ik hou van oefeningen.",
+   "tr": "Ve alıştırmaları severim.",
+   "id": "p136"
+  },
+  {
+   "page": 39,
+   "src": "Chantons!",
+   "fr": "Je regarde le tableau",
+   "nl": "Ik kijk naar het bord",
+   "tr": "Tahtaya bakıyorum",
+   "id": "p137"
+  },
+  {
+   "page": 39,
+   "src": "Chantons!",
+   "fr": "Et je prends mon stylo.",
+   "nl": "En ik neem mijn balpen.",
+   "tr": "Ve kalemimi alıyorum.",
+   "id": "p138"
+  },
+  {
+   "page": 39,
+   "src": "Chantons!",
+   "fr": "Au revoir ! À la prochaine !",
+   "nl": "Tot ziens! Tot de volgende keer!",
+   "tr": "Hoşça kal! Bir dahaki sefere!",
+   "id": "p139"
+  },
+  {
+   "page": 39,
+   "src": "Chantons!",
+   "fr": "Et toi, qu'est-ce que tu aimes ?",
+   "nl": "En jij, waar hou jij van?",
+   "tr": "Peki sen, neyi seversin?",
+   "id": "p140"
+  },
+  {
+   "page": 40,
+   "src": "Révision ex 1 — dialogue (antwoorden afgeleid uit de Nederlandse hints; controleer)",
+   "fr": "Bonjour ! Moi, je suis Oscar.",
+   "nl": "Dag! Ik ben Oscar.",
+   "tr": "Merhaba! Ben Oscar.",
+   "id": "p141"
+  },
+  {
+   "page": 40,
+   "src": "Révision ex 1 — dialogue (antwoorden afgeleid uit de Nederlandse hints; controleer)",
+   "fr": "Et toi ? Tu es qui ?",
+   "nl": "En jij? Wie ben jij?",
+   "tr": "Peki sen? Sen kimsin?",
+   "id": "p142"
+  },
+  {
+   "page": 40,
+   "src": "Révision ex 1 — dialogue (antwoorden afgeleid uit de Nederlandse hints; controleer)",
+   "fr": "Salut, Oscar ! Je m'appelle Selma.",
+   "nl": "Hoi, Oscar! Ik heet Selma.",
+   "tr": "Selam Oscar! Benim adım Selma.",
+   "id": "p143"
+  },
+  {
+   "page": 40,
+   "src": "Révision ex 1 — dialogue (antwoorden afgeleid uit de Nederlandse hints; controleer)",
+   "fr": "Je suis d'Arlon et j'ai douze ans.",
+   "nl": "Ik ben van Arlon en ik ben twaalf.",
+   "tr": "Arlon'danım ve on iki yaşındayım.",
+   "id": "p144"
+  },
+  {
+   "page": 40,
+   "src": "Révision ex 1 — dialogue (antwoorden afgeleid uit de Nederlandse hints; controleer)",
+   "fr": "Tu aimes faire quoi, Selma ?",
+   "nl": "Wat doe je graag, Selma?",
+   "tr": "Ne yapmayı seversin Selma?",
+   "id": "p145"
+  },
+  {
+   "page": 40,
+   "src": "Révision ex 1 — dialogue (antwoorden afgeleid uit de Nederlandse hints; controleer)",
+   "fr": "J'aime chanter et écouter de la musique.",
+   "nl": "Ik hou van zingen en luisteren naar muziek.",
+   "tr": "Şarkı söylemeyi ve müzik dinlemeyi severim.",
+   "id": "p146"
+  },
+  {
+   "page": 40,
+   "src": "Révision ex 1 — dialogue (antwoorden afgeleid uit de Nederlandse hints; controleer)",
+   "fr": "Moi, j'aime regarder des films.",
+   "nl": "Ik hou van kijken naar films.",
+   "tr": "Ben film izlemeyi severim.",
+   "id": "p147"
+  },
+  {
+   "page": 40,
+   "src": "Révision ex 1 — dialogue (antwoorden afgeleid uit de Nederlandse hints; controleer)",
+   "fr": "Au revoir !",
+   "nl": "Tot ziens!",
+   "tr": "Hoşça kal!",
+   "id": "p148"
+  },
+  {
+   "page": 40,
+   "src": "Révision ex 2 — afbeeldingen (antwoorden zijn een inschatting op basis van de foto's; controleer)",
+   "fr": "C'est un bureau.",
+   "nl": "Het is een bureau/schooltafel.",
+   "tr": "Bu masa.",
+   "id": "p149"
+  },
+  {
+   "page": 40,
+   "src": "Révision ex 2 — afbeeldingen (antwoorden zijn een inschatting op basis van de foto's; controleer)",
+   "fr": "C'est un ordinateur.",
+   "nl": "Het is een computer.",
+   "tr": "Bu bilgisayar.",
+   "id": "p150"
+  },
+  {
+   "page": 40,
+   "src": "Révision ex 2 — afbeeldingen (antwoorden zijn een inschatting op basis van de foto's; controleer)",
+   "fr": "C'est une feuille.",
+   "nl": "Het is een blad.",
+   "tr": "Bu kâğıt.",
+   "id": "p151"
+  },
+  {
+   "page": 40,
+   "src": "Révision ex 2 — afbeeldingen (antwoorden zijn een inschatting op basis van de foto's; controleer)",
+   "fr": "C'est un jour.",
+   "nl": "Het is een dag.",
+   "tr": "Bu gün.",
+   "id": "p152"
+  },
+  {
+   "page": 40,
+   "src": "Révision ex 2 — afbeeldingen (antwoorden zijn een inschatting op basis van de foto's; controleer)",
+   "fr": "C'est une gomme.",
+   "nl": "Het is een gom.",
+   "tr": "Bu silgi.",
+   "id": "p153"
+  },
+  {
+   "page": 40,
+   "src": "Révision ex 2 — afbeeldingen (antwoorden zijn een inschatting op basis van de foto's; controleer)",
+   "fr": "C'est le GSM d'André.",
+   "nl": "Het is de gsm van André.",
+   "tr": "Bu André'nin cep telefonu.",
+   "id": "p154"
+  },
+  {
+   "page": 40,
+   "src": "Révision ex 2 — afbeeldingen (antwoorden zijn een inschatting op basis van de foto's; controleer)",
+   "fr": "C'est le tableau de la classe.",
+   "nl": "Het is het bord van de klas.",
+   "tr": "Bu sınıfın tahtası.",
+   "id": "p155"
+  },
+  {
+   "page": 40,
+   "src": "Révision ex 2 — afbeeldingen (antwoorden zijn een inschatting op basis van de foto's; controleer)",
+   "fr": "C'est le texte de la page 8.",
+   "nl": "Het is de tekst van pagina 8.",
+   "tr": "Bu 8. sayfadaki metin.",
+   "id": "p156"
+  },
+  {
+   "page": 40,
+   "src": "Révision ex 2 — afbeeldingen (antwoorden zijn een inschatting op basis van de foto's; controleer)",
+   "fr": "C'est l'école de Mimoun.",
+   "nl": "Het is de school van Mimoun.",
+   "tr": "Bu Mimoun'un okulu.",
+   "id": "p157"
+  },
+  {
+   "page": 40,
+   "src": "Révision ex 2 — afbeeldingen (antwoorden zijn een inschatting op basis van de foto's; controleer)",
+   "fr": "C'est la classe de Matheo.",
+   "nl": "Het is de klas van Matheo.",
+   "tr": "Bu Matheo'nun sınıfı.",
+   "id": "p158"
+  },
+  {
+   "page": 41,
+   "src": "Ex 3 voorbeeld",
+   "fr": "Il y a deux ordinateurs.",
+   "nl": "Er zijn twee computers.",
+   "tr": "İki bilgisayar var.",
+   "id": "p159"
+  },
+  {
+   "page": 0,
+   "src": "ZOUFFF! flashcard (M3)",
+   "fr": "aimer",
+   "nl": "houden van, leuk vinden",
+   "tr": "sevmek, hoşlanmak",
+   "id": "p160"
+  }
+ ],
+ "exercises": [
+  {
+   "page": 29,
+   "ex": "6a",
+   "q": "J'aime écouter ___ (un jour. / la radio. / des amies.)",
+   "a": "la radio / des amies",
+   "nl": "Meerdere oplossingen",
+   "check": false,
+   "id": "e001"
+  },
+  {
+   "page": 29,
+   "ex": "6a",
+   "q": "J'aime téléphoner ___ (avec un GSM. / de la musique. / à une amie.)",
+   "a": "avec un GSM / à une amie",
+   "nl": "Meerdere oplossingen",
+   "check": false,
+   "id": "e002"
+  },
+  {
+   "page": 29,
+   "ex": "6a",
+   "q": "J'aime danser ___ (une chanson. / au basket. / avec un ami.)",
+   "a": "avec un ami",
+   "nl": "Meerdere oplossingen",
+   "check": false,
+   "id": "e003"
+  },
+  {
+   "page": 29,
+   "ex": "6a",
+   "q": "J'aime chanter ___ (au padel. / des chansons. / la radio.)",
+   "a": "des chansons",
+   "nl": "Meerdere oplossingen",
+   "check": false,
+   "id": "e004"
+  },
+  {
+   "page": 29,
+   "ex": "6a",
+   "q": "J'aime regarder ___ (la télé. / un film. / une semaine.)",
+   "a": "la télé / un film",
+   "nl": "Meerdere oplossingen",
+   "check": false,
+   "id": "e005"
+  },
+  {
+   "page": 29,
+   "ex": "6a",
+   "q": "J'aime jouer ___ (au basket. / avec un ami. / de la musique.)",
+   "a": "au basket / de la musique",
+   "nl": "Meerdere oplossingen",
+   "check": false,
+   "id": "e006"
+  },
+  {
+   "page": 29,
+   "ex": "8a",
+   "q": "On cherche quels mots? N'oubliez pas l'article. sept jours = ___",
+   "a": "une semaine",
+   "nl": "Welke woorden zoeken we? Vergeet het lidwoord niet.",
+   "check": true,
+   "id": "e007"
+  },
+  {
+   "page": 29,
+   "ex": "8a",
+   "q": "On cherche quels mots? N'oubliez pas l'article. samedi + dimanche = ___",
+   "a": "un weekend",
+   "nl": "Welke woorden zoeken we? Vergeet het lidwoord niet.",
+   "check": true,
+   "id": "e008"
+  },
+  {
+   "page": 29,
+   "ex": "8a",
+   "q": "On cherche quels mots? N'oubliez pas l'article. un portable = ___",
+   "a": "un ordinateur",
+   "nl": "Welke woorden zoeken we? Vergeet het lidwoord niet.",
+   "check": true,
+   "id": "e009"
+  },
+  {
+   "page": 29,
+   "ex": "8a",
+   "q": "On cherche quels mots? N'oubliez pas l'article. lundi = ___",
+   "a": "un jour",
+   "nl": "Welke woorden zoeken we? Vergeet het lidwoord niet.",
+   "check": true,
+   "id": "e010"
+  },
+  {
+   "page": 29,
+   "ex": "8a",
+   "q": "On cherche quels mots? N'oubliez pas l'article. le tennis = ___",
+   "a": "un sport",
+   "nl": "Welke woorden zoeken we? Vergeet het lidwoord niet.",
+   "check": true,
+   "id": "e011"
+  },
+  {
+   "page": 29,
+   "ex": "8a",
+   "q": "On cherche quels mots? N'oubliez pas l'article. un téléphone = ___",
+   "a": "un GSM",
+   "nl": "Welke woorden zoeken we? Vergeet het lidwoord niet.",
+   "check": true,
+   "id": "e012"
+  },
+  {
+   "page": 29,
+   "ex": "7",
+   "q": "Mots croisés: les jours de la semaine (lundi, mardi, mercredi, jeudi, vendredi, samedi, dimanche) — kruiswoordraadsel, zie pagina 29 in het boek",
+   "a": null,
+   "nl": "",
+   "check": false,
+   "id": "e013"
+  },
+  {
+   "page": 30,
+   "ex": "9b",
+   "q": "1. Salut, Lucie! Tu fais ___ cette semaine?",
+   "a": null,
+   "nl": "Luister goed en vul aan (luisteroefening — antwoord via audio)",
+   "check": false,
+   "id": "e014"
+  },
+  {
+   "page": 30,
+   "ex": "9b",
+   "q": "2. Lundi, je regarde la ___",
+   "a": null,
+   "nl": "Luister goed en vul aan (luisteroefening — antwoord via audio)",
+   "check": false,
+   "id": "e015"
+  },
+  {
+   "page": 30,
+   "ex": "9b",
+   "q": "3. Mardi, j'écoute la ___",
+   "a": null,
+   "nl": "Luister goed en vul aan (luisteroefening — antwoord via audio)",
+   "check": false,
+   "id": "e016"
+  },
+  {
+   "page": 30,
+   "ex": "9b",
+   "q": "4. Mercredi? C'est le ___ du sport.",
+   "a": null,
+   "nl": "Luister goed en vul aan (luisteroefening — antwoord via audio)",
+   "check": false,
+   "id": "e017"
+  },
+  {
+   "page": 30,
+   "ex": "9b",
+   "q": "5. Jeudi … Oh la la: ___ ! Je regarde un film.",
+   "a": null,
+   "nl": "Luister goed en vul aan (luisteroefening — antwoord via audio)",
+   "check": false,
+   "id": "e018"
+  },
+  {
+   "page": 30,
+   "ex": "9b",
+   "q": "6. Vendredi, je téléphone à une ___",
+   "a": null,
+   "nl": "Luister goed en vul aan (luisteroefening — antwoord via audio)",
+   "check": false,
+   "id": "e019"
+  },
+  {
+   "page": 30,
+   "ex": "9b",
+   "q": "7. Samedi! Ouf! Le weekend! Je chante une ___",
+   "a": null,
+   "nl": "Luister goed en vul aan (luisteroefening — antwoord via audio)",
+   "check": false,
+   "id": "e020"
+  },
+  {
+   "page": 30,
+   "ex": "9b",
+   "q": "8. Et dimanche? Moi, je joue à l'___",
+   "a": null,
+   "nl": "Luister goed en vul aan (luisteroefening — antwoord via audio)",
+   "check": false,
+   "id": "e021"
+  },
+  {
+   "page": 30,
+   "ex": "8b",
+   "q": "Ajoutez un substantif au verbe: chanter ___",
+   "a": "chanter une chanson",
+   "nl": "Voeg een zelfstandig naamwoord toe. Meerdere oplossingen mogelijk.",
+   "check": false,
+   "id": "e022"
+  },
+  {
+   "page": 30,
+   "ex": "8b",
+   "q": "Ajoutez un substantif au verbe: téléphoner à ___",
+   "a": "téléphoner à un ami / une amie",
+   "nl": "Voeg een zelfstandig naamwoord toe. Meerdere oplossingen mogelijk.",
+   "check": false,
+   "id": "e023"
+  },
+  {
+   "page": 30,
+   "ex": "8b",
+   "q": "Ajoutez un substantif au verbe: écouter ___",
+   "a": "écouter la radio / la musique",
+   "nl": "Voeg een zelfstandig naamwoord toe. Meerdere oplossingen mogelijk.",
+   "check": false,
+   "id": "e024"
+  },
+  {
+   "page": 30,
+   "ex": "8b",
+   "q": "Ajoutez un substantif au verbe: regarder ___",
+   "a": "regarder la télé / un film",
+   "nl": "Voeg een zelfstandig naamwoord toe. Meerdere oplossingen mogelijk.",
+   "check": false,
+   "id": "e025"
+  },
+  {
+   "page": 30,
+   "ex": "8b",
+   "q": "Ajoutez un substantif au verbe: aimer ___",
+   "a": "aimer le sport / la musique",
+   "nl": "Voeg een zelfstandig naamwoord toe. Meerdere oplossingen mogelijk.",
+   "check": false,
+   "id": "e026"
+  },
+  {
+   "page": 30,
+   "ex": "8b",
+   "q": "Ajoutez un substantif au verbe: téléphoner avec ___",
+   "a": "téléphoner avec un GSM / un portable",
+   "nl": "Voeg een zelfstandig naamwoord toe. Meerdere oplossingen mogelijk.",
+   "check": false,
+   "id": "e027"
+  },
+  {
+   "page": 30,
+   "ex": "9c",
+   "q": "Écrivez le nom du jour sous chaque activité (7 afbeeldingen: zwemmen, zingen, tv kijken, telefoneren, radio, computer, bioscoop)",
+   "a": null,
+   "nl": "Schrijf de naam van de dag onder elke activiteit.",
+   "check": false,
+   "id": "e028"
+  },
+  {
+   "page": 31,
+   "ex": "11c",
+   "q": "Écrivez l'article défini (le, la, l' ou les): ___ GSM",
+   "a": "le GSM",
+   "nl": "Schrijf het bepaald lidwoord.",
+   "check": false,
+   "id": "e029"
+  },
+  {
+   "page": 31,
+   "ex": "11c",
+   "q": "Écrivez l'article défini (le, la, l' ou les): ___ musique",
+   "a": "la musique",
+   "nl": "Schrijf het bepaald lidwoord.",
+   "check": false,
+   "id": "e030"
+  },
+  {
+   "page": 31,
+   "ex": "11c",
+   "q": "Écrivez l'article défini (le, la, l' ou les): ___ portable",
+   "a": "le portable",
+   "nl": "Schrijf het bepaald lidwoord.",
+   "check": false,
+   "id": "e031"
+  },
+  {
+   "page": 31,
+   "ex": "11c",
+   "q": "Écrivez l'article défini (le, la, l' ou les): ___ weekends",
+   "a": "les weekends",
+   "nl": "Schrijf het bepaald lidwoord.",
+   "check": false,
+   "id": "e032"
+  },
+  {
+   "page": 31,
+   "ex": "11c",
+   "q": "Écrivez l'article défini (le, la, l' ou les): ___ télé",
+   "a": "la télé",
+   "nl": "Schrijf het bepaald lidwoord.",
+   "check": false,
+   "id": "e033"
+  },
+  {
+   "page": 31,
+   "ex": "11c",
+   "q": "Écrivez l'article défini (le, la, l' ou les): ___ ami",
+   "a": "l'ami",
+   "nl": "Schrijf het bepaald lidwoord.",
+   "check": false,
+   "id": "e034"
+  },
+  {
+   "page": 31,
+   "ex": "11c",
+   "q": "Écrivez l'article défini (le, la, l' ou les): ___ cinéma",
+   "a": "le cinéma",
+   "nl": "Schrijf het bepaald lidwoord.",
+   "check": false,
+   "id": "e035"
+  },
+  {
+   "page": 31,
+   "ex": "11c",
+   "q": "Écrivez l'article défini (le, la, l' ou les): ___ semaines",
+   "a": "les semaines",
+   "nl": "Schrijf het bepaald lidwoord.",
+   "check": false,
+   "id": "e036"
+  },
+  {
+   "page": 31,
+   "ex": "11c",
+   "q": "Écrivez l'article défini (le, la, l' ou les): ___ chanson",
+   "a": "la chanson",
+   "nl": "Schrijf het bepaald lidwoord.",
+   "check": false,
+   "id": "e037"
+  },
+  {
+   "page": 31,
+   "ex": "11c",
+   "q": "Écrivez l'article défini (le, la, l' ou les): ___ film",
+   "a": "le film",
+   "nl": "Schrijf het bepaald lidwoord.",
+   "check": false,
+   "id": "e038"
+  },
+  {
+   "page": 31,
+   "ex": "11d",
+   "q": "Complétez le cadre: C'est ...? (enkelvoud, onbepaald) → une radio  |  bepaald: C'est ... de Camille",
+   "a": "C'est la radio de Camille.",
+   "nl": "Vul het kader aan.",
+   "check": true,
+   "id": "e039"
+  },
+  {
+   "page": 31,
+   "ex": "11d",
+   "q": "Complétez le cadre: Ce sont ...? (meervoud) → des voisines  |  bepaald: Ce sont ... de Youssef",
+   "a": "Ce sont les voisines de Youssef.",
+   "nl": "Vul het kader aan.",
+   "check": true,
+   "id": "e040"
+  },
+  {
+   "page": 31,
+   "ex": "11d",
+   "q": "Complétez le cadre: un exercice  |  bepaald",
+   "a": "C'est l'exercice de Camille.",
+   "nl": "Vul het kader aan.",
+   "check": true,
+   "id": "e041"
+  },
+  {
+   "page": 31,
+   "ex": "11d",
+   "q": "Complétez le cadre: les portables  |  onbepaald",
+   "a": "Ce sont des portables.",
+   "nl": "Vul het kader aan.",
+   "check": true,
+   "id": "e042"
+  },
+  {
+   "page": 32,
+   "ex": "13a",
+   "q": "1 (l'école) Les élèves sont ___ école.",
+   "a": "à l'",
+   "nl": "Kijk goed naar het lidwoord. Vul aan met au, à la, à l', aux.",
+   "check": false,
+   "id": "e043"
+  },
+  {
+   "page": 32,
+   "ex": "13a",
+   "q": "2 (le voisin) Nous téléphonons ___ voisin de Lina.",
+   "a": "au",
+   "nl": "Kijk goed naar het lidwoord. Vul aan met au, à la, à l', aux.",
+   "check": false,
+   "id": "e044"
+  },
+  {
+   "page": 32,
+   "ex": "13a",
+   "q": "3 (la page) Les exercices sont ___ page 11.",
+   "a": "à la",
+   "nl": "Kijk goed naar het lidwoord. Vul aan met au, à la, à l', aux.",
+   "check": false,
+   "id": "e045"
+  },
+  {
+   "page": 32,
+   "ex": "13a",
+   "q": "4 (les amies) Éléonore téléphone ___ amies de Rhim.",
+   "a": "aux",
+   "nl": "Kijk goed naar het lidwoord. Vul aan met au, à la, à l', aux.",
+   "check": false,
+   "id": "e046"
+  },
+  {
+   "page": 32,
+   "ex": "13a",
+   "q": "5 (le tableau) Le texte est ___ tableau.",
+   "a": "au",
+   "nl": "Kijk goed naar het lidwoord. Vul aan met au, à la, à l', aux.",
+   "check": false,
+   "id": "e047"
+  },
+  {
+   "page": 32,
+   "ex": "13b",
+   "q": "1 Timothy et Finn jouent ___ ordinateur.",
+   "a": "à l'",
+   "nl": "Continuez.",
+   "check": false,
+   "id": "e048"
+  },
+  {
+   "page": 32,
+   "ex": "13b",
+   "q": "2 Najib téléphone ___ voisins.",
+   "a": "aux",
+   "nl": "Continuez.",
+   "check": false,
+   "id": "e049"
+  },
+  {
+   "page": 32,
+   "ex": "13b",
+   "q": "3 Je regarde les films ___ télé.",
+   "a": "à la",
+   "nl": "Continuez.",
+   "check": false,
+   "id": "e050"
+  },
+  {
+   "page": 32,
+   "ex": "13b",
+   "q": "4 Vous téléphonez ___ profs de 5A et 5B?",
+   "a": "aux",
+   "nl": "Continuez.",
+   "check": false,
+   "id": "e051"
+  },
+  {
+   "page": 32,
+   "ex": "13b",
+   "q": "5 Anaïs regarde un film ___ cinéma.",
+   "a": "au",
+   "nl": "Continuez.",
+   "check": false,
+   "id": "e052"
+  },
+  {
+   "page": 33,
+   "ex": "15",
+   "q": "Combinez ce qui va ensemble. Clara Cornette ___ (aime / aimes / aimons / aimez / aiment)",
+   "a": "aime",
+   "nl": "Verbind wat bij elkaar hoort.",
+   "check": false,
+   "id": "e053"
+  },
+  {
+   "page": 33,
+   "ex": "15",
+   "q": "Combinez ce qui va ensemble. tu ___",
+   "a": "aimes",
+   "nl": "Verbind wat bij elkaar hoort.",
+   "check": false,
+   "id": "e054"
+  },
+  {
+   "page": 33,
+   "ex": "15",
+   "q": "Combinez ce qui va ensemble. Astérix ___",
+   "a": "aime",
+   "nl": "Verbind wat bij elkaar hoort.",
+   "check": false,
+   "id": "e055"
+  },
+  {
+   "page": 33,
+   "ex": "15",
+   "q": "Combinez ce qui va ensemble. j' ___",
+   "a": "aime",
+   "nl": "Verbind wat bij elkaar hoort.",
+   "check": false,
+   "id": "e056"
+  },
+  {
+   "page": 33,
+   "ex": "15",
+   "q": "Combinez ce qui va ensemble. vous ___",
+   "a": "aimez",
+   "nl": "Verbind wat bij elkaar hoort.",
+   "check": false,
+   "id": "e057"
+  },
+  {
+   "page": 33,
+   "ex": "15",
+   "q": "Combinez ce qui va ensemble. les amis de Nour ___",
+   "a": "aiment",
+   "nl": "Verbind wat bij elkaar hoort.",
+   "check": false,
+   "id": "e058"
+  },
+  {
+   "page": 33,
+   "ex": "15",
+   "q": "Combinez ce qui va ensemble. papa et moi, nous ___",
+   "a": "aimons",
+   "nl": "Verbind wat bij elkaar hoort.",
+   "check": false,
+   "id": "e059"
+  },
+  {
+   "page": 33,
+   "ex": "15",
+   "q": "Combinez ce qui va ensemble. Belle et Sébastien ___",
+   "a": "aiment",
+   "nl": "Verbind wat bij elkaar hoort.",
+   "check": false,
+   "id": "e060"
+  },
+  {
+   "page": 33,
+   "ex": "16a/b",
+   "q": "Écrivez les formes du verbe dans le bon ordre / Cachez et récrivez la conjugaison: aimer le weekend → j'___, tu ___, il ___, elle ___, nous ___, vous ___, ils ___, elles ___",
+   "a": "j'aime, tu aimes, il aime, elle aime, nous aimons, vous aimez, ils aiment, elles aiment",
+   "nl": "Schrijf de werkwoordsvormen in de juiste volgorde.",
+   "check": false,
+   "id": "e061"
+  },
+  {
+   "page": 33,
+   "ex": "16c",
+   "q": "Marquez le sujet. Complétez avec une forme d'aimer: • Ariane et Marcel, vous ___ les sports?",
+   "a": "aimez",
+   "nl": "Duid het onderwerp aan. Vul de juiste vorm van aimer aan.",
+   "check": false,
+   "id": "e062"
+  },
+  {
+   "page": 33,
+   "ex": "16c",
+   "q": "Marquez le sujet. Complétez avec une forme d'aimer: ▸ Oui, nous ___ le basket et le tennis.",
+   "a": "aimons",
+   "nl": "Duid het onderwerp aan. Vul de juiste vorm van aimer aan.",
+   "check": false,
+   "id": "e063"
+  },
+  {
+   "page": 33,
+   "ex": "16c",
+   "q": "Marquez le sujet. Complétez avec une forme d'aimer: • Olivier, tu ___ Chloé?",
+   "a": "aimes",
+   "nl": "Duid het onderwerp aan. Vul de juiste vorm van aimer aan.",
+   "check": false,
+   "id": "e064"
+  },
+  {
+   "page": 33,
+   "ex": "16c",
+   "q": "Marquez le sujet. Complétez avec une forme d'aimer: ▸ Non, moi, j'___ Suki.",
+   "a": "aime",
+   "nl": "Duid het onderwerp aan. Vul de juiste vorm van aimer aan.",
+   "check": false,
+   "id": "e065"
+  },
+  {
+   "page": 33,
+   "ex": "16c",
+   "q": "Marquez le sujet. Complétez avec une forme d'aimer: • Les élèves de 5A ___ la prof?",
+   "a": "aiment",
+   "nl": "Duid het onderwerp aan. Vul de juiste vorm van aimer aan.",
+   "check": false,
+   "id": "e066"
+  },
+  {
+   "page": 33,
+   "ex": "16c",
+   "q": "Marquez le sujet. Complétez avec une forme d'aimer: ▸ Oui, et la prof ___ les élèves.",
+   "a": "aime",
+   "nl": "Duid het onderwerp aan. Vul de juiste vorm van aimer aan.",
+   "check": false,
+   "id": "e067"
+  },
+  {
+   "page": 33,
+   "ex": "16c",
+   "q": "Marquez le sujet. Complétez avec une forme d'aimer: • Le voisin ___ chanter?",
+   "a": "aime",
+   "nl": "Duid het onderwerp aan. Vul de juiste vorm van aimer aan.",
+   "check": false,
+   "id": "e068"
+  },
+  {
+   "page": 33,
+   "ex": "16c",
+   "q": "Marquez le sujet. Complétez avec une forme d'aimer: ▸ Oui, les voisins ___ la musique.",
+   "a": "aiment",
+   "nl": "Duid het onderwerp aan. Vul de juiste vorm van aimer aan.",
+   "check": false,
+   "id": "e069"
+  },
+  {
+   "page": 34,
+   "ex": "17a",
+   "q": "Conjuguez: DANSER avec un ami → je/j' ___",
+   "a": "je danse avec un ami",
+   "nl": "Vervoeg de werkwoorden.",
+   "check": false,
+   "id": "e070"
+  },
+  {
+   "page": 34,
+   "ex": "17a",
+   "q": "Conjuguez: DANSER avec un ami → tu ___",
+   "a": "tu danses avec un ami",
+   "nl": "Vervoeg de werkwoorden.",
+   "check": false,
+   "id": "e071"
+  },
+  {
+   "page": 34,
+   "ex": "17a",
+   "q": "Conjuguez: DANSER avec un ami → il ___",
+   "a": "il danse avec un ami",
+   "nl": "Vervoeg de werkwoorden.",
+   "check": false,
+   "id": "e072"
+  },
+  {
+   "page": 34,
+   "ex": "17a",
+   "q": "Conjuguez: DANSER avec un ami → elle ___",
+   "a": "elle danse avec un ami",
+   "nl": "Vervoeg de werkwoorden.",
+   "check": false,
+   "id": "e073"
+  },
+  {
+   "page": 34,
+   "ex": "17a",
+   "q": "Conjuguez: DANSER avec un ami → nous ___",
+   "a": "nous dansons avec un ami",
+   "nl": "Vervoeg de werkwoorden.",
+   "check": false,
+   "id": "e074"
+  },
+  {
+   "page": 34,
+   "ex": "17a",
+   "q": "Conjuguez: DANSER avec un ami → vous ___",
+   "a": "vous dansez avec un ami",
+   "nl": "Vervoeg de werkwoorden.",
+   "check": false,
+   "id": "e075"
+  },
+  {
+   "page": 34,
+   "ex": "17a",
+   "q": "Conjuguez: DANSER avec un ami → ils ___",
+   "a": "ils dansent avec un ami",
+   "nl": "Vervoeg de werkwoorden.",
+   "check": false,
+   "id": "e076"
+  },
+  {
+   "page": 34,
+   "ex": "17a",
+   "q": "Conjuguez: DANSER avec un ami → elles ___",
+   "a": "elles dansent avec un ami",
+   "nl": "Vervoeg de werkwoorden.",
+   "check": false,
+   "id": "e077"
+  },
+  {
+   "page": 34,
+   "ex": "17a",
+   "q": "Conjuguez: CHANTER une chanson → je/j' ___",
+   "a": "je chante une chanson",
+   "nl": "Vervoeg de werkwoorden.",
+   "check": false,
+   "id": "e078"
+  },
+  {
+   "page": 34,
+   "ex": "17a",
+   "q": "Conjuguez: CHANTER une chanson → tu ___",
+   "a": "tu chantes une chanson",
+   "nl": "Vervoeg de werkwoorden.",
+   "check": false,
+   "id": "e079"
+  },
+  {
+   "page": 34,
+   "ex": "17a",
+   "q": "Conjuguez: CHANTER une chanson → il ___",
+   "a": "il chante une chanson",
+   "nl": "Vervoeg de werkwoorden.",
+   "check": false,
+   "id": "e080"
+  },
+  {
+   "page": 34,
+   "ex": "17a",
+   "q": "Conjuguez: CHANTER une chanson → elle ___",
+   "a": "elle chante une chanson",
+   "nl": "Vervoeg de werkwoorden.",
+   "check": false,
+   "id": "e081"
+  },
+  {
+   "page": 34,
+   "ex": "17a",
+   "q": "Conjuguez: CHANTER une chanson → nous ___",
+   "a": "nous chantons une chanson",
+   "nl": "Vervoeg de werkwoorden.",
+   "check": false,
+   "id": "e082"
+  },
+  {
+   "page": 34,
+   "ex": "17a",
+   "q": "Conjuguez: CHANTER une chanson → vous ___",
+   "a": "vous chantez une chanson",
+   "nl": "Vervoeg de werkwoorden.",
+   "check": false,
+   "id": "e083"
+  },
+  {
+   "page": 34,
+   "ex": "17a",
+   "q": "Conjuguez: CHANTER une chanson → ils ___",
+   "a": "ils chantent une chanson",
+   "nl": "Vervoeg de werkwoorden.",
+   "check": false,
+   "id": "e084"
+  },
+  {
+   "page": 34,
+   "ex": "17a",
+   "q": "Conjuguez: CHANTER une chanson → elles ___",
+   "a": "elles chantent une chanson",
+   "nl": "Vervoeg de werkwoorden.",
+   "check": false,
+   "id": "e085"
+  },
+  {
+   "page": 34,
+   "ex": "17a",
+   "q": "Conjuguez: ÉCOUTER la radio → je/j' ___",
+   "a": "j'écoute la radio",
+   "nl": "Vervoeg de werkwoorden.",
+   "check": false,
+   "id": "e086"
+  },
+  {
+   "page": 34,
+   "ex": "17a",
+   "q": "Conjuguez: ÉCOUTER la radio → tu ___",
+   "a": "tu écoutes la radio",
+   "nl": "Vervoeg de werkwoorden.",
+   "check": false,
+   "id": "e087"
+  },
+  {
+   "page": 34,
+   "ex": "17a",
+   "q": "Conjuguez: ÉCOUTER la radio → il ___",
+   "a": "il écoute la radio",
+   "nl": "Vervoeg de werkwoorden.",
+   "check": false,
+   "id": "e088"
+  },
+  {
+   "page": 34,
+   "ex": "17a",
+   "q": "Conjuguez: ÉCOUTER la radio → elle ___",
+   "a": "elle écoute la radio",
+   "nl": "Vervoeg de werkwoorden.",
+   "check": false,
+   "id": "e089"
+  },
+  {
+   "page": 34,
+   "ex": "17a",
+   "q": "Conjuguez: ÉCOUTER la radio → nous ___",
+   "a": "nous écoutons la radio",
+   "nl": "Vervoeg de werkwoorden.",
+   "check": false,
+   "id": "e090"
+  },
+  {
+   "page": 34,
+   "ex": "17a",
+   "q": "Conjuguez: ÉCOUTER la radio → vous ___",
+   "a": "vous écoutez la radio",
+   "nl": "Vervoeg de werkwoorden.",
+   "check": false,
+   "id": "e091"
+  },
+  {
+   "page": 34,
+   "ex": "17a",
+   "q": "Conjuguez: ÉCOUTER la radio → ils ___",
+   "a": "ils écoutent la radio",
+   "nl": "Vervoeg de werkwoorden.",
+   "check": false,
+   "id": "e092"
+  },
+  {
+   "page": 34,
+   "ex": "17a",
+   "q": "Conjuguez: ÉCOUTER la radio → elles ___",
+   "a": "elles écoutent la radio",
+   "nl": "Vervoeg de werkwoorden.",
+   "check": false,
+   "id": "e093"
+  },
+  {
+   "page": 34,
+   "ex": "17a",
+   "q": "Conjuguez: JOUER à l'ordinateur → je/j' ___",
+   "a": "je joue à l'ordinateur",
+   "nl": "Vervoeg de werkwoorden.",
+   "check": false,
+   "id": "e094"
+  },
+  {
+   "page": 34,
+   "ex": "17a",
+   "q": "Conjuguez: JOUER à l'ordinateur → tu ___",
+   "a": "tu joues à l'ordinateur",
+   "nl": "Vervoeg de werkwoorden.",
+   "check": false,
+   "id": "e095"
+  },
+  {
+   "page": 34,
+   "ex": "17a",
+   "q": "Conjuguez: JOUER à l'ordinateur → il ___",
+   "a": "il joue à l'ordinateur",
+   "nl": "Vervoeg de werkwoorden.",
+   "check": false,
+   "id": "e096"
+  },
+  {
+   "page": 34,
+   "ex": "17a",
+   "q": "Conjuguez: JOUER à l'ordinateur → elle ___",
+   "a": "elle joue à l'ordinateur",
+   "nl": "Vervoeg de werkwoorden.",
+   "check": false,
+   "id": "e097"
+  },
+  {
+   "page": 34,
+   "ex": "17a",
+   "q": "Conjuguez: JOUER à l'ordinateur → nous ___",
+   "a": "nous jouons à l'ordinateur",
+   "nl": "Vervoeg de werkwoorden.",
+   "check": false,
+   "id": "e098"
+  },
+  {
+   "page": 34,
+   "ex": "17a",
+   "q": "Conjuguez: JOUER à l'ordinateur → vous ___",
+   "a": "vous jouez à l'ordinateur",
+   "nl": "Vervoeg de werkwoorden.",
+   "check": false,
+   "id": "e099"
+  },
+  {
+   "page": 34,
+   "ex": "17a",
+   "q": "Conjuguez: JOUER à l'ordinateur → ils ___",
+   "a": "ils jouent à l'ordinateur",
+   "nl": "Vervoeg de werkwoorden.",
+   "check": false,
+   "id": "e100"
+  },
+  {
+   "page": 34,
+   "ex": "17a",
+   "q": "Conjuguez: JOUER à l'ordinateur → elles ___",
+   "a": "elles jouent à l'ordinateur",
+   "nl": "Vervoeg de werkwoorden.",
+   "check": false,
+   "id": "e101"
+  },
+  {
+   "page": 34,
+   "ex": "17b",
+   "q": "Marquez le sujet. Complétez avec la bonne forme du verbe: AIMER • Tu ___ Chloé?",
+   "a": "aimes",
+   "nl": "Duid het onderwerp aan. Vul aan met de juiste werkwoordsvorm.",
+   "check": false,
+   "id": "e102"
+  },
+  {
+   "page": 34,
+   "ex": "17b",
+   "q": "Marquez le sujet. Complétez avec la bonne forme du verbe: ▸ Non, j'___ Suki.",
+   "a": "aime",
+   "nl": "Duid het onderwerp aan. Vul aan met de juiste werkwoordsvorm.",
+   "check": false,
+   "id": "e103"
+  },
+  {
+   "page": 34,
+   "ex": "17b",
+   "q": "Marquez le sujet. Complétez avec la bonne forme du verbe: ÉCOUTER • Zoé ___ la radio?",
+   "a": "écoute",
+   "nl": "Duid het onderwerp aan. Vul aan met de juiste werkwoordsvorm.",
+   "check": false,
+   "id": "e104"
+  },
+  {
+   "page": 34,
+   "ex": "17b",
+   "q": "Marquez le sujet. Complétez avec la bonne forme du verbe: ▸ Oui! Et Tim et Muriel ___ la radio aussi.",
+   "a": "écoutent",
+   "nl": "Duid het onderwerp aan. Vul aan met de juiste werkwoordsvorm.",
+   "check": false,
+   "id": "e105"
+  },
+  {
+   "page": 34,
+   "ex": "17b",
+   "q": "Marquez le sujet. Complétez avec la bonne forme du verbe: REGARDER • Mo et Sam ___ la télé?",
+   "a": "regardent",
+   "nl": "Duid het onderwerp aan. Vul aan met de juiste werkwoordsvorm.",
+   "check": false,
+   "id": "e106"
+  },
+  {
+   "page": 34,
+   "ex": "17b",
+   "q": "Marquez le sujet. Complétez avec la bonne forme du verbe: ▸ Oui, ils ___ un film.",
+   "a": "regardent",
+   "nl": "Duid het onderwerp aan. Vul aan met de juiste werkwoordsvorm.",
+   "check": false,
+   "id": "e107"
+  },
+  {
+   "page": 34,
+   "ex": "17b",
+   "q": "Marquez le sujet. Complétez avec la bonne forme du verbe: DANSER • Tu ___ avec Ismaël?",
+   "a": "danses",
+   "nl": "Duid het onderwerp aan. Vul aan met de juiste werkwoordsvorm.",
+   "check": false,
+   "id": "e108"
+  },
+  {
+   "page": 34,
+   "ex": "17b",
+   "q": "Marquez le sujet. Complétez avec la bonne forme du verbe: ▸ Oui, et Sandrine ___ avec Samir.",
+   "a": "danse",
+   "nl": "Duid het onderwerp aan. Vul aan met de juiste werkwoordsvorm.",
+   "check": false,
+   "id": "e109"
+  },
+  {
+   "page": 34,
+   "ex": "17b",
+   "q": "Marquez le sujet. Complétez avec la bonne forme du verbe: TÉLÉPHONER • Vous ___ à qui?",
+   "a": "téléphonez",
+   "nl": "Duid het onderwerp aan. Vul aan met de juiste werkwoordsvorm.",
+   "check": false,
+   "id": "e110"
+  },
+  {
+   "page": 34,
+   "ex": "17b",
+   "q": "Marquez le sujet. Complétez avec la bonne forme du verbe: ▸ Je ___ à un ami.",
+   "a": "téléphone",
+   "nl": "Duid het onderwerp aan. Vul aan met de juiste werkwoordsvorm.",
+   "check": false,
+   "id": "e111"
+  },
+  {
+   "page": 34,
+   "ex": "17b",
+   "q": "Marquez le sujet. Complétez avec la bonne forme du verbe: CHANTER • Vous ___ une chanson?",
+   "a": "chantez",
+   "nl": "Duid het onderwerp aan. Vul aan met de juiste werkwoordsvorm.",
+   "check": false,
+   "id": "e112"
+  },
+  {
+   "page": 34,
+   "ex": "17b",
+   "q": "Marquez le sujet. Complétez avec la bonne forme du verbe: ▸ Oui, nous ___ une chanson de Zaz.",
+   "a": "chantons",
+   "nl": "Duid het onderwerp aan. Vul aan met de juiste werkwoordsvorm.",
+   "check": false,
+   "id": "e113"
+  },
+  {
+   "page": 35,
+   "ex": "1a",
+   "q": "Complétez avec des substantifs de cette Mission: • Tu écoutes de la musique? ▸ Oui, une ___ de Stromae.",
+   "a": "chanson",
+   "nl": "Met zelfstandige naamwoorden van deze Mission.",
+   "check": false,
+   "id": "e114"
+  },
+  {
+   "page": 35,
+   "ex": "1a",
+   "q": "Complétez avec des substantifs de cette Mission: • Aline téléphone à une voisine? ▸ Non, à une ___",
+   "a": "amie",
+   "nl": "Met zelfstandige naamwoorden van deze Mission.",
+   "check": false,
+   "id": "e115"
+  },
+  {
+   "page": 35,
+   "ex": "1a",
+   "q": "Complétez avec des substantifs de cette Mission: • Tu aimes le weekend? ▸ Oui, samedi et ___ sont super!",
+   "a": "dimanche",
+   "nl": "Met zelfstandige naamwoorden van deze Mission.",
+   "check": false,
+   "id": "e116"
+  },
+  {
+   "page": 35,
+   "ex": "1a",
+   "q": "Complétez avec des substantifs de cette Mission: • C'est quoi, 'mercredi'? ▸ Mercredi est un jour de la ___",
+   "a": "semaine",
+   "nl": "Met zelfstandige naamwoorden van deze Mission.",
+   "check": false,
+   "id": "e117"
+  },
+  {
+   "page": 35,
+   "ex": "1b",
+   "q": "Complétez avec des verbes à la bonne forme: • Tu fais quoi, mardi? ▸ Mardi, je ___ au tennis. Et toi?",
+   "a": "joue",
+   "nl": "Met werkwoorden in juiste vorm.",
+   "check": true,
+   "id": "e118"
+  },
+  {
+   "page": 35,
+   "ex": "1b",
+   "q": "Complétez avec des verbes à la bonne forme: • Tu ___ avec qui? ▸ Avec Rachid. Il ___ danser avec moi.",
+   "a": "danses / aime",
+   "nl": "Met werkwoorden in juiste vorm.",
+   "check": true,
+   "id": "e119"
+  },
+  {
+   "page": 35,
+   "ex": "1b",
+   "q": "Complétez avec des verbes à la bonne forme: • Vous ___ la télé? ▸ Oui, nous ___ un film de 007.",
+   "a": "regardez / regardons",
+   "nl": "Met werkwoorden in juiste vorm.",
+   "check": true,
+   "id": "e120"
+  },
+  {
+   "page": 35,
+   "ex": "1b",
+   "q": "Complétez avec des verbes à la bonne forme: • Les élèves ___ de la musique? ▸ Oui, et ils ___ des chansons aussi.",
+   "a": "écoutent / chantent",
+   "nl": "Met werkwoorden in juiste vorm.",
+   "check": true,
+   "id": "e121"
+  },
+  {
+   "page": 35,
+   "ex": "1c",
+   "q": "Complétez avec le, la, l' ou les: • Tu aimes ___ musique? ▸ Oui, j'aime ___ chansons de Zaz.",
+   "a": "la / les",
+   "nl": "Met le, la, l' of les.",
+   "check": false,
+   "id": "e122"
+  },
+  {
+   "page": 35,
+   "ex": "1c",
+   "q": "Complétez avec le, la, l' ou les: • Tu écoutes ___ radio? ▸ Non, je regarde ___ télé.",
+   "a": "la / la",
+   "nl": "Met le, la, l' of les.",
+   "check": false,
+   "id": "e123"
+  },
+  {
+   "page": 35,
+   "ex": "1c",
+   "q": "Complétez avec le, la, l' ou les: • Tu as ___ ordinateur de la prof? ▸ Non, j'ai ___ portable de Jules.",
+   "a": "l' / le",
+   "nl": "Met le, la, l' of les.",
+   "check": false,
+   "id": "e124"
+  },
+  {
+   "page": 35,
+   "ex": "1d",
+   "q": "Complétez avec au, à la, à l' ou aux: • Tu téléphones à qui? ▸ Je téléphone ___ amies de la classe.",
+   "a": "aux",
+   "nl": "Met au, à la, à l' of aux.",
+   "check": false,
+   "id": "e125"
+  },
+  {
+   "page": 35,
+   "ex": "1d",
+   "q": "Complétez avec au, à la, à l' ou aux: • Vos amis regardent un film? ▸ Oui, ils sont ___ cinéma.",
+   "a": "au",
+   "nl": "Met au, à la, à l' of aux.",
+   "check": false,
+   "id": "e126"
+  },
+  {
+   "page": 35,
+   "ex": "1d",
+   "q": "Complétez avec au, à la, à l' ou aux: • Les élèves sont ___ école du lundi ___ vendredi.",
+   "a": "à l' / au",
+   "nl": "Met au, à la, à l' of aux.",
+   "check": false,
+   "id": "e127"
+  },
+  {
+   "page": 36,
+   "ex": "18c",
+   "q": "1. Op dinsdag zingt Samuel.",
+   "a": null,
+   "nl": "Juist of fout? (antwoord via de kalender/luisteroefening)",
+   "check": false,
+   "id": "e128"
+  },
+  {
+   "page": 36,
+   "ex": "18c",
+   "q": "2. Op woensdag staat de radio aan.",
+   "a": null,
+   "nl": "Juist of fout? (antwoord via de kalender/luisteroefening)",
+   "check": false,
+   "id": "e129"
+  },
+  {
+   "page": 36,
+   "ex": "18c",
+   "q": "3. Loïc kijkt televisie op maandag en zaterdag.",
+   "a": null,
+   "nl": "Juist of fout? (antwoord via de kalender/luisteroefening)",
+   "check": false,
+   "id": "e130"
+  },
+  {
+   "page": 36,
+   "ex": "18c",
+   "q": "4. Op woensdag luisteren papa en Colette naar de radio.",
+   "a": null,
+   "nl": "Juist of fout? (antwoord via de kalender/luisteroefening)",
+   "check": false,
+   "id": "e131"
+  },
+  {
+   "page": 36,
+   "ex": "18c",
+   "q": "5. Alleen papa heeft een activiteit op dinsdag.",
+   "a": null,
+   "nl": "Juist of fout? (antwoord via de kalender/luisteroefening)",
+   "check": false,
+   "id": "e132"
+  },
+  {
+   "page": 36,
+   "ex": "18c",
+   "q": "6. Colette doet op maandag aan sport.",
+   "a": null,
+   "nl": "Juist of fout? (antwoord via de kalender/luisteroefening)",
+   "check": false,
+   "id": "e133"
+  },
+  {
+   "page": 40,
+   "ex": "1",
+   "q": "Complétez le dialogue. Hints: Dag! / jij / wie / Ik heet / van / ik ben twaalf / wat / zingen / luisteren naar / kijken naar / Tot ziens!",
+   "a": "Bonjour ! Moi, je suis Oscar. | Et toi ? Tu es qui ? | Salut, Oscar ! Je m'appelle Selma. | Je suis d'Arlon et j'ai douze ans. | Tu aimes faire quoi, Selma ? | J'aime chanter et écouter de la musique. | Moi, j'aime regarder des films. | Au revoir !",
+   "nl": "Vul de dialoog aan.",
+   "check": true,
+   "id": "e134"
+  },
+  {
+   "page": 41,
+   "ex": "3",
+   "q": "Il y a … Hoeveel zijn het er? 11 ___ (pupitres/bureaux)",
+   "a": "Il y a onze bureaux.",
+   "nl": "Kijk naar het voorbeeld.",
+   "check": true,
+   "id": "e135"
+  },
+  {
+   "page": 41,
+   "ex": "3",
+   "q": "Il y a … Hoeveel zijn het er? 7 ___ (feuilles)",
+   "a": "Il y a sept feuilles.",
+   "nl": "Kijk naar het voorbeeld.",
+   "check": true,
+   "id": "e136"
+  },
+  {
+   "page": 41,
+   "ex": "3",
+   "q": "Il y a … Hoeveel zijn het er? 9 ___ (gommes)",
+   "a": "Il y a neuf gommes.",
+   "nl": "Kijk naar het voorbeeld.",
+   "check": true,
+   "id": "e137"
+  },
+  {
+   "page": 41,
+   "ex": "3",
+   "q": "Il y a … Hoeveel zijn het er? 3 ___ (radios)",
+   "a": "Il y a trois radios.",
+   "nl": "Kijk naar het voorbeeld.",
+   "check": true,
+   "id": "e138"
+  },
+  {
+   "page": 41,
+   "ex": "4a",
+   "q": "avec la bonne forme d'être: (Mauro et Basil) → Ils ___ de Bruxelles.",
+   "a": "sont",
+   "nl": "Met de juiste vorm van être.",
+   "check": false,
+   "id": "e139"
+  },
+  {
+   "page": 41,
+   "ex": "4a",
+   "q": "avec la bonne forme d'être: Vous ___ des amis?",
+   "a": "êtes",
+   "nl": "Met de juiste vorm van être.",
+   "check": false,
+   "id": "e140"
+  },
+  {
+   "page": 41,
+   "ex": "4a",
+   "q": "avec la bonne forme d'être: (Arianne) → Elle ___ la prof de 5A.",
+   "a": "est",
+   "nl": "Met de juiste vorm van être.",
+   "check": false,
+   "id": "e141"
+  },
+  {
+   "page": 41,
+   "ex": "4a",
+   "q": "avec la bonne forme d'être: Je ___ d'Ostende.",
+   "a": "suis",
+   "nl": "Met de juiste vorm van être.",
+   "check": false,
+   "id": "e142"
+  },
+  {
+   "page": 41,
+   "ex": "4b",
+   "q": "avec le bon pronom personnel: (Félix et moi) → ___ sommes de Charleroi.",
+   "a": "Nous",
+   "nl": "Met het juiste persoonlijk voornaamwoord.",
+   "check": false,
+   "id": "e143"
+  },
+  {
+   "page": 41,
+   "ex": "4b",
+   "q": "avec le bon pronom personnel: (Julie et Noura) → ___ sont des élèves.",
+   "a": "Elles",
+   "nl": "Met het juiste persoonlijk voornaamwoord.",
+   "check": false,
+   "id": "e144"
+  },
+  {
+   "page": 41,
+   "ex": "4b",
+   "q": "avec le bon pronom personnel: (Georges) → ___ est l'ami de Noura.",
+   "a": "Il",
+   "nl": "Met het juiste persoonlijk voornaamwoord.",
+   "check": false,
+   "id": "e145"
+  },
+  {
+   "page": 41,
+   "ex": "4b",
+   "q": "avec le bon pronom personnel: ___ es qui?",
+   "a": "Tu",
+   "nl": "Met het juiste persoonlijk voornaamwoord.",
+   "check": false,
+   "id": "e146"
+  },
+  {
+   "page": 41,
+   "ex": "5a",
+   "q": "Écrivez les phrases au singulier ou au pluriel: Ce sont des voisins de l'école. (→ singulier)",
+   "a": "C'est un voisin de l'école.",
+   "nl": "Schrijf de zinnen in het enkelvoud of het meervoud.",
+   "check": false,
+   "id": "e147"
+  },
+  {
+   "page": 41,
+   "ex": "5a",
+   "q": "Écrivez les phrases au singulier ou au pluriel: Voici les amies de Marise. (→ singulier)",
+   "a": "Voici l'amie de Marise.",
+   "nl": "Schrijf de zinnen in het enkelvoud of het meervoud.",
+   "check": false,
+   "id": "e148"
+  },
+  {
+   "page": 41,
+   "ex": "5a",
+   "q": "Écrivez les phrases au singulier ou au pluriel: Il y a un cinéma? (→ pluriel)",
+   "a": "Il y a des cinémas?",
+   "nl": "Schrijf de zinnen in het enkelvoud of het meervoud.",
+   "check": false,
+   "id": "e149"
+  },
+  {
+   "page": 41,
+   "ex": "5a",
+   "q": "Écrivez les phrases au singulier ou au pluriel: C'est la feuille de Levi. (→ pluriel)",
+   "a": "Ce sont les feuilles de Levi.",
+   "nl": "Schrijf de zinnen in het enkelvoud of het meervoud.",
+   "check": false,
+   "id": "e150"
+  },
+  {
+   "page": 41,
+   "ex": "5a",
+   "q": "Écrivez les phrases au singulier ou au pluriel: C'est une chanson de Rahim. (→ pluriel)",
+   "a": "Ce sont des chansons de Rahim.",
+   "nl": "Schrijf de zinnen in het enkelvoud of het meervoud.",
+   "check": false,
+   "id": "e151"
+  },
+  {
+   "page": 41,
+   "ex": "5b",
+   "q": "Complétez les phrases: Het zijn boeken.",
+   "a": "Ce sont des livres.",
+   "nl": "Vul de zinnen aan (Ce sont / Il y a / Voici).",
+   "check": false,
+   "id": "e152"
+  },
+  {
+   "page": 41,
+   "ex": "5b",
+   "q": "Complétez les phrases: Er zijn oefeningen.",
+   "a": "Il y a des exercices.",
+   "nl": "Vul de zinnen aan (Ce sont / Il y a / Voici).",
+   "check": false,
+   "id": "e153"
+  },
+  {
+   "page": 41,
+   "ex": "5b",
+   "q": "Complétez les phrases: Hier zijn balpennen.",
+   "a": "Voici des stylos.",
+   "nl": "Vul de zinnen aan (Ce sont / Il y a / Voici).",
+   "check": false,
+   "id": "e154"
+  },
+  {
+   "page": 42,
+   "ex": "6",
+   "q": "Traduisez. Choisissez les bons mots: Het zijn liedjes van radio.",
+   "a": "Ce sont des chansons de radio.",
+   "nl": "woordenbank: c'est, ce sont, de, des, la, le, un, une, chanson, chansons, radio, radios",
+   "check": false,
+   "id": "e155"
+  },
+  {
+   "page": 42,
+   "ex": "6",
+   "q": "Traduisez. Choisissez les bons mots: Het is een pagina met oefeningen.",
+   "a": "C'est une page avec des exercices.",
+   "nl": "woordenbank: avec, C'est, Ce sont, des, un, une, exercice, exercices, page, pages",
+   "check": false,
+   "id": "e156"
+  },
+  {
+   "page": 42,
+   "ex": "7",
+   "q": "Regardez le calendrier. Complétez avec le nom du jour et la bonne forme du verbe. zingen (vrijdag): ___ , nous ___ des chansons.",
+   "a": "Vendredi, nous chantons des chansons.",
+   "nl": "MA radio · DI dansen · WO bal · DO computer · VR microfoon · ZA telefoon · ZO film",
+   "check": true,
+   "id": "e157"
+  },
+  {
+   "page": 42,
+   "ex": "7",
+   "q": "Regardez le calendrier. Complétez avec le nom du jour et la bonne forme du verbe. houden van (woensdag): ___ , Tessa ___ jouer au football.",
+   "a": "Mercredi, Tessa aime jouer au football.",
+   "nl": "MA radio · DI dansen · WO bal · DO computer · VR microfoon · ZA telefoon · ZO film",
+   "check": true,
+   "id": "e158"
+  },
+  {
+   "page": 42,
+   "ex": "7",
+   "q": "Regardez le calendrier. Complétez avec le nom du jour et la bonne forme du verbe. dansen (dinsdag): ___ , les élèves ___ à l'école.",
+   "a": "Mardi, les élèves dansent à l'école.",
+   "nl": "MA radio · DI dansen · WO bal · DO computer · VR microfoon · ZA telefoon · ZO film",
+   "check": true,
+   "id": "e159"
+  },
+  {
+   "page": 42,
+   "ex": "7",
+   "q": "Regardez le calendrier. Complétez avec le nom du jour et la bonne forme du verbe. spelen (donderdag): ___ , Max ___ à l'ordinateur.",
+   "a": "Jeudi, Max joue à l'ordinateur.",
+   "nl": "MA radio · DI dansen · WO bal · DO computer · VR microfoon · ZA telefoon · ZO film",
+   "check": true,
+   "id": "e160"
+  },
+  {
+   "page": 42,
+   "ex": "7",
+   "q": "Regardez le calendrier. Complétez avec le nom du jour et la bonne forme du verbe. telefoneren (zaterdag): ___ , vous ___ à des amis.",
+   "a": "Samedi, vous téléphonez à des amis.",
+   "nl": "MA radio · DI dansen · WO bal · DO computer · VR microfoon · ZA telefoon · ZO film",
+   "check": true,
+   "id": "e161"
+  },
+  {
+   "page": 42,
+   "ex": "7",
+   "q": "Regardez le calendrier. Complétez avec le nom du jour et la bonne forme du verbe. luisteren naar (maandag): ___ , tu ___ la radio?",
+   "a": "Lundi, tu écoutes la radio?",
+   "nl": "MA radio · DI dansen · WO bal · DO computer · VR microfoon · ZA telefoon · ZO film",
+   "check": true,
+   "id": "e162"
+  },
+  {
+   "page": 42,
+   "ex": "7",
+   "q": "Regardez le calendrier. Complétez avec le nom du jour et la bonne forme du verbe. kijken naar (zondag): ___ , je ___ un film au cinéma.",
+   "a": "Dimanche, je regarde un film au cinéma.",
+   "nl": "MA radio · DI dansen · WO bal · DO computer · VR microfoon · ZA telefoon · ZO film",
+   "check": true,
+   "id": "e163"
+  },
+  {
+   "page": 42,
+   "ex": "8a",
+   "q": "Complétez avec le, la, l' ou les: 1 Voici ___ radio de Caro.",
+   "a": "la",
+   "nl": "Vul aan.",
+   "check": false,
+   "id": "e164"
+  },
+  {
+   "page": 42,
+   "ex": "8a",
+   "q": "Complétez avec le, la, l' ou les: 2 J'aime ___ portable de Marc.",
+   "a": "le",
+   "nl": "Vul aan.",
+   "check": false,
+   "id": "e165"
+  },
+  {
+   "page": 42,
+   "ex": "8a",
+   "q": "Complétez avec le, la, l' ou les: 3 C'est ___ ordinateur de Bilal.",
+   "a": "l'",
+   "nl": "Vul aan.",
+   "check": false,
+   "id": "e166"
+  },
+  {
+   "page": 42,
+   "ex": "8a",
+   "q": "Complétez avec le, la, l' ou les: 4 Voici ___ cinéma.",
+   "a": "le",
+   "nl": "Vul aan.",
+   "check": false,
+   "id": "e167"
+  },
+  {
+   "page": 42,
+   "ex": "8a",
+   "q": "Complétez avec le, la, l' ou les: 5 Prenez ___ exercices 2 et 3.",
+   "a": "les",
+   "nl": "Vul aan.",
+   "check": false,
+   "id": "e168"
+  },
+  {
+   "page": 42,
+   "ex": "8a",
+   "q": "Complétez avec le, la, l' ou les: 6 C'est ___ semaine d'Yves.",
+   "a": "la",
+   "nl": "Vul aan.",
+   "check": false,
+   "id": "e169"
+  },
+  {
+   "page": 42,
+   "ex": "8b",
+   "q": "Complétez avec à la, à l', au ou aux: 1 Je téléphone ___ amis d'Annick.",
+   "a": "aux",
+   "nl": "Vul aan.",
+   "check": false,
+   "id": "e170"
+  },
+  {
+   "page": 42,
+   "ex": "8b",
+   "q": "Complétez avec à la, à l', au ou aux: 2 Nous écoutons les chansons ___ radio.",
+   "a": "à la",
+   "nl": "Vul aan.",
+   "check": false,
+   "id": "e171"
+  },
+  {
+   "page": 42,
+   "ex": "8b",
+   "q": "Complétez avec à la, à l', au ou aux: 3 Vous aimez regarder des films ___ cinéma.",
+   "a": "au",
+   "nl": "Vul aan.",
+   "check": false,
+   "id": "e172"
+  },
+  {
+   "page": 42,
+   "ex": "8b",
+   "q": "Complétez avec à la, à l', au ou aux: 4 Les élèves sont ___ école?",
+   "a": "à l'",
+   "nl": "Vul aan.",
+   "check": false,
+   "id": "e173"
+  },
+  {
+   "page": 42,
+   "ex": "8b",
+   "q": "Complétez avec à la, à l', au ou aux: 5 Les exercices sont ___ tableau.",
+   "a": "au",
+   "nl": "Vul aan.",
+   "check": false,
+   "id": "e174"
+  },
+  {
+   "page": 42,
+   "ex": "8b",
+   "q": "Complétez avec à la, à l', au ou aux: 6 Le texte est ___ page 4.",
+   "a": "à la",
+   "nl": "Vul aan.",
+   "check": false,
+   "id": "e175"
+  }
+ ],
+ "rules": [
+  {
+   "page": 29,
+   "fr": "J'aime + infinitif",
+   "nl": "Om in het Frans te zeggen wat je graag doet, gebruik je j'aime + de infinitief van het werkwoord. Bv. J'aime écouter des chansons.",
+   "tr": "Fransızcada neyi sevdiğini söylemek için j'aime + fiilin mastarı kullanılır. Örn. J'aime écouter des chansons."
+  },
+  {
+   "page": 31,
+   "fr": "Les articles définis: le / la / l' / les",
+   "nl": "Bepaald lidwoord: le (m), la (v), l' voor een klinker, les (meervoud). Let op! Le/la wordt l' voor een woord dat begint met een klinker.",
+   "tr": "Belirli tanımlık: le (eril), la (dişil), ünlüyle başlayan kelimelerde l', çoğul: les."
+  },
+  {
+   "page": 32,
+   "fr": "au, à la, à l', aux",
+   "nl": "à + le = au | à + la = à la | à + l' = à l' | à + les = aux",
+   "tr": "à + le = au | à + la = à la | à + l' = à l' | à + les = aux (bir yerde / birine)"
+  },
+  {
+   "page": 34,
+   "fr": "Les verbes en -ER",
+   "nl": "Eerst vorm je de stam: knip -ER van het werkwoord weg. Dan voeg je de uitgang toe (voor alle regelmatige werkwoorden dezelfde): -e, -es, -e, -e, -ons, -ez, -ent, -ent.",
+   "tr": "Önce kök bulunur: fiilin -ER'i atılır. Sonra ek eklenir: -e, -es, -e, -e, -ons, -ez, -ent, -ent."
+  }
+ ]
+}
