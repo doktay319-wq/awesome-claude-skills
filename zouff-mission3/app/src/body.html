@@ -2,7 +2,7 @@
 <script>
 const CARDS = /*__DATA__*/[];
 const LS = 'zouff-m3-v2', LS_OLD = 'zouff-m3-v1';
-const DEF = {ui:'nl', mode:'card', kind:'all', pages:[], order:'seq', unknown:false, front:'fr', help:true, dir:'nl-fr', accent:'lenient', speak:true};
+const DEF = {ui:'nl', mode:'card', kind:'all', pages:[], order:'seq', unknown:false, front:'fr', trMode:'btn', dir:'nl-fr', accent:'lenient', speak:true};
 let store = {users:[], cur:null, set:{}, legacy:null};
 try {
   const r = localStorage.getItem(LS);
@@ -27,7 +27,7 @@ const TX = {
     cardT: 'Kaartjes', cardD: 'Bekijk het woord, tik op het kaartje en draai het om.',
     writeT: 'Schrijven', writeD: 'Bekijk het woord en schrijf de vertaling.',
     face: 'Voorkant van het kaartje', dir: 'Richting', frontFr: 'Voorkant Frans', frontNl: 'Voorkant Nederlands',
-    help: 'Turkse hulp (achterkant van het kaartje en hints)', backOther: 'Achterkant toont de andere taal',
+    trL: 'Turkse hulp', trBtn: 'Met knop', trBack: 'Op de achterkant', trOff: 'Uit', trShow: 'Turks',
     accL: 'Accentfout telt als goed (met waarschuwing)', accS: 'Accentfout telt als fout',
     content: 'Inhoud', all: 'Alles', words: 'Woorden', phrases: 'Zinnen',
     pages: "Pagina's", allPages: "Alle pagina's", pg: 'p.', order: 'Volgorde', seq: 'Zoals in het boek', shuf: 'Door elkaar',
@@ -53,7 +53,7 @@ const TX = {
     cardT: 'Kart', cardD: 'Kelimeye bak, karta dokun, çevir ve Türkçesini gör.',
     writeT: 'Yazma', writeD: 'Kelimeyi gör, karşılığını yaz.',
     face: 'Kartın ön yüzü', dir: 'Yön', frontFr: 'Önde Fransızca', frontNl: 'Önde Felemenkçe',
-    help: 'Türkçe yardım (kartın arkası ve ipuçları)', backOther: 'Kartın arkası diğer dili gösterir',
+    trL: 'Türkçe yardım', trBtn: 'Düğmeyle', trBack: 'Kartın arkasında', trOff: 'Kapalı', trShow: 'Türkçe',
     accL: 'Aksan hatası kabul (uyarılı)', accS: 'Aksan hatası yanlış sayılır',
     content: 'İçerik', all: 'Hepsi', words: 'Kelimeler', phrases: 'Cümleler',
     pages: 'Sayfalar', allPages: 'Tüm sayfalar', pg: 's.', order: 'Sıra', seq: 'Kitaptaki sıra', shuf: 'Karışık',
@@ -133,7 +133,7 @@ function check(card, lang, input) {
 }
 
 /* ---------- oefensessie ---------- */
-function newSess(q) { return {q, i:0, right:0, total:q.length, wrong:[], retried:{}, shown:false, hint:false, res:null, val:'', logged:false}; }
+function newSess(q) { return {q, i:0, right:0, total:q.length, wrong:[], retried:{}, shown:false, trShow:false, hint:false, res:null, val:'', logged:false}; }
 function start() {
   const p = pool();
   if (!p.length || !user()) return;
@@ -150,7 +150,7 @@ function finish() {
   }
 }
 function next() {
-  sess.i++; sess.shown = false; sess.hint = false; sess.res = null; sess.val = '';
+  sess.i++; sess.shown = false; sess.trShow = false; sess.hint = false; sess.res = null; sess.val = '';
   if (sess.i >= sess.q.length) finish();
   render();
 }
@@ -213,8 +213,9 @@ function homeView() {
       <button type="button" class="mode" data-a="set" data-k="mode" data-v="write" aria-pressed="${S.mode === 'write'}"><b>${t('writeT')}</b><span>${t('writeD')}</span></button>
     </div></section>
   <section class="sec"><h2>${S.mode === 'write' ? t('dir') : t('face')}</h2>${dirs}
+    <h2>${t('trL')}</h2>
     ${S.mode === 'write' ? seg('accent', [['lenient', t('accL')], ['strict', t('accS')]]) : ''}
-    ${tog('help', t('help'))}</section>
+    ${seg('trMode', [['btn', t('trBtn')], ['back', t('trBack')], ['off', t('trOff')]])}</section>
   <section class="sec"><h2>${t('content')}</h2>${seg('kind', [['all', t('all')], ['word', t('words')], ['phrase', t('phrases')]])}</section>
   <section class="sec"><h2>${t('pages')}</h2><div class="seg">
     <button type="button" class="chip" data-a="page" data-v="all" aria-pressed="${!S.pages.length}">${t('allPages')}</button>${chips}</div></section>
@@ -256,7 +257,7 @@ const spk = (text, lang) => `<button type="button" class="spk" data-a="say" data
 
 function cardView() {
   const c = sess.q[sess.i], f = S.front, o = f === 'fr' ? 'nl' : 'fr';
-  const bk = S.help ? 'tr' : o, big = c[f].length > 28 ? 'mid' : 'big', bigB = c[bk].length > 28 ? 'mid' : 'big';
+  const big = c[f].length > 28 ? 'mid' : 'big', bigO = c[o].length > 28 ? 'mid' : 'big';
   return barView() + `
   <button type="button" class="flip ${sess.shown ? 'flipped' : ''}" data-a="flip" aria-label="${t('flipLabel')}">
     <span class="flipin">
@@ -266,14 +267,15 @@ function cardView() {
         <span class="hint">${t('tapHint')}</span>
       </span>
       <span class="face back" aria-hidden="${!sess.shown}">
-        <span class="prompt"><span class="lang ${bk}">${LN(bk).toUpperCase()}</span><span class="src">${esc(pageLabel(c.page))}</span></span>
-        <span class="blk"><span class="w ${bigB} ${bk}">${esc(c[bk])}</span></span>
-        <span class="blk"><span class="src">${esc(c[f])}</span></span>
+        <span class="prompt"><span class="lang ${o}">${LN(o).toUpperCase()}</span><span class="src">${esc(pageLabel(c.page))}</span></span>
+        <span class="blk"><span class="w ${bigO} ${o}">${esc(c[o])}</span></span>
+        ${S.trMode === 'back' ? `<span class="blk"><span class="lang tr">${t('turks')}</span><span class="w mid tr">${esc(c.tr)}</span></span>` : ''}
         <span class="hint">${t('backHint')}</span>
       </span>
     </span>
   </button>
-  <div class="row">${spk(c[f], f)}<span class="hint" style="margin-left:auto;text-align:right">${t('againHint')}</span></div>
+  ${S.trMode === 'btn' ? `<div id="trbox" class="trbox" ${sess.trShow ? '' : 'hidden'}><span class="lang tr">${t('turks')}</span><span class="w mid tr">${esc(c.tr)}</span></div>` : ''}
+  <div class="row">${spk(c[f], f)}${spk(c[o], o)}${S.trMode === 'btn' ? `<button type="button" class="ghost trb" data-a="trshow" aria-pressed="${!!sess.trShow}">${t('trShow')}</button>` : ''}<span class="hint" style="margin-left:auto;text-align:right">${t('againHint')}</span></div>
   <div class="acts"><button type="button" class="no" data-a="again">${t('again')}</button><button type="button" class="yes" data-a="know">${t('know')}</button></div>`;
 }
 
@@ -286,14 +288,14 @@ function writeView() {
   if (r) {
     const cls = r === 'ok' ? 'ok' : good ? 'acc' : 'no';
     const head = r === 'ok' ? t('ok') : r === 'accent' ? (good ? t('near') : t('accErr')) : t('right');
-    fb = `<div class="fb ${cls}"><b>${head}</b><div class="w mid ${to}">${esc(c[to])}</div>${S.help ? `<div class="src">${t('trLine')} ${esc(c.tr)}</div>` : ''}</div>`;
+    fb = `<div class="fb ${cls}"><b>${head}</b><div class="w mid ${to}">${esc(c[to])}</div>${S.trMode !== 'off' ? `<div class="src">${t('trLine')} ${esc(c.tr)}</div>` : ''}</div>`;
   }
   const cls = r ? (r === 'ok' ? 'ok' : good ? 'acc' : 'no') : '';
   return barView() + `
   <div class="card" style="min-height:0">
     <div class="prompt"><span class="lang ${from}">${LN(from).toUpperCase()}</span>${S.speak ? spk(c[from], from) : '<span></span>'}</div>
     <div class="w ${big} ${from}">${esc(c[from])}</div>
-    ${S.help ? (sess.hint ? `<div class="src">${t('trLine')} ${esc(c.tr)}</div>` : `<button type="button" class="link" data-a="hint" style="align-self:flex-start">${t('hint')}</button>`) : ''}
+    ${S.trMode !== 'off' ? (sess.hint ? `<div class="src">${t('trLine')} ${esc(c.tr)}</div>` : `<button type="button" class="link" data-a="hint" style="align-self:flex-start">${t('hint')}</button>`) : ''}
   </div>
   <form id="f" autocomplete="off" class="sec">
     <label class="src" for="ans">${t('writeIn', LN(to))}</label>
@@ -308,7 +310,7 @@ function doneView() {
   const w = sess.wrong;
   return `<header class="top"><div><h1>${t('done')}</h1><p>${t('first', sess.right, sess.total)}</p></div></header>
   <div class="score">${sess.right} / ${sess.total}</div>
-  ${w.length ? `<section class="sec"><h2>${t('redo', w.length)}</h2><ul class="list">${w.map(c => `<li><b>${esc(c.fr)}</b><span>${esc(c.nl)}${S.help ? ' · ' + esc(c.tr) : ''}</span></li>`).join('')}</ul></section>` : `<div class="empty">${t('allOk')}</div>`}
+  ${w.length ? `<section class="sec"><h2>${t('redo', w.length)}</h2><ul class="list">${w.map(c => `<li><b>${esc(c.fr)}</b><span>${esc(c.nl)}${S.trMode !== 'off' ? ' · ' + esc(c.tr) : ''}</span></li>`).join('')}</ul></section>` : `<div class="empty">${t('allOk')}</div>`}
   ${w.length ? `<button type="button" class="go" data-a="retry">${t('retry')}</button>` : ''}
   <button type="button" class="ghost" data-a="home">${t('homeB')}</button>`;
 }
@@ -376,6 +378,7 @@ document.addEventListener('click', e => {
     else { store.users = store.users.filter(u => u.id !== d.id); if (store.cur === d.id) store.cur = null; arm = ''; save(); render(); }
   }
   else if (a === 'flip') { sess.shown = !sess.shown; el.classList.toggle('flipped', sess.shown); el.querySelectorAll('.face').forEach((f, i) => f.setAttribute('aria-hidden', String(i === 0 ? sess.shown : !sess.shown))); }
+  else if (a === 'trshow') { sess.trShow = !sess.trShow; const bx = document.getElementById('trbox'); if (bx) bx.hidden = !sess.trShow; el.setAttribute('aria-pressed', String(sess.trShow)); }
   else if (a === 'know') { mark(sess.q[sess.i], true); next(); }
   else if (a === 'again') { mark(sess.q[sess.i], false); next(); }
   else if (a === 'say') speak(d.t, d.l);
