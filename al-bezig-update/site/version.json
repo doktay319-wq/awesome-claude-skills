@@ -1,9 +1,9 @@
 {
-    "versionCode":  3,
-    "versionName":  "1.0.2",
+    "versionCode":  4,
+    "versionName":  "1.0.3",
     "apk":  "AL-BEZIG-debug.apk",
-    "sha256":  "9c53f0ecda2c2a8318d8143ea3b22373434ef490f0c6e2231fe1782657f1b7e0",
-    "notes":  "Simdi denetle dugmesi, saatlik kontrol / Nu controleren-knop, uurlijkse check",
+    "sha256":  "e86f946db3459c0f513d105828b8a1db3d5ed674a7f14272de5198ac738ef962",
+    "notes":  "Android 8 duzeltmesi, daha guvenilir icerik indirme / Android 8 fix, betrouwbaardere inhoud",
     "contentVersion":  1,
     "content":  {
                     "lessons.json":  "6c258931c745bd259a22470c4424b6e99cfd43f35a1124a09d3d2a162a55cec8",
