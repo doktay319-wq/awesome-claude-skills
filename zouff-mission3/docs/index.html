@@ -136,6 +136,16 @@ button:focus-visible,input:focus-visible{outline:3px solid var(--teal);outline-o
 .syncl.local,.syncl.readonly,.syncl.error{background:var(--warn-soft);color:var(--ink);padding:12px 14px;border-radius:14px;font-weight:600}
 .rk{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;margin-right:10px;font-family:var(--font-body);font-style:normal;font-weight:800;font-size:.95rem;background:var(--line);color:var(--muted);vertical-align:middle}
 .rk.r1{background:#F6B73C;color:#3a2a00}.rk.r2{background:#C9D3D6;color:#1d2a2e}.rk.r3{background:#D9915A;color:#2e1708}
+.mini{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;color:var(--muted);font-size:.85rem;margin-top:4px;font-variant-numeric:tabular-nums}
+.lead{font-style:normal;font-weight:800;font-size:.75rem;letter-spacing:.04em;text-transform:uppercase;background:var(--nl-soft);color:var(--nl);padding:2px 10px;border-radius:999px}
+.chips3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.chips3 div{background:var(--surface);border:2px solid var(--line);border-radius:16px;padding:12px 14px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.chips3 b{font-family:var(--font-display);font-weight:600;font-size:1.5rem;color:var(--teal);font-variant-numeric:tabular-nums}
+.chips3 span{color:var(--muted);font-size:.82rem}
+.confetti{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:50}
+.confetti i{position:absolute;top:-16px;width:10px;height:15px;border-radius:2px;animation:fall 1.2s ease-in forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(560deg)}}
+@media (prefers-reduced-motion:reduce){.confetti{display:none}}
 /* profiles + tracking */
 .lsw{display:inline-flex;border:2px solid var(--line);border-radius:999px;overflow:hidden;background:var(--surface)}
 .lsw button{padding:8px 14px;min-height:40px;font-weight:800;font-size:.85rem;letter-spacing:.06em}
@@ -193,7 +203,7 @@ function save() { store.set = S; try { localStorage.setItem(LS, JSON.stringify(s
 let DB = null, sync = 'loading', flushT = null, flushing = false, kidsSnap = null, progSnap = null, cfgDone = false, nameDraft = '';
 const pend = new Map(), inflight = new Set();
 const kidRec = u => ({name: u.name, pin: u.pin || '', createdAt: u.createdAt || 0});
-const progRec = u => ({known: u.known || {}, miss: u.miss || {}, hist: u.hist || [], last: u.last || 0});
+const progRec = u => ({known: u.known || {}, miss: u.miss || {}, hist: u.hist || [], last: u.last || 0, days: u.days || {}});
 const byId = id => store.users.find(x => x.id === id);
 function queue(path, get, del) { pend.set(path, {get, del: !!del}); scheduleFlush(900); }
 function scheduleFlush(ms) { if (!DB) return; clearTimeout(flushT); flushT = setTimeout(flush, ms); }
@@ -227,7 +237,7 @@ function rebuild() {
   store.users = [...kidsSnap.entries()].map(([id, k]) => {
     const p = progSnap.get(id) || {}, l = old.get(id), keep = l && (pend.has('progress/' + id) || inflight.has('progress/' + id));
     return {id, name: k.name || '?', pin: k.pin || '', createdAt: k.createdAt || 0,
-      known: keep ? l.known : (p.known || {}), miss: keep ? l.miss : (p.miss || {}), hist: keep ? l.hist : (p.hist || []), last: keep ? l.last : (p.last || 0)};
+      known: keep ? l.known : (p.known || {}), miss: keep ? l.miss : (p.miss || {}), hist: keep ? l.hist : (p.hist || []), last: keep ? l.last : (p.last || 0), days: keep ? (l.days || {}) : (p.days || {})};
   }).sort((a, b) => (a.createdAt || 0) - (b.createdAt || 0));
   if (store.cur && !byId(store.cur)) { store.cur = null; if (['home', 'play', 'done'].includes(view)) view = 'users'; }
   save();
@@ -336,7 +346,7 @@ const TX = {
     pinRepeat: 'Tik dezelfde pincode nog eens', pinWrong: 'Verkeerde pincode. Probeer opnieuw.', pinNoMatch: 'De pincodes zijn niet gelijk. Begin opnieuw.',
     parentCode: 'Ouderscode', parentCodeD: 'Alleen voor ouders.', parentSet: 'Kies een ouderscode', parentOld: 'Tik de huidige ouderscode in',
     parentBtn: 'Ouderscode instellen', parentChg: 'Ouderscode wijzigen', parentHint: 'Met een ouderscode zijn het verwijderen van een kind en een vergeten pincode beveiligd.', loading: 'Laden…', syncLive: 'Gedeeld: elk toestel toont dezelfde kinderen en voortgang.', syncLocal: 'Niet verbonden: namen en voortgang blijven alleen op dit toestel. Open deze pagina ingelogd bij claude.ai (zelfde account als de andere toestellen) om alle kinderen te zien.', syncRO: 'Je ziet de gedeelde lijst, maar opslaan lukt niet. Je account heeft schrijfrechten nodig (Editor in het deelmenu).', syncErr: 'Verbinding mislukt. Opnieuw proberen…', syncDevice: 'Namen en voortgang worden op dit toestel bewaard.',
-    forgot: 'Pincode vergeten? (ouderscode nodig)', rank: (r, n) => `Plek ${r} van ${n}`, delTitle: n => `${n} verwijderen`,
+    forgot: 'Pincode vergeten? (ouderscode nodig)', rank: (r, n) => `Plek ${r} van ${n}`, today: 'Vandaag', week: 'Deze week', leader: 'Leider van de week', streakL: 'Reeks', streakN: n => `${n} ${n === 1 ? 'dag' : 'dagen'}`, pts: 'goede antwoorden', delTitle: n => `${n} verwijderen`,
     LN: {fr:'Frans', nl:'Nederlands', tr:'Turks'},
     dirs: {'nl-fr':'Nederlands → Frans', 'fr-nl':'Frans → Nederlands'},
   },
@@ -368,7 +378,7 @@ const TX = {
     pinRepeat: 'Aynı pin kodunu tekrar gir', pinWrong: 'Yanlış pin kodu. Tekrar dene.', pinNoMatch: 'Pin kodları aynı değil. Baştan başla.',
     parentCode: 'Ebeveyn kodu', parentCodeD: 'Sadece ebeveynler için.', parentSet: 'Bir ebeveyn kodu seç', parentOld: 'Mevcut ebeveyn kodunu gir',
     parentBtn: 'Ebeveyn kodu belirle', parentChg: 'Ebeveyn kodunu değiştir', parentHint: 'Ebeveyn kodu varsa çocuk silme ve unutulan pin kodu korunur.', loading: 'Yükleniyor…', syncLive: 'Ortak: her cihaz aynı çocukları ve ilerlemeyi gösterir.', syncLocal: 'Bağlı değil: adlar ve ilerleme sadece bu cihazda kalır. Tüm çocukları görmek için sayfayı claude.ai hesabına giriş yaparak (diğer cihazlarla aynı hesap) aç.', syncRO: 'Ortak listeyi görüyorsun ama kayıt yapamıyorsun. Hesabının yazma yetkisi (paylaşım menüsünde Editor) olmalı.', syncErr: 'Bağlantı kurulamadı. Tekrar deneniyor…', syncDevice: 'Adlar ve ilerleme bu cihazda saklanır.',
-    forgot: 'Pin kodunu mu unuttun? (ebeveyn kodu gerekir)', rank: (r, n) => `${n} çocuk arasında ${r}. sıra`, delTitle: n => `${n} silinsin mi`,
+    forgot: 'Pin kodunu mu unuttun? (ebeveyn kodu gerekir)', rank: (r, n) => `${n} çocuk arasında ${r}. sıra`, today: 'Bugün', week: 'Bu hafta', leader: 'Haftanın lideri', streakL: 'Seri', streakN: n => `${n} gün`, pts: 'doğru cevap', delTitle: n => `${n} silinsin mi`,
     LN: {fr:'Fransızca', nl:'Felemenkçe', tr:'Türkçe'},
     dirs: {'nl-fr':'Felemenkçe → Fransızca', 'fr-nl':'Fransızca → Felemenkçe'},
   }
@@ -426,7 +436,7 @@ const askParent = (title, ok, back) => askPin({title, sub: t('parentCodeD'), che
 function newKid(name) {
   askPin({mode:'set', title: t('pinSet', name), sub: t('pinSetD'), back:'users', ok: p => {
     const id = 'u' + Date.now().toString(36);
-    const u = {id, name, pin: hp(id, p), createdAt: Date.now(), known: {}, miss: {}, hist: [], last: 0};
+    const u = {id, name, pin: hp(id, p), createdAt: Date.now(), known: {}, miss: {}, hist: [], last: 0, days: {}};
     if (store.legacy && !store.users.length) { u.known = store.legacy.known; u.miss = store.legacy.miss; store.legacy = null; }
     store.users.push(u); nameDraft = '';
     if (kidsSnap) { kidsSnap.set(id, kidRec(u)); progSnap.set(id, progRec(u)); }
@@ -524,6 +534,7 @@ function start() {
 }
 function finish() {
   view = 'done';
+  if (sess.right >= sess.total && sess.total > 0) celebrate(60);
   const u = user();
   if (u && !sess.logged) {
     sess.logged = true;
@@ -540,6 +551,8 @@ function mark(card, good) {
   const u = user(); if (!u) return;
   u.last = Date.now();
   if (good) {
+    u.days = u.days || {}; u.days[todayKey()] = (u.days[todayKey()] || 0) + 1;
+    Object.keys(u.days).sort().slice(0, -40).forEach(k => delete u.days[k]);
     if (!sess.retried[card.id]) sess.right++;
     u.known[card.id] = 1;
     if (u.miss[card.id]) u.miss[card.id] = Math.max(0, u.miss[card.id] - 1);
@@ -571,15 +584,48 @@ function pinView() {
   <div class="row" style="justify-content:center">${pin.forgot ? `<button type="button" class="link" data-a="forgot">${t('forgot')}</button>` : ''}<button type="button" class="link" data-a="pincancel">${t('back')}</button></div>`;
 }
 
+const dkey = d => d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+const todayKey = () => dkey(new Date());
+const todayPts = u => (u.days || {})[todayKey()] || 0;
+function streak(u) {
+  const days = u.days || {}; const d = new Date();
+  if (!days[dkey(d)]) d.setDate(d.getDate() - 1);
+  let n = 0;
+  while (days[dkey(d)]) { n++; d.setDate(d.getDate() - 1); }
+  return n;
+}
+function weekPts(u) {
+  const d = new Date(); d.setDate(d.getDate() - ((d.getDay() + 6) % 7));
+  const start = dkey(d);
+  return Object.entries(u.days || {}).filter(([k]) => k >= start).reduce((a, [, v]) => a + v, 0);
+}
+function leaders() {
+  const best = Math.max(0, ...store.users.map(weekPts));
+  return best > 0 ? store.users.filter(u => weekPts(u) === best).map(u => u.id) : [];
+}
+function celebrate(n) {
+  try {
+    const box = document.createElement('div'); box.className = 'confetti';
+    const cols = ['#F6B73C', '#0E8A8C', '#5E3F96', '#1B8A4C', '#C23A3A', '#3DC0C2'];
+    for (let i = 0; i < n; i++) {
+      const p = document.createElement('i');
+      p.style.left = Math.random() * 100 + '%'; p.style.background = cols[i % cols.length];
+      p.style.animationDelay = Math.random() * 0.3 + 's'; p.style.animationDuration = 0.9 + Math.random() * 0.7 + 's';
+      box.appendChild(p);
+    }
+    document.body.appendChild(box); setTimeout(() => box.remove(), 1800);
+  } catch (e) {}
+}
 const score = u => Object.keys(u.known).length;
 const ranked = () => store.users.slice().sort((a, b) => score(b) - score(a) || a.name.localeCompare(b.name));
 function usersView() {
-  const rk = ranked();
+  const rk = ranked(), lead = leaders();
   const list = rk.map((u, i) => {
     const k = Object.keys(u.known).length, pct = Math.round(k / ALL.length * 100);
     return `<div class="urow"><button type="button" class="ubtn" data-a="pick" data-id="${u.id}"><b><i class="rk r${i < 3 ? i + 1 : 0}">${i + 1}</i>${esc(u.name)}</b>
       <span class="ubar"><span class="prog"><i style="width:${pct}%"></i></span><em>${pct}%</em></span>
-      <span>${k} / ${ALL.length} ${t('gekend')}</span></button>
+      <span>${k} / ${ALL.length} ${t('gekend')}</span>
+      <span class="mini">${t('today')} ${todayPts(u)} · ${t('week')} ${weekPts(u)} · ${t('streakL')} ${t('streakN', streak(u))}${lead.includes(u.id) ? `<em class="lead">${t('leader')}</em>` : ''}</span></button>
       <button type="button" class="link" data-a="deluser" data-id="${u.id}">${arm === 'del' + u.id ? t('delSure') : t('del')}</button></div>`;
   }).join('');
   const st = {live:'syncLive', local:'syncLocal', readonly:'syncRO', error:'syncErr', loading:'loading', device:'syncDevice'}[sync];
@@ -613,6 +659,7 @@ function homeView() {
   <header class="top"><div><h1>${t('hi', esc(u.name))}</h1><p>Zouff! Mission 3 · ${t('sub')}</p></div>${langSw()}</header>
   <div class="who"><div class="sum">${kn} / ${total} ${t('gekend')}${store.users.length > 1 ? ' · ' + t('rank', ranked().findIndex(x => x.id === u.id) + 1, store.users.length) : ''}</div>
     <div class="row"><button type="button" class="ghost" data-a="users">${t('switchKid')}</button><button type="button" class="ghost" data-a="track">${t('progress')}</button></div></div>
+  <div class="chips3"><div><b>${todayPts(u)}</b><span>${t('today')}</span></div><div><b>${t('streakN', streak(u))}</b><span>${t('streakL')}</span></div><div><b>${weekPts(u)}</b><span>${t('week')}${leaders().includes(u.id) ? ' · ' + t('leader') : ''}</span></div></div>
   <section class="sec"><h2>${t('what')}</h2>
     <div class="modes">
       <button type="button" class="mode" data-a="set" data-k="mode" data-v="card" aria-pressed="${S.mode === 'card'}"><b>${t('cardT')}</b><span>${t('cardD')}</span></button>
@@ -643,6 +690,8 @@ function trackView() {
       <div class="stats"><div><b>${k} / ${CARDS.length}</b><span>${t('gekend')}</span></div>
         <div><b>${fk} / ${FILLS.length}</b><span>${t('fillStat')}</span></div>
         <div><b>${(u.hist || []).length}</b><span>${t('sessions')}</span></div>
+        <div><b>${t('streakN', streak(u))}</b><span>${t('streakL')}</span></div>
+        <div><b>${weekPts(u)}</b><span>${t('week')} · ${t('pts')}</span></div>
         <div><b>${u.last ? fmtDate(u.last) : '–'}</b><span>${u.last ? t('last') : t('never')}</span></div></div>
       <h2>${t('hardest')}</h2>
       ${hard.length ? `<ul class="list">${hard.map(c => `<li><b>${esc(lab(c))}</b><span>${c.text ? esc(c.instr_nl || c.instr) + ' · ' : esc(c.nl) + ' · ' + esc(c.tr) + ' · '}${t('times', u.miss[c.id])}</span></li>`).join('')}</ul>` : `<div class="empty">${t('noMiss')}</div>`}
@@ -807,7 +856,8 @@ document.addEventListener('submit', e => {
     sess.val = document.getElementById('ans').value;
     sess.res = check(c, S.dir.split('-')[1], sess.val);
   }
-  mark(c, sess.res === 'ok' || (sess.res === 'accent' && S.accent === 'lenient'));
+  const okAns = sess.res === 'ok' || (sess.res === 'accent' && S.accent === 'lenient');
+  mark(c, okAns); if (okAns) celebrate(9);
   render();
 });
 document.addEventListener('click', e => {
@@ -834,7 +884,7 @@ document.addEventListener('click', e => {
   else if (a === 'forgot') { if (pin && pin.forgot) pin.forgot(); }
   else if (a === 'flip') { sess.shown = !sess.shown; el.classList.toggle('flipped', sess.shown); el.querySelectorAll('.face').forEach((f, i) => f.setAttribute('aria-hidden', String(i === 0 ? sess.shown : !sess.shown))); }
   else if (a === 'trshow') { sess.trShow = !sess.trShow; const bx = document.getElementById('trbox'); if (bx) bx.hidden = !sess.trShow; el.setAttribute('aria-pressed', String(sess.trShow)); }
-  else if (a === 'know') { mark(sess.q[sess.i], true); next(); }
+  else if (a === 'know') { mark(sess.q[sess.i], true); celebrate(9); next(); }
   else if (a === 'again') { mark(sess.q[sess.i], false); next(); }
   else if (a === 'say') speak(d.t, d.l);
   else if (a === 'hint') { sess.val = (document.getElementById('ans') || {}).value || ''; sess.hint = true; render(); }
@@ -848,7 +898,7 @@ document.addEventListener('click', e => {
   else if (a === 'retry') { sess = newSess(sess.wrong.slice()); view = 'play'; render(); }
   else if (a === 'reset') {
     if (arm !== 'reset') { arm = 'reset'; render(); setTimeout(() => { if (arm === 'reset') { arm = ''; if (view === 'home') render(); } }, 4000); }
-    else { const u = user(); if (u) { u.known = {}; u.miss = {}; u.hist = []; u.last = 0; } arm = ''; saveProgress(); render(); }
+    else { const u = user(); if (u) { u.known = {}; u.miss = {}; u.hist = []; u.last = 0; u.days = {}; } arm = ''; saveProgress(); render(); }
   }
 });
 render();

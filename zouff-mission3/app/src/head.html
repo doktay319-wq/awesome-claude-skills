@@ -134,6 +134,16 @@ button:focus-visible,input:focus-visible{outline:3px solid var(--teal);outline-o
 .syncl.local,.syncl.readonly,.syncl.error{background:var(--warn-soft);color:var(--ink);padding:12px 14px;border-radius:14px;font-weight:600}
 .rk{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;margin-right:10px;font-family:var(--font-body);font-style:normal;font-weight:800;font-size:.95rem;background:var(--line);color:var(--muted);vertical-align:middle}
 .rk.r1{background:#F6B73C;color:#3a2a00}.rk.r2{background:#C9D3D6;color:#1d2a2e}.rk.r3{background:#D9915A;color:#2e1708}
+.mini{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;color:var(--muted);font-size:.85rem;margin-top:4px;font-variant-numeric:tabular-nums}
+.lead{font-style:normal;font-weight:800;font-size:.75rem;letter-spacing:.04em;text-transform:uppercase;background:var(--nl-soft);color:var(--nl);padding:2px 10px;border-radius:999px}
+.chips3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.chips3 div{background:var(--surface);border:2px solid var(--line);border-radius:16px;padding:12px 14px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.chips3 b{font-family:var(--font-display);font-weight:600;font-size:1.5rem;color:var(--teal);font-variant-numeric:tabular-nums}
+.chips3 span{color:var(--muted);font-size:.82rem}
+.confetti{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:50}
+.confetti i{position:absolute;top:-16px;width:10px;height:15px;border-radius:2px;animation:fall 1.2s ease-in forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(560deg)}}
+@media (prefers-reduced-motion:reduce){.confetti{display:none}}
 /* profiles + tracking */
 .lsw{display:inline-flex;border:2px solid var(--line);border-radius:999px;overflow:hidden;background:var(--surface)}
 .lsw button{padding:8px 14px;min-height:40px;font-weight:800;font-size:.85rem;letter-spacing:.06em}
