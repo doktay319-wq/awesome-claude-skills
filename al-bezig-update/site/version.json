@@ -1,9 +1,11 @@
 {
-  "versionCode": 1,
-  "versionName": "1.0",
-  "apk": "AL-BEZIG-debug.apk",
-  "sha256": "",
-  "notes": "Eerste versie / İlk sürüm",
-  "contentVersion": 0,
-  "content": {}
+    "versionCode":  2,
+    "versionName":  "1.0.1",
+    "apk":  "AL-BEZIG-debug.apk",
+    "sha256":  "18d4b0bd1f01db3d3a4b68457f40dcb7b12747e64f2907e6a3b396d7c854a808",
+    "notes":  "Turks erbij (aan/uit) · Türkçe okuma ayarı",
+    "contentVersion":  0,
+    "content":  {
+
+                }
 }
