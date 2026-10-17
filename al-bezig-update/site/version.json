@@ -1,9 +1,9 @@
 {
-    "versionCode":  2,
-    "versionName":  "1.0.1",
+    "versionCode":  3,
+    "versionName":  "1.0.2",
     "apk":  "AL-BEZIG-debug.apk",
-    "sha256":  "18d4b0bd1f01db3d3a4b68457f40dcb7b12747e64f2907e6a3b396d7c854a808",
-    "notes":  "Turks erbij (aan/uit) Â· TÃ¼rkÃ§e okuma ayarÄ±",
+    "sha256":  "9c53f0ecda2c2a8318d8143ea3b22373434ef490f0c6e2231fe1782657f1b7e0",
+    "notes":  "Simdi denetle dugmesi, saatlik kontrol / Nu controleren-knop, uurlijkse check",
     "contentVersion":  1,
     "content":  {
                     "lessons.json":  "6c258931c745bd259a22470c4424b6e99cfd43f35a1124a09d3d2a162a55cec8",
