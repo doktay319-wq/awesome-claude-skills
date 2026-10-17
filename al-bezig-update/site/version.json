@@ -3,5 +3,7 @@
   "versionName": "1.0",
   "apk": "AL-BEZIG-debug.apk",
   "sha256": "",
-  "notes": "Eerste versie / İlk sürüm"
+  "notes": "Eerste versie / İlk sürüm",
+  "contentVersion": 0,
+  "content": {}
 }

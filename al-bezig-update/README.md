@@ -9,14 +9,22 @@ en laat met één tik installeren (zie `UPDATER-SPEC.md`).
 3. Geef het project een vaste naam, bv. `al-bezig`, en zet het op **Public**. Adres: `https://al-bezig.netlify.app`.
 4. Zet dit adres als `UPDATE_BASE` in de app (zie `UPDATER-SPEC.md`).
 
-## Bij elke nieuwe versie (één commando)
-1. Bouw de debug-APK zoals altijd (zelfde handtekening, hogere `versionCode` in `app/build.gradle`).
-2. Clone deze repo op de pc (eenmalig) en voer uit in `al-bezig-update`:
-   `.\release.ps1 -Apk "<pad naar APK>" -VersionCode 2 -VersionName "1.1" -Notes "Nieuwe lessen"`
-3. Het script kopieert de APK, schrijft `version.json` (met sha256) en pusht naar GitHub. Netlify publiceert vanzelf.
-4. Toestellen met de app zien bij het openen: "Nieuwe versie beschikbaar".
+## Twee soorten updates
 
-Geen slepen en neerzetten meer nodig. Elke APK (~60 MB) komt in de git-geschiedenis; dat is prima voor tientallen versies.
+**A. Nieuwe woorden/lessen/wijzigingen in de inhoud: GEEN nieuwe APK nodig**
+1. Voeg woorden toe zoals altijd (`node tools/build_extra.mjs` enz.).
+2. In `al-bezig-update` uitvoeren:
+   `.\publish-content.ps1 -Assets "D:\CLAUDE PROJELER\AlbayrakBezig\app\src\main\assets"`
+3. Het script zet de JSON-bestanden op de site en verhoogt `contentVersion`. Netlify publiceert vanzelf.
+4. Elk toestel haalt de nieuwe inhoud bij het openen van de app op. Niemand installeert iets.
+
+**B. Echte verandering van de app (code, nieuwe schermen): nieuwe APK**
+1. Bouw de debug-APK zoals altijd (zelfde handtekening, hogere `versionCode` in `app/build.gradle`).
+2. `.\release.ps1 -Apk "<pad naar APK>" -VersionCode 2 -VersionName "1.1" -Notes "Nieuwe functie"`
+3. Toestellen zien bij het openen: "Nieuwe versie beschikbaar" en installeren met één tik.
+
+Geen slepen en neerzetten meer. Elke APK (~60 MB) komt in de git-geschiedenis; prima voor tientallen versies.
+Inhoud (A) is klein en kost bijna niets.
 
 ## Let op
 - Een APK installeren vraagt op Android altijd één bevestiging van de gebruiker. Stil/automatisch updaten kan niet zonder Play Store of beheerdersrechten.

@@ -80,10 +80,23 @@ fun installApk(ctx: Context, apk: File) {
 ```
 De gebruiker bevestigt de installatie zelf. Gegevens blijven bewaard (zelfde package + handtekening).
 
-## 6. Optioneel: leerinhoud zonder nieuwe APK
-Zet `lessons.json`, `extra_lessons.json`, `glossary.json` ook op de site, met een `contentVersion` in `version.json`.
-Bij het opstarten: als `contentVersion` hoger is dan de lokale, download de JSON-bestanden naar `filesDir`, laad ze met `SeedLoader`/`ExtraContentLoader` en bump `SEED_VERSION`.
-Dan kunnen nieuwe lessen alle toestellen bereiken zonder dat iemand de app installeert. Ids blijven stabiel, dus voortgang gaat niet verloren.
+## 6. HOOFDDOEL: inhoud bijwerken zonder nieuwe APK (doe dit eerst)
+De eigenaar wil nieuwe woorden/lessen toevoegen of iets in de inhoud wijzigen zonder dat iemand de APK opnieuw installeert.
+De site heeft daarom naast de APK een map `content/` met dezelfde JSON-bestanden als in `assets/`:
+`lessons.json`, `words.json`, `glossary.json`, `extra_lessons.json`, `extra_glossary.json` (alleen aanwezig als ze bestaan).
+`version.json` bevat `contentVersion` (geheel getal, +1 bij elke publicatie) en `content` (bestandsnaam → sha256).
+
+Gedrag in de app:
+1. Bij het opstarten (en max. 1× per 6 uur, op de achtergrond, zonder het scherm te blokkeren): haal `UPDATE_BASE/version.json` op.
+2. Als `contentVersion` > de lokaal opgeslagen waarde (DataStore, standaard 0): download alle bestanden uit `content` naar een tijdelijke map,
+   controleer sha256 en of het geldige JSON is, verplaats ze dan pas naar `filesDir/content/` (alles-of-niets).
+3. `SeedLoader` en `ExtraContentLoader` lezen eerst uit `filesDir/content/<naam>` en vallen terug op `assets/<naam>`.
+4. Verhoog de seed-versie als `contentVersion` verandert, zodat Room herlaadt. Ids blijven stabiel (lessonId*10000 + positie), dus voortgang, "gekend"-markeringen en Privé blijven behouden. Overschrijf nooit bestaande gebruikersgegevens.
+5. Geen internet of fout: stil doorgaan met de laatst bekende inhoud (lokaal of assets). Geen foutmelding voor de gebruiker.
+6. Toon na een succesvolle update een korte melding: "Nieuwe lessen toegevoegd / Yeni dersler eklendi".
+7. Wanneer een nieuwe APK wordt geïnstalleerd, geldt: gebruik de nieuwste van (assets in de APK, gedownloade inhoud), op basis van `contentVersion` (bewaar in assets een `content_version.txt`).
+
+Alleen als de CODE verandert (nieuwe schermen, functies) is een nieuwe APK nodig (secties 1 tot 5).
 
 ## Testen
 1. Installeer versie N. Zet versie N+1 op de site. Open de app: de dialoog verschijnt.
