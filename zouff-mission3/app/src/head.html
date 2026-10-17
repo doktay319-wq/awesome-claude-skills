@@ -127,6 +127,11 @@ button:focus-visible,input:focus-visible{outline:3px solid var(--teal);outline-o
 .blank{font:inherit;font-family:var(--font-display);font-size:inherit;color:var(--fr);background:var(--bg);border:0;border-bottom:3px solid var(--teal);border-radius:8px 8px 0 0;padding:2px 8px;margin:0 4px;text-align:center;min-width:3.2ch;max-width:100%}
 .blank.ok{border-color:var(--good);background:var(--good-soft)}.blank.no{border-color:var(--bad);background:var(--bad-soft)}.blank.acc{border-color:var(--nl);background:var(--warn-soft)}
 @media (prefers-reduced-motion:reduce){.dots.shake{animation:none}}
+.ubar{display:flex;align-items:center;gap:10px;margin-top:6px}
+.ubar .prog{flex:1;height:8px}
+.ubar em{font-style:normal;font-weight:800;color:var(--teal);font-variant-numeric:tabular-nums}
+.syncl{font-size:.88rem;color:var(--muted)}
+.syncl.readonly,.syncl.error{color:var(--bad);font-weight:700}
 /* profiles + tracking */
 .lsw{display:inline-flex;border:2px solid var(--line);border-radius:999px;overflow:hidden;background:var(--surface)}
 .lsw button{padding:8px 14px;min-height:40px;font-weight:800;font-size:.85rem;letter-spacing:.06em}

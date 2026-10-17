@@ -20,6 +20,80 @@ S.ui = S.ui === 'tr' ? 'tr' : 'nl';
 if (!/^(nl-fr|fr-nl)$/.test(S.dir)) S.dir = 'nl-fr';
 if (!['card', 'write', 'fill'].includes(S.mode)) S.mode = 'card';
 function save() { store.set = S; try { localStorage.setItem(LS, JSON.stringify(store)); } catch (e) {} }
+
+/* ---------- gedeelde opslag (db) ---------- */
+let DB = null, sync = 'loading', flushT = null, flushing = false, kidsSnap = null, progSnap = null, cfgDone = false, nameDraft = '';
+const pend = new Map(), inflight = new Set();
+const kidRec = u => ({name: u.name, pin: u.pin || '', createdAt: u.createdAt || 0});
+const progRec = u => ({known: u.known || {}, miss: u.miss || {}, hist: u.hist || [], last: u.last || 0});
+const byId = id => store.users.find(x => x.id === id);
+function queue(path, get, del) { pend.set(path, {get, del: !!del}); scheduleFlush(900); }
+function scheduleFlush(ms) { if (!DB) return; clearTimeout(flushT); flushT = setTimeout(flush, ms); }
+function saveProgress() {
+  save();
+  const id = store.cur;
+  if (id) queue('progress/' + id, () => { const u = byId(id); return u && progRec(u); });
+}
+async function flush() {
+  if (!DB) return;
+  if (flushing) { scheduleFlush(400); return; }
+  flushing = true;
+  for (const [path, op] of [...pend]) {
+    pend.delete(path); inflight.add(path);
+    try {
+      if (op.del) await DB.doc(path).delete();
+      else { const d = op.get(); if (d) await DB.doc(path).set(d); }
+      if (sync !== 'live') sync = 'live';
+    } catch (e) {
+      if (e && e.code === 'invalid_argument') sync = 'readonly';
+      else { sync = 'error'; if (!pend.has(path)) pend.set(path, op); scheduleFlush(6000); }
+    }
+    inflight.delete(path);
+  }
+  flushing = false;
+  if (view === 'users') render();
+}
+function rebuild() {
+  if (!kidsSnap || !progSnap) return;
+  const old = new Map(store.users.map(u => [u.id, u]));
+  store.users = [...kidsSnap.entries()].map(([id, k]) => {
+    const p = progSnap.get(id) || {}, l = old.get(id), keep = l && (pend.has('progress/' + id) || inflight.has('progress/' + id));
+    return {id, name: k.name || '?', pin: k.pin || '', createdAt: k.createdAt || 0,
+      known: keep ? l.known : (p.known || {}), miss: keep ? l.miss : (p.miss || {}), hist: keep ? l.hist : (p.hist || []), last: keep ? l.last : (p.last || 0)};
+  }).sort((a, b) => (a.createdAt || 0) - (b.createdAt || 0));
+  if (store.cur && !byId(store.cur)) { store.cur = null; if (['home', 'play', 'done'].includes(view)) view = 'users'; }
+  save();
+  if (['users', 'track', 'home'].includes(view)) render();
+}
+function onData() {
+  if (!kidsSnap || !progSnap) return;
+  if (!store.synced) {
+    if (kidsSnap.size === 0) store.users.forEach(u => {
+      kidsSnap.set(u.id, kidRec(u)); progSnap.set(u.id, progRec(u));
+      queue('kids/' + u.id, () => { const x = byId(u.id); return x && kidRec(x); });
+      queue('progress/' + u.id, () => { const x = byId(u.id); return x && progRec(x); });
+    });
+    store.synced = true;
+  }
+  if (sync === 'loading') sync = 'live';
+  rebuild();
+}
+async function initDb() {
+  try { DB = (typeof claude !== 'undefined' && claude.use) ? await claude.use('db') : null; } catch (e) { DB = null; }
+  if (!DB) { sync = 'local'; if (view === 'users') render(); return; }
+  const fail = () => { sync = 'error'; if (view === 'users') render(); };
+  try {
+    DB.collection('kids').onSnapshot(s => { kidsSnap = new Map(s.docs.map(d => [d.id, d.data()])); onData(); }, fail);
+    DB.collection('progress').onSnapshot(s => { progSnap = new Map(s.docs.map(d => [d.id, d.data()])); onData(); }, fail);
+    DB.doc('config/parent').onSnapshot(s => {
+      const d = s.exists ? s.data() : null;
+      if (d && d.hash) store.parent = d.hash;
+      else if (store.parent && !cfgDone) queue('config/parent', () => ({hash: store.parent}));
+      cfgDone = true; save(); if (view === 'users') render();
+    }, fail);
+  } catch (e) { fail(); }
+  flush();
+}
 const user = () => store.users.find(u => u.id === store.cur) || null;
 const known = id => { const u = user(); return !!(u && u.known[id]); };
 
@@ -52,7 +126,7 @@ const TX = {
     pinFor: n => `Pincode van ${n}`, pinTap: 'Tik je pincode in (4 cijfers)', pinSet: n => `Kies een pincode voor ${n}`, pinSetD: 'Kies 4 cijfers die je onthoudt.',
     pinRepeat: 'Tik dezelfde pincode nog eens', pinWrong: 'Verkeerde pincode. Probeer opnieuw.', pinNoMatch: 'De pincodes zijn niet gelijk. Begin opnieuw.',
     parentCode: 'Ouderscode', parentCodeD: 'Alleen voor ouders.', parentSet: 'Kies een ouderscode', parentOld: 'Tik de huidige ouderscode in',
-    parentBtn: 'Ouderscode instellen', parentChg: 'Ouderscode wijzigen', parentHint: 'Met een ouderscode zijn de voortgang, het verwijderen en een vergeten pincode beveiligd.',
+    parentBtn: 'Ouderscode instellen', parentChg: 'Ouderscode wijzigen', parentHint: 'Met een ouderscode zijn het verwijderen van een kind en een vergeten pincode beveiligd.', loading: 'Laden…', syncLive: 'Gedeeld: elk toestel toont dezelfde kinderen en voortgang.', syncLocal: 'Alleen op dit toestel bewaard (geen gedeelde opslag beschikbaar).', syncRO: 'Alleen lezen: je mag hier niets opslaan. Open de pagina met een account met schrijfrechten.', syncErr: 'Verbinding mislukt. Opnieuw proberen…',
     forgot: 'Pincode vergeten? (ouderscode nodig)', delTitle: n => `${n} verwijderen`,
     LN: {fr:'Frans', nl:'Nederlands', tr:'Turks'},
     dirs: {'nl-fr':'Nederlands → Frans', 'fr-nl':'Frans → Nederlands'},
@@ -84,7 +158,7 @@ const TX = {
     pinFor: n => `${n} için pin kodu`, pinTap: 'Pin kodunu gir (4 rakam)', pinSet: n => `${n} için pin kodu seç`, pinSetD: 'Aklında kalacak 4 rakam seç.',
     pinRepeat: 'Aynı pin kodunu tekrar gir', pinWrong: 'Yanlış pin kodu. Tekrar dene.', pinNoMatch: 'Pin kodları aynı değil. Baştan başla.',
     parentCode: 'Ebeveyn kodu', parentCodeD: 'Sadece ebeveynler için.', parentSet: 'Bir ebeveyn kodu seç', parentOld: 'Mevcut ebeveyn kodunu gir',
-    parentBtn: 'Ebeveyn kodu belirle', parentChg: 'Ebeveyn kodunu değiştir', parentHint: 'Ebeveyn kodu varsa ilerleme ekranı, silme ve unutulan pin kodu korunur.',
+    parentBtn: 'Ebeveyn kodu belirle', parentChg: 'Ebeveyn kodunu değiştir', parentHint: 'Ebeveyn kodu varsa çocuk silme ve unutulan pin kodu korunur.', loading: 'Yükleniyor…', syncLive: 'Ortak: her cihaz aynı çocukları ve ilerlemeyi gösterir.', syncLocal: 'Sadece bu cihazda saklanıyor (ortak depolama yok).', syncRO: 'Salt okunur: buraya kayıt yapamazsın. Yazma yetkili bir hesapla aç.', syncErr: 'Bağlantı kurulamadı. Tekrar deneniyor…',
     forgot: 'Pin kodunu mu unuttun? (ebeveyn kodu gerekir)', delTitle: n => `${n} silinsin mi`,
     LN: {fr:'Fransızca', nl:'Felemenkçe', tr:'Türkçe'},
     dirs: {'nl-fr':'Felemenkçe → Fransızca', 'fr-nl':'Fransızca → Felemenkçe'},
@@ -143,22 +217,28 @@ const askParent = (title, ok, back) => askPin({title, sub: t('parentCodeD'), che
 function newKid(name) {
   askPin({mode:'set', title: t('pinSet', name), sub: t('pinSetD'), back:'users', ok: p => {
     const id = 'u' + Date.now().toString(36);
-    const u = {id, name, pin: hp(id, p), known: {}, miss: {}, hist: [], last: 0};
+    const u = {id, name, pin: hp(id, p), createdAt: Date.now(), known: {}, miss: {}, hist: [], last: 0};
     if (store.legacy && !store.users.length) { u.known = store.legacy.known; u.miss = store.legacy.miss; store.legacy = null; }
-    store.users.push(u); loginUser(u);
+    store.users.push(u); nameDraft = '';
+    if (kidsSnap) { kidsSnap.set(id, kidRec(u)); progSnap.set(id, progRec(u)); }
+    queue('kids/' + id, () => { const x = byId(id); return x && kidRec(x); });
+    queue('progress/' + id, () => { const x = byId(id); return x && progRec(x); });
+    loginUser(u);
   }});
 }
 function pickKid(id) {
   const u = store.users.find(x => x.id === id); if (!u) return;
   if (!u.pin) {
-    askPin({mode:'set', title: t('pinSet', u.name), sub: t('pinSetD'), back:'users', ok: p => { u.pin = hp(u.id, p); loginUser(u); }});
+    askPin({mode:'set', title: t('pinSet', u.name), sub: t('pinSetD'), back:'users', ok: p => { u.pin = hp(u.id, p); queue('kids/' + u.id, () => { const x = byId(u.id); return x && kidRec(x); }); loginUser(u); }});
     return;
   }
   askPin({title: t('pinFor', u.name), sub: t('pinTap'), back:'users', check: b => hp(u.id, b) === u.pin, ok: () => loginUser(u),
-    forgot: store.parent ? () => askParent(t('parentCode'), () => askPin({mode:'set', title: t('pinSet', u.name), sub: t('pinSetD'), back:'users', ok: p => { u.pin = hp(u.id, p); loginUser(u); }}), 'users') : null});
+    forgot: store.parent ? () => askParent(t('parentCode'), () => askPin({mode:'set', title: t('pinSet', u.name), sub: t('pinSetD'), back:'users', ok: p => { u.pin = hp(u.id, p); queue('kids/' + u.id, () => { const x = byId(u.id); return x && kidRec(x); }); loginUser(u); }}), 'users') : null});
 }
 function removeKid(id) {
   store.users = store.users.filter(u => u.id !== id);
+  if (kidsSnap) { kidsSnap.delete(id); progSnap.delete(id); }
+  queue('kids/' + id, null, true); queue('progress/' + id, null, true);
   if (store.cur === id) store.cur = null;
   arm = ''; pinDone(); view = 'users'; save(); render();
 }
@@ -169,12 +249,9 @@ function delKid(id) {
   else if (arm !== 'del' + id) { arm = 'del' + id; render(); setTimeout(() => { if (arm === 'del' + id) { arm = ''; if (view === 'users') render(); } }, 4000); }
   else removeKid(id);
 }
-function openTrack(from) {
-  if (store.parent) askParent(t('parentCode'), () => { pinDone(); view = 'track'; render(); }, from);
-  else { view = 'track'; render(); }
-}
+function openTrack() { view = 'track'; render(); }
 function setParent() {
-  const setNew = () => askPin({mode:'set', title: t('parentSet'), sub: t('parentCodeD'), back:'users', ok: p => { store.parent = hp('parent', p); save(); pinDone(); view = 'users'; render(); }});
+  const setNew = () => askPin({mode:'set', title: t('parentSet'), sub: t('parentCodeD'), back:'users', ok: p => { store.parent = hp('parent', p); save(); queue('config/parent', () => ({hash: store.parent})); pinDone(); view = 'users'; render(); }});
   if (store.parent) askParent(t('parentOld'), setNew, 'users'); else setNew();
 }
 
@@ -242,7 +319,7 @@ function finish() {
   if (u && !sess.logged) {
     sess.logged = true;
     u.hist = (u.hist || []).concat({t: Date.now(), mode: S.mode, right: sess.right, total: sess.total}).slice(-60);
-    save();
+    saveProgress();
   }
 }
 function next() {
@@ -263,7 +340,7 @@ function mark(card, good) {
     if (!sess.wrong.includes(card)) sess.wrong.push(card);
     if (!sess.retried[card.id]) { sess.retried[card.id] = 1; sess.q.push(card); }
   }
-  save();
+  saveProgress();
 }
 function focusField() { const f = document.getElementById('ans') || document.querySelector('.blank:not([disabled])'); if (f && !f.disabled) f.focus(); }
 
@@ -287,18 +364,22 @@ function pinView() {
 
 function usersView() {
   const list = store.users.map(u => {
-    const k = Object.keys(u.known).length;
-    return `<div class="urow"><button type="button" class="ubtn" data-a="pick" data-id="${u.id}"><b>${esc(u.name)}</b><span>${k} / ${ALL.length} ${t('gekend')}</span></button>
+    const k = Object.keys(u.known).length, pct = Math.round(k / ALL.length * 100);
+    return `<div class="urow"><button type="button" class="ubtn" data-a="pick" data-id="${u.id}"><b>${esc(u.name)}</b>
+      <span class="ubar"><span class="prog"><i style="width:${pct}%"></i></span><em>${pct}%</em></span>
+      <span>${k} / ${ALL.length} ${t('gekend')}</span></button>
       <button type="button" class="link" data-a="deluser" data-id="${u.id}">${arm === 'del' + u.id ? t('delSure') : t('del')}</button></div>`;
   }).join('');
+  const st = {live:'syncLive', local:'syncLocal', readonly:'syncRO', error:'syncErr', loading:'loading'}[sync];
   return `<header class="top"><div><h1>${t('who')}</h1><p>${t('whoD')}</p></div>${langSw()}</header>
-  ${store.users.length ? `<div class="ulist">${list}</div>` : `<div class="empty">${t('empty')}</div>`}
+  ${store.users.length ? `<div class="ulist">${list}</div>` : `<div class="empty">${sync === 'loading' ? t('loading') : t('empty')}</div>`}
+  <div class="syncl ${sync}" role="status">${t(st)}</div>
+  ${store.users.length ? `<button type="button" class="ghost" data-a="track">${t('progress')}</button>` : ''}
   <form id="uf" class="sec" autocomplete="off"><h2>${t('add')}</h2>
-    <div class="row"><input id="nm" class="field nm" type="text" maxlength="20" placeholder="${t('namePh')}" autocapitalize="words" autocorrect="off" spellcheck="false" enterkeyhint="done">
+    <div class="row"><input id="nm" class="field nm" type="text" maxlength="20" placeholder="${t('namePh')}" value="${esc(nameDraft)}" autocapitalize="words" autocorrect="off" spellcheck="false" enterkeyhint="done">
     <button type="submit" class="ghost">${t('addB')}</button></div></form>
   <section class="sec"><h2>${t('parentCode')}</h2><p class="src" style="margin:0">${t('parentHint')}</p>
-    <div class="row"><button type="button" class="ghost" data-a="parent">${store.parent ? t('parentChg') : t('parentBtn')}</button>
-    ${store.users.length ? `<button type="button" class="ghost" data-a="track">${t('progress')}</button>` : ''}</div></section>`;
+    <div class="row"><button type="button" class="ghost" data-a="parent">${store.parent ? t('parentChg') : t('parentBtn')}</button></div></section>`;
 }
 
 function homeView() {
@@ -486,6 +567,7 @@ document.addEventListener('pointerdown', e => {
   f.value = f.value.slice(0, s) + k.dataset.v + f.value.slice(en);
   f.setSelectionRange(s + 1, s + 1); f.focus();
 });
+document.addEventListener('input', e => { if (e.target && e.target.id === 'nm') nameDraft = e.target.value; });
 document.addEventListener('keydown', e => {
   if (view === 'pin' && pin && !(e.target && e.target.tagName === 'INPUT')) {
     if (/^[0-9]$/.test(e.key)) pinPress(e.key);
@@ -531,7 +613,7 @@ document.addEventListener('click', e => {
   else if (a === 'start') start();
   else if (a === 'home') { view = 'home'; sess = null; arm = ''; render(); }
   else if (a === 'users') { store.cur = null; view = 'users'; sess = null; arm = ''; render(); }
-  else if (a === 'track') openTrack(user() ? 'home' : 'users');
+  else if (a === 'track') openTrack();
   else if (a === 'pick') pickKid(d.id);
   else if (a === 'deluser') delKid(d.id);
   else if (a === 'parent') setParent();
@@ -554,8 +636,9 @@ document.addEventListener('click', e => {
   else if (a === 'retry') { sess = newSess(sess.wrong.slice()); view = 'play'; render(); }
   else if (a === 'reset') {
     if (arm !== 'reset') { arm = 'reset'; render(); setTimeout(() => { if (arm === 'reset') { arm = ''; if (view === 'home') render(); } }, 4000); }
-    else { const u = user(); if (u) { u.known = {}; u.miss = {}; u.hist = []; u.last = 0; } arm = ''; save(); render(); }
+    else { const u = user(); if (u) { u.known = {}; u.miss = {}; u.hist = []; u.last = 0; } arm = ''; saveProgress(); render(); }
   }
 });
 render();
+initDb();
 </script>
