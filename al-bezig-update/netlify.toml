@@ -1,0 +1,3 @@
+# AL-BEZIG indirme-/updatesite. In Netlify: base directory = al-bezig-update
+[build]
+  publish = "site"

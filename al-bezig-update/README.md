@@ -3,18 +3,20 @@
 Dit is een kleine site met de nieuwste APK en `version.json`. De app kijkt bij het openen of er een nieuwere versie is
 en laat met één tik installeren (zie `UPDATER-SPEC.md`).
 
-## Eenmalig instellen (Netlify)
-1. Netlify > Add new project > **Upload your project files** (of "Deploy manually").
-2. Sleep de map `site/` erin (met `AL-BEZIG-debug.apk`, `version.json`, `index.html`, `_headers`).
-3. Geef het project een vaste naam, bv. `al-bezig`. Adres: `https://al-bezig.netlify.app`.
+## Eenmalig instellen (Netlify, via GitHub, net als Zouff)
+1. Netlify > Add new project > Import from Git > GitHub > `awesome-claude-skills`.
+2. Branch `ccr-fb6f7349-15zmza`, **Base directory** `al-bezig-update`, build command leeg, publish directory `site`.
+3. Geef het project een vaste naam, bv. `al-bezig`, en zet het op **Public**. Adres: `https://al-bezig.netlify.app`.
+4. Zet dit adres als `UPDATE_BASE` in de app (zie `UPDATER-SPEC.md`).
 
-## Bij elke nieuwe versie
+## Bij elke nieuwe versie (één commando)
 1. Bouw de debug-APK zoals altijd (zelfde handtekening, hogere `versionCode` in `app/build.gradle`).
-2. Kopieer de APK naar `site/AL-BEZIG-debug.apk`.
-3. Pas `site/version.json` aan: `versionCode` (+1), `versionName`, `notes`.
-   (Optioneel `sha256`: `sha256sum AL-BEZIG-debug.apk`.)
-4. Netlify > Deploys > sleep de map `site/` opnieuw in het uploadvak.
-5. Toestellen met de nieuwe app-versie zien bij het openen: "Nieuwe versie beschikbaar".
+2. Clone deze repo op de pc (eenmalig) en voer uit in `al-bezig-update`:
+   `.\release.ps1 -Apk "<pad naar APK>" -VersionCode 2 -VersionName "1.1" -Notes "Nieuwe lessen"`
+3. Het script kopieert de APK, schrijft `version.json` (met sha256) en pusht naar GitHub. Netlify publiceert vanzelf.
+4. Toestellen met de app zien bij het openen: "Nieuwe versie beschikbaar".
+
+Geen slepen en neerzetten meer nodig. Elke APK (~60 MB) komt in de git-geschiedenis; dat is prima voor tientallen versies.
 
 ## Let op
 - Een APK installeren vraagt op Android altijd één bevestiging van de gebruiker. Stil/automatisch updaten kan niet zonder Play Store of beheerdersrechten.
