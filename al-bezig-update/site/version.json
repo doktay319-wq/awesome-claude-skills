@@ -3,9 +3,13 @@
     "versionName":  "1.0.1",
     "apk":  "AL-BEZIG-debug.apk",
     "sha256":  "18d4b0bd1f01db3d3a4b68457f40dcb7b12747e64f2907e6a3b396d7c854a808",
-    "notes":  "Turks erbij (aan/uit) · Türkçe okuma ayarı",
-    "contentVersion":  0,
+    "notes":  "Turks erbij (aan/uit) Â· TÃ¼rkÃ§e okuma ayarÄ±",
+    "contentVersion":  1,
     "content":  {
-
+                    "lessons.json":  "6c258931c745bd259a22470c4424b6e99cfd43f35a1124a09d3d2a162a55cec8",
+                    "words.json":  "930cffea3fe8548ecb7d25719111eca4a50a381e2d792e7095e156f1f904b7f6",
+                    "glossary.json":  "9a3f8ee924b08c788c17c2ff9003e084f90ea3392bb3e0af4a1f954c914c8c88",
+                    "extra_lessons.json":  "df725a6d96c8cc9a4038723d2d6f48d31de6ba25de81aa694c1ff496b982ad25",
+                    "extra_glossary.json":  "5a9ad807ce54a110322fd47ac386b5b47240c694964af49704a3870043d80228"
                 }
 }
