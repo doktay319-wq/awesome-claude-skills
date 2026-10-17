@@ -1,5 +1,6 @@
 <div id="app"></div>
 <script>
+const HOSTED = /*__HOSTED__*/false;
 const CARDS = /*__DATA__*/[];
 const FILLS = /*__FILLS__*/[];
 const ALL = CARDS.concat(FILLS);
@@ -79,6 +80,7 @@ function onData() {
   rebuild();
 }
 async function initDb() {
+  if (HOSTED) { sync = 'device'; if (view === 'users') render(); return; }
   try { DB = (typeof claude !== 'undefined' && claude.use) ? await claude.use('db') : null; } catch (e) { DB = null; }
   if (!DB) { sync = 'local'; if (view === 'users') render(); return; }
   try { const U = await claude.use('user'); if (U && U.can && U.can('data.write') === false) { sync = 'readonly'; if (view === 'users') render(); } } catch (e) {}
@@ -127,7 +129,7 @@ const TX = {
     pinFor: n => `Pincode van ${n}`, pinTap: 'Tik je pincode in (4 cijfers)', pinSet: n => `Kies een pincode voor ${n}`, pinSetD: 'Kies 4 cijfers die je onthoudt.',
     pinRepeat: 'Tik dezelfde pincode nog eens', pinWrong: 'Verkeerde pincode. Probeer opnieuw.', pinNoMatch: 'De pincodes zijn niet gelijk. Begin opnieuw.',
     parentCode: 'Ouderscode', parentCodeD: 'Alleen voor ouders.', parentSet: 'Kies een ouderscode', parentOld: 'Tik de huidige ouderscode in',
-    parentBtn: 'Ouderscode instellen', parentChg: 'Ouderscode wijzigen', parentHint: 'Met een ouderscode zijn het verwijderen van een kind en een vergeten pincode beveiligd.', loading: 'Laden…', syncLive: 'Gedeeld: elk toestel toont dezelfde kinderen en voortgang.', syncLocal: 'Niet verbonden: namen en voortgang blijven alleen op dit toestel. Open deze pagina ingelogd bij claude.ai (zelfde account als de andere toestellen) om alle kinderen te zien.', syncRO: 'Je ziet de gedeelde lijst, maar opslaan lukt niet. Je account heeft schrijfrechten nodig (Editor in het deelmenu).', syncErr: 'Verbinding mislukt. Opnieuw proberen…',
+    parentBtn: 'Ouderscode instellen', parentChg: 'Ouderscode wijzigen', parentHint: 'Met een ouderscode zijn het verwijderen van een kind en een vergeten pincode beveiligd.', loading: 'Laden…', syncLive: 'Gedeeld: elk toestel toont dezelfde kinderen en voortgang.', syncLocal: 'Niet verbonden: namen en voortgang blijven alleen op dit toestel. Open deze pagina ingelogd bij claude.ai (zelfde account als de andere toestellen) om alle kinderen te zien.', syncRO: 'Je ziet de gedeelde lijst, maar opslaan lukt niet. Je account heeft schrijfrechten nodig (Editor in het deelmenu).', syncErr: 'Verbinding mislukt. Opnieuw proberen…', syncDevice: 'Namen en voortgang worden op dit toestel bewaard.',
     forgot: 'Pincode vergeten? (ouderscode nodig)', delTitle: n => `${n} verwijderen`,
     LN: {fr:'Frans', nl:'Nederlands', tr:'Turks'},
     dirs: {'nl-fr':'Nederlands → Frans', 'fr-nl':'Frans → Nederlands'},
@@ -159,7 +161,7 @@ const TX = {
     pinFor: n => `${n} için pin kodu`, pinTap: 'Pin kodunu gir (4 rakam)', pinSet: n => `${n} için pin kodu seç`, pinSetD: 'Aklında kalacak 4 rakam seç.',
     pinRepeat: 'Aynı pin kodunu tekrar gir', pinWrong: 'Yanlış pin kodu. Tekrar dene.', pinNoMatch: 'Pin kodları aynı değil. Baştan başla.',
     parentCode: 'Ebeveyn kodu', parentCodeD: 'Sadece ebeveynler için.', parentSet: 'Bir ebeveyn kodu seç', parentOld: 'Mevcut ebeveyn kodunu gir',
-    parentBtn: 'Ebeveyn kodu belirle', parentChg: 'Ebeveyn kodunu değiştir', parentHint: 'Ebeveyn kodu varsa çocuk silme ve unutulan pin kodu korunur.', loading: 'Yükleniyor…', syncLive: 'Ortak: her cihaz aynı çocukları ve ilerlemeyi gösterir.', syncLocal: 'Bağlı değil: adlar ve ilerleme sadece bu cihazda kalır. Tüm çocukları görmek için sayfayı claude.ai hesabına giriş yaparak (diğer cihazlarla aynı hesap) aç.', syncRO: 'Ortak listeyi görüyorsun ama kayıt yapamıyorsun. Hesabının yazma yetkisi (paylaşım menüsünde Editor) olmalı.', syncErr: 'Bağlantı kurulamadı. Tekrar deneniyor…',
+    parentBtn: 'Ebeveyn kodu belirle', parentChg: 'Ebeveyn kodunu değiştir', parentHint: 'Ebeveyn kodu varsa çocuk silme ve unutulan pin kodu korunur.', loading: 'Yükleniyor…', syncLive: 'Ortak: her cihaz aynı çocukları ve ilerlemeyi gösterir.', syncLocal: 'Bağlı değil: adlar ve ilerleme sadece bu cihazda kalır. Tüm çocukları görmek için sayfayı claude.ai hesabına giriş yaparak (diğer cihazlarla aynı hesap) aç.', syncRO: 'Ortak listeyi görüyorsun ama kayıt yapamıyorsun. Hesabının yazma yetkisi (paylaşım menüsünde Editor) olmalı.', syncErr: 'Bağlantı kurulamadı. Tekrar deneniyor…', syncDevice: 'Adlar ve ilerleme bu cihazda saklanır.',
     forgot: 'Pin kodunu mu unuttun? (ebeveyn kodu gerekir)', delTitle: n => `${n} silinsin mi`,
     LN: {fr:'Fransızca', nl:'Felemenkçe', tr:'Türkçe'},
     dirs: {'nl-fr':'Felemenkçe → Fransızca', 'fr-nl':'Fransızca → Felemenkçe'},
@@ -371,7 +373,7 @@ function usersView() {
       <span>${k} / ${ALL.length} ${t('gekend')}</span></button>
       <button type="button" class="link" data-a="deluser" data-id="${u.id}">${arm === 'del' + u.id ? t('delSure') : t('del')}</button></div>`;
   }).join('');
-  const st = {live:'syncLive', local:'syncLocal', readonly:'syncRO', error:'syncErr', loading:'loading'}[sync];
+  const st = {live:'syncLive', local:'syncLocal', readonly:'syncRO', error:'syncErr', loading:'loading', device:'syncDevice'}[sync];
   return `<header class="top"><div><h1>${t('who')}</h1><p>${t('whoD')}</p></div>${langSw()}</header>
   ${store.users.length ? `<div class="ulist">${list}</div>` : `<div class="empty">${sync === 'loading' ? t('loading') : t('empty')}</div>`}
   <div class="syncl ${sync}" role="status">${t(st)}</div>

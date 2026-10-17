@@ -28,3 +28,17 @@ full=('<!doctype html>\n<html lang="tr"><head><meta charset="utf-8">'
 import os; os.makedirs(f"{R}/app",exist_ok=True)
 open(f"{R}/app/index.html","w",encoding="utf-8").write(full)
 print(len(cards),"cards",len(full)//1024,"KB")
+
+# ---- gehoste versie (GitHub Pages) in /docs
+import os
+D=R+"/docs"; os.makedirs(D,exist_ok=True)
+hb=body.replace("/*__HOSTED__*/false","true")
+hosted=('<!doctype html>\n<html lang="nl"><head><meta charset="utf-8">'
+ '<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">'
+ '<meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes">'
+ '<meta name="apple-mobile-web-app-title" content="Zouff"><meta name="theme-color" content="#0E8A8C">'
+ '<link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="icon-180.png">\n'
+ +head+'<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>\n</head><body>\n'
+ +hb+"<script>if('serviceWorker' in navigator){addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){});});}</script>\n</body></html>\n")
+open(D+"/index.html","w",encoding="utf-8").write(hosted)
+print("docs/index.html",len(hosted)//1024,"KB")
