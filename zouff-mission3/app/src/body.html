@@ -79,11 +79,50 @@ function onData() {
   if (sync === 'loading') sync = 'live';
   rebuild();
 }
+/* Netlify-opslag: zelfde interface als db, via /api/zouff (Netlify Functions + Blobs) */
+function makeNetDB() {
+  const API = '/api/zouff';
+  let cache = {kids: {}, progress: {}, parent: null}, last = '', subs = [], ready = false;
+  const notify = () => subs.forEach(f => f());
+  const post = async ops => { const r = await fetch(API, {method: 'POST', headers: {'content-type': 'application/json'}, body: JSON.stringify({ops})}); if (!r.ok) throw {code: r.status === 400 || r.status === 413 ? 'invalid_argument' : 'unavailable'}; };
+  const apply = (path, data) => {
+    const [a, b] = path.split('/');
+    if (a === 'config') cache.parent = data && data.hash ? data.hash : null;
+    else if (data) cache[a][b] = data; else delete cache[a][b];
+    last = JSON.stringify(cache); notify();
+  };
+  const pull = async () => {
+    const r = await fetch(API, {cache: 'no-store'});
+    if (!r.ok) throw new Error('http');
+    const d = await r.json();
+    if (!d || typeof d !== 'object' || !d.kids) throw new Error('shape');
+    const str = JSON.stringify(d);
+    ready = true;
+    if (str !== last) { cache = d; last = str; notify(); }
+  };
+  const colSnap = name => { const docs = Object.keys(cache[name]).map(id => ({id, exists: true, data: () => cache[name][id]})); return {docs, size: docs.length}; };
+  const api = {
+    pull,
+    doc: path => ({
+      set: async data => { await post([{path, data}]); apply(path, data); },
+      delete: async () => { await post([{path, del: true}]); apply(path, null); },
+      onSnapshot: cb => { const f = () => { const d = cache.parent ? {hash: cache.parent} : undefined; cb({id: 'parent', exists: !!d, data: () => d}); }; subs.push(f); if (ready) f(); return () => {}; },
+    }),
+    collection: name => ({ onSnapshot: cb => { const f = () => cb(colSnap(name)); subs.push(f); if (ready) f(); return () => {}; } }),
+  };
+  setInterval(() => { if (document.visibilityState === 'visible') pull().catch(() => {}); }, 12000);
+  document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') pull().catch(() => {}); });
+  return api;
+}
+
 async function initDb() {
-  if (HOSTED) { sync = 'device'; if (view === 'users') render(); return; }
-  try { DB = (typeof claude !== 'undefined' && claude.use) ? await claude.use('db') : null; } catch (e) { DB = null; }
+  if (HOSTED) {
+    try { const n = makeNetDB(); await n.pull(); DB = n; } catch (e) { DB = null; }
+    if (!DB) { sync = 'device'; if (view === 'users') render(); return; }
+  }
+  if (!HOSTED) try { DB = (typeof claude !== 'undefined' && claude.use) ? await claude.use('db') : null; } catch (e) { DB = null; }
   if (!DB) { sync = 'local'; if (view === 'users') render(); return; }
-  try { const U = await claude.use('user'); if (U && U.can && U.can('data.write') === false) { sync = 'readonly'; if (view === 'users') render(); } } catch (e) {}
+  if (!HOSTED) try { const U = await claude.use('user'); if (U && U.can && U.can('data.write') === false) { sync = 'readonly'; if (view === 'users') render(); } } catch (e) {}
   const fail = () => { sync = 'error'; if (view === 'users') render(); };
   try {
     DB.collection('kids').onSnapshot(s => { kidsSnap = new Map(s.docs.map(d => [d.id, d.data()])); onData(); }, fail);

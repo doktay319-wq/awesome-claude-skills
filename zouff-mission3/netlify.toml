@@ -1,0 +1,4 @@
+# Zouff Mission 3. In Netlify: base directory = zouff-mission3
+[build]
+  publish = "docs"
+  functions = "netlify/functions"
