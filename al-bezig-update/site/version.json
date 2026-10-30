@@ -1,9 +1,9 @@
 {
-    "versionCode":  5,
-    "versionName":  "1.0.4",
+    "versionCode":  7,
+    "versionName":  "1.0.6",
     "apk":  "AL-BEZIG-debug.apk",
-    "sha256":  "417ef714e1548c29a74a408eafbf7c3ceddd9992ed5a2ca78aa905912d4cac31",
-    "notes":  "Daha guvenilir indirme, Turkce okuma duzeltmeleri / Betrouwbaardere download, Turkse spraak verbeterd",
+    "sha256":  "205a8ce2cf8918b87c5c00addb93fe143a124cf9daf4eefafbcb481794dc91e4",
+    "notes":  "Sozluk: fiil ve isim cekimleri, A-Z, arama",
     "contentVersion":  11,
     "content":  {
                     "lessons.json":  "6c258931c745bd259a22470c4424b6e99cfd43f35a1124a09d3d2a162a55cec8",
