@@ -1,9 +1,9 @@
 {
-    "versionCode":  9,
-    "versionName":  "1.0.8",
+    "versionCode":  10,
+    "versionName":  "1.0.9",
     "apk":  "AL-BEZIG-debug.apk",
-    "sha256":  "38ab554e0c3d419f02f6e0986575cbb6e888910991cabe54e9b3ae98cee30c90",
-    "notes":  "Sozluk ve sesli sohbet (robotla konus)",
+    "sha256":  "fba87ad644657940ba38cc958e7cb6bd25361c280b11db713b90e28cc52c8601",
+    "notes":  "Statik robot, dersler konulara gore birlestirildi, Word ders notlari eklendi",
     "contentVersion":  11,
     "content":  {
                     "lessons.json":  "6c258931c745bd259a22470c4424b6e99cfd43f35a1124a09d3d2a162a55cec8",
