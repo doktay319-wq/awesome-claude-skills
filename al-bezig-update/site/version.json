@@ -1,8 +1,8 @@
 {
-    "versionCode":  8,
-    "versionName":  "1.0.7",
+    "versionCode":  9,
+    "versionName":  "1.0.8",
     "apk":  "AL-BEZIG-debug.apk",
-    "sha256":  "475028f61ab78fc7957e83bbb0f529a317b5943d401163483147802a56a01ab7",
+    "sha256":  "38ab554e0c3d419f02f6e0986575cbb6e888910991cabe54e9b3ae98cee30c90",
     "notes":  "Sozluk ve sesli sohbet (robotla konus)",
     "contentVersion":  11,
     "content":  {
