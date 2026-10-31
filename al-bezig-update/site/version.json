@@ -1,9 +1,9 @@
 {
-    "versionCode":  7,
-    "versionName":  "1.0.6",
+    "versionCode":  8,
+    "versionName":  "1.0.7",
     "apk":  "AL-BEZIG-debug.apk",
-    "sha256":  "205a8ce2cf8918b87c5c00addb93fe143a124cf9daf4eefafbcb481794dc91e4",
-    "notes":  "Sozluk: fiil ve isim cekimleri, A-Z, arama",
+    "sha256":  "475028f61ab78fc7957e83bbb0f529a317b5943d401163483147802a56a01ab7",
+    "notes":  "Sozluk ve sesli sohbet (robotla konus)",
     "contentVersion":  11,
     "content":  {
                     "lessons.json":  "6c258931c745bd259a22470c4424b6e99cfd43f35a1124a09d3d2a162a55cec8",
