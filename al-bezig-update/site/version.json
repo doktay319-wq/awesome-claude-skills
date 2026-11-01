@@ -4,12 +4,12 @@
     "apk":  "AL-BEZIG-debug.apk",
     "sha256":  "fba87ad644657940ba38cc958e7cb6bd25361c280b11db713b90e28cc52c8601",
     "notes":  "Statik robot, dersler konulara gore birlestirildi, Word ders notlari eklendi",
-    "contentVersion":  12,
+    "contentVersion":  13,
     "content":  {
                     "lessons.json":  "b00a43d8bcf287407e30046fac840f58c811c9d11893dc836acc2bb3807e4e4a",
                     "words.json":  "930cffea3fe8548ecb7d25719111eca4a50a381e2d792e7095e156f1f904b7f6",
                     "glossary.json":  "9a3f8ee924b08c788c17c2ff9003e084f90ea3392bb3e0af4a1f954c914c8c88",
-                    "extra_lessons.json":  "79145aea5c0bafad043178063e9ee1ea2ced4f11079d407f08cbc243bb6110e8",
-                    "extra_glossary.json":  "115d128e22052061dd293e758b2659ff7186b31a50e9911f92c90c3f6576d4b5"
+                    "extra_lessons.json":  "36131ba7d97f0b85c0e1a55e0771bf8e034d7918d4afbecc226c9f37e874cd8f",
+                    "extra_glossary.json":  "cdbdc006752c875c8dc56c9acc4d57f29153d001ff84d1dadabc737277b11760"
                 }
 }
